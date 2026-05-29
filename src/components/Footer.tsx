@@ -160,11 +160,7 @@ export const Footer: React.FC = () => {
               <li key={idx}>
                 <Link href={link.path} className="footer-link" style={{ color: textColor }}>
                   {link.name}
-                  <style jsx>{`
-                    .footer-link:hover {
-                      color: ${linkHoverColor} !important;
-                    }
-                  `}</style>
+
                 </Link>
               </li>
             ))}
