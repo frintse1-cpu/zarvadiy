@@ -8,58 +8,146 @@ import { useLanguage } from '../../context/LanguageContext';
 export default function IndustrialDivisionPage() {
   const { language, t } = useLanguage();
 
-  const productKeys = ['stainless-tubes', 'carbon-tubes', 'pipe-fittings', 'valves', 'flanges'];
-  
+  const productKeys = ['pancake-coils', 'lwc-coils', 'acr-tubes', 'insulated-tubes', 'pipe-fittings', 'capillary-tubes'];
+
+  // High-end copper vector drawings for B2B catalog items
   const productIcons = {
-    'stainless-tubes': (
+    'pancake-coils': (
       <svg viewBox="0 0 100 100" fill="none" style={productIconStyle}>
-        <rect x="15" y="25" width="70" height="12" rx="4" fill="url(#metallic-copper)" />
-        <rect x="15" y="44" width="70" height="12" rx="4" fill="url(#metallic-copper)" opacity="0.9" />
-        <rect x="15" y="63" width="70" height="12" rx="4" fill="url(#metallic-copper)" opacity="0.8" />
-        <ellipse cx="85" cy="31" rx="3" ry="6" fill="#4b5563" />
-        <ellipse cx="85" cy="50" rx="3" ry="6" fill="#4b5563" />
-        <ellipse cx="85" cy="69" rx="3" ry="6" fill="#4b5563" />
+        <circle cx="50" cy="50" r="38" stroke="url(#metallic-copper)" strokeWidth="6" />
+        <circle cx="50" cy="50" r="28" stroke="url(#metallic-copper)" strokeWidth="5.5" />
+        <circle cx="50" cy="50" r="18" stroke="url(#metallic-copper)" strokeWidth="5" />
+        <rect x="47" y="10" width="6" height="80" fill="url(#metallic-copper)" transform="rotate(45 50 50)" opacity="0.65" />
+        <rect x="47" y="10" width="6" height="80" fill="url(#metallic-copper)" transform="rotate(-45 50 50)" opacity="0.65" />
       </svg>
     ),
-    'carbon-tubes': (
+    'lwc-coils': (
       <svg viewBox="0 0 100 100" fill="none" style={productIconStyle}>
-        <rect x="10" y="35" width="80" height="30" rx="6" fill="url(#metallic-silver)" />
-        <ellipse cx="90" cy="50" rx="4" ry="15" fill="#1f2937" />
-        <ellipse cx="10" cy="50" rx="4" ry="15" fill="#374151" />
+        <rect x="25" y="15" width="50" height="70" rx="3" fill="#1f2937" stroke="url(#metallic-copper)" strokeWidth="3" />
+        {/* Layered copper wound coils */}
+        <line x1="30" y1="25" x2="70" y2="25" stroke="url(#metallic-copper)" strokeWidth="4" />
+        <line x1="30" y1="35" x2="70" y2="35" stroke="url(#metallic-copper)" strokeWidth="4" />
+        <line x1="30" y1="45" x2="70" y2="45" stroke="url(#metallic-copper)" strokeWidth="4" />
+        <line x1="30" y1="55" x2="70" y2="55" stroke="url(#metallic-copper)" strokeWidth="4" />
+        <line x1="30" y1="65" x2="70" y2="65" stroke="url(#metallic-copper)" strokeWidth="4" />
+        <line x1="30" y1="75" x2="70" y2="75" stroke="url(#metallic-copper)" strokeWidth="4" />
+        {/* Spool borders */}
+        <rect x="18" y="10" width="64" height="6" rx="1" fill="url(#metallic-silver)" />
+        <rect x="18" y="84" width="64" height="6" rx="1" fill="url(#metallic-silver)" />
+      </svg>
+    ),
+    'acr-tubes': (
+      <svg viewBox="0 0 100 100" fill="none" style={productIconStyle}>
+        <rect x="10" y="25" width="80" height="10" rx="2" fill="url(#metallic-copper)" />
+        <rect x="10" y="45" width="80" height="10" rx="2" fill="url(#metallic-copper)" />
+        <rect x="10" y="65" width="80" height="10" rx="2" fill="url(#metallic-copper)" />
+        {/* Tube ends detailing */}
+        <ellipse cx="90" cy="30" rx="2.5" ry="5" fill="#4b5563" />
+        <ellipse cx="90" cy="50" rx="2.5" ry="5" fill="#4b5563" />
+        <ellipse cx="90" cy="70" rx="2.5" ry="5" fill="#4b5563" />
+      </svg>
+    ),
+    'insulated-tubes': (
+      <svg viewBox="0 0 100 100" fill="none" style={productIconStyle}>
+        {/* Outer insulation sheath */}
+        <rect x="15" y="30" width="70" height="40" rx="20" fill="#1f2937" stroke="url(#metallic-silver)" strokeWidth="3" />
+        {/* Copper core */}
+        <rect x="10" y="44" width="80" height="12" fill="url(#metallic-copper)" />
+        <circle cx="85" cy="50" r="6" fill="#374151" stroke="url(#metallic-copper)" strokeWidth="2" />
+        <circle cx="15" cy="50" r="6" fill="#111827" stroke="url(#metallic-copper)" strokeWidth="2" />
       </svg>
     ),
     'pipe-fittings': (
       <svg viewBox="0 0 100 100" fill="none" style={productIconStyle}>
-        <path d="M25,75 L25,45 C25,30 35,20 50,20 L80,20" stroke="url(#metallic-copper)" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="25" cy="75" r="12" fill="#374151" />
-        <circle cx="80" cy="20" r="12" fill="#374151" />
+        {/* Elbow fitting */}
+        <path d="M30,70 L30,45 C30,33 39,24 51,24 L75,24" stroke="url(#metallic-copper)" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="30" cy="70" r="11" fill="#374151" />
+        <circle cx="75" cy="24" r="11" fill="#374151" />
       </svg>
     ),
-    'valves': (
+    'capillary-tubes': (
       <svg viewBox="0 0 100 100" fill="none" style={productIconStyle}>
-        <polygon points="15,25 85,25 50,50 85,75 15,75 50,50" fill="url(#metallic-silver)" stroke="url(#metallic-copper)" strokeWidth="4" />
-        <circle cx="50" cy="50" r="12" fill="#0f172a" stroke="url(#metallic-copper)" strokeWidth="4" />
-        <rect x="45" y="5" width="10" height="25" fill="url(#metallic-copper)" />
-        <rect x="35" y="5" width="30" height="6" rx="2" fill="url(#metallic-silver)" />
-      </svg>
-    ),
-    'flanges': (
-      <svg viewBox="0 0 100 100" fill="none" style={productIconStyle}>
-        <circle cx="50" cy="50" r="38" stroke="url(#metallic-copper)" strokeWidth="8" />
-        <circle cx="50" cy="50" r="24" stroke="url(#metallic-silver)" strokeWidth="6" />
-        <circle cx="50" cy="50" r="12" fill="#0f172a" />
-        <circle cx="50" cy="20" r="3.5" fill="#ffffff" />
-        <circle cx="50" cy="80" r="3.5" fill="#ffffff" />
-        <circle cx="20" cy="50" r="3.5" fill="#ffffff" />
-        <circle cx="80" cy="50" r="3.5" fill="#ffffff" />
+        {/* Ultra-fine coils */}
+        <circle cx="50" cy="50" r="35" stroke="url(#metallic-copper)" strokeWidth="2.5" />
+        <circle cx="50" cy="50" r="30" stroke="url(#metallic-copper)" strokeWidth="2.3" />
+        <circle cx="50" cy="50" r="25" stroke="url(#metallic-copper)" strokeWidth="2.1" />
+        <circle cx="50" cy="50" r="20" stroke="url(#metallic-copper)" strokeWidth="1.9" />
+        <path d="M50,15 C52,24 55,30 55,38" stroke="url(#metallic-copper)" strokeWidth="2" strokeLinecap="round" />
       </svg>
     )
   };
 
+  const capabilities = [
+    {
+      num: '01',
+      title: t.industrial.capabilities.item1.title,
+      desc: t.industrial.capabilities.item1.desc
+    },
+    {
+      num: '02',
+      title: t.industrial.capabilities.item2.title,
+      desc: t.industrial.capabilities.item2.desc
+    },
+    {
+      num: '03',
+      title: t.industrial.capabilities.item3.title,
+      desc: t.industrial.capabilities.item3.desc
+    }
+  ];
+
+  const partnerships = [
+    {
+      num: '01',
+      title: language === 'ru' ? 'Операционное Превосходство' : language === 'uz' ? 'Operatsion Mukammallik' : 'Operational Excellence',
+      desc: language === 'ru' ? 'Строгие испытания и 100% соответствие мировым стандартам EN/ASTM.' : language === 'uz' ? 'Qat’iy sinovlar va EN/ASTM jahon standartlariga 100% muvofiqlik.' : 'Rigid testing and compliance to international EN/ASTM standards.'
+    },
+    {
+      num: '02',
+      title: language === 'ru' ? 'Надежные Поставки' : language === 'uz' ? 'Ishonchli Yetkazib Berish' : 'Reliable Delivery',
+      desc: language === 'ru' ? 'Быстрая отправка контейнеров и точное соблюдение графиков отгрузок.' : language === 'uz' ? 'Konteynerlarni tezkor yuklash va yetkazib berish grafiklariga qat’iy rioya qilish.' : 'Fast container shipping and exact adherence to delivery schedules.'
+    },
+    {
+      num: '03',
+      title: language === 'ru' ? 'Обратная Связь' : language === 'uz' ? 'Tezkor Aloqa' : 'Responsive Communication',
+      desc: language === 'ru' ? 'Выделенная многоязычная торговая поддержка на связи 24/7.' : language === 'uz' ? '24/7 rejimida ishlaydigan ko‘p tilli maxsus savdo koordinatorlari.' : 'Dedicated multi-lingual sales support standing by 24/7.'
+    },
+    {
+      num: '04',
+      title: language === 'ru' ? 'Профессиональная Команда' : language === 'uz' ? 'Professional Jamoa' : 'Professional Team',
+      desc: language === 'ru' ? 'Десятилетия инженерного опыта и координации сложных цепочек поставок.' : language === 'uz' ? 'Mis metallurgiyasi va savdo logistikasida ko‘p yillik tajriba.' : 'Decades of combined metallurgical and export logistics expertise.'
+    }
+  ];
+
+  const logisticsDocKeys = [
+    language === 'ru' ? 'Фитосанитарный и гигиенический контроль' : language === 'uz' ? 'Fitosanitariya va gigiyena sertifikatlari' : 'Phytosanitary and health certificates',
+    language === 'ru' ? 'Сертификаты соответствия EN 10204 3.1' : language === 'uz' ? 'EN 10204 3.1 sifat sertifikatlari' : 'Compliance certificates EN 10204 3.1',
+    language === 'ru' ? 'Таможенное оформление и транзитная декларация' : language === 'uz' ? 'Bojxona rasmiylashtiruvi va tranzit hujjatlari' : 'Customs clearance and transit declarations',
+    language === 'ru' ? 'Двуязычные спецификации и пакинг-листы' : language === 'uz' ? 'Ikki tilli texnik shartlar va qadoq varaqalari' : 'Bilingual specifications and packing lists'
+  ];
+
+  const packagingTypes = [
+    {
+      title: 'LWC Reel Packaging',
+      desc: language === 'ru' ? 'Бухты LWC крепятся на прочных деревянных катушках, стянутых стальными лентами.' : language === 'uz' ? 'LWC buxtalari po‘lat lentalar bilan tortilgan mustahkam yog‘och g‘altaklarda yetkaziladi.' : 'LWC reels are secured on heavy-duty wooden spools, tightly banded with steel straps.'
+    },
+    {
+      title: 'Horizontal Coil Wrap',
+      desc: language === 'ru' ? 'Плотная многослойная термоусадочная пленка защищает бухты Pancake от влаги.' : language === 'uz' ? 'Ko‘p qavatli zich termoplyonka Pancake buxtalarini namlikdan to‘liq himoya qiladi.' : 'Tight multilayer shrink wrapping protects Pancake coils from environmental humidity.'
+    },
+    {
+      title: 'Straight Tube Wooden Cradles',
+      desc: language === 'ru' ? 'Прямые трубы ACR укладываются в длинные закрытые деревянные короба.' : language === 'uz' ? 'ACR to‘g‘ri quvurlari maxsus yopiq uzun yog‘och qutilarga joylanadi.' : 'Rigid ACR straight tubes are nested in protective, fully closed long wooden crates.'
+    },
+    {
+      title: 'Copper Coil Box Protection',
+      desc: language === 'ru' ? 'Каждая бухта укладывается в отдельную коробку со специальными поглотителями влаги.' : language === 'uz' ? 'Har bir Pancake buxtasi namlik yutuvchilar solingan alohida mustahkam qutilarga joylanadi.' : 'Each coil is packed in an individual protective carton box containing humidity absorber packs.'
+    }
+  ];
+
   return (
     <div className="industrial-theme" style={{ minHeight: '100vh', background: '#0b0f19' }}>
       
-      {/* Dynamic Gradients Definitions */}
+      {/* Visual gradients for vector graphics */}
       <svg width="0" height="0" style={{ position: 'absolute' }}>
         <defs>
           <linearGradient id="metallic-copper" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -77,28 +165,29 @@ export default function IndustrialDivisionPage() {
 
       {/* 1. HERO SECTION */}
       <section className="section" style={{
-        minHeight: '85vh',
+        minHeight: '88vh',
         display: 'flex',
         alignItems: 'center',
         padding: '120px 0 80px 0',
-        background: 'linear-gradient(180deg, rgba(11, 15, 25, 0.8) 0%, rgba(11, 15, 25, 0.98) 100%), url("/images/industrial_hero.png") no-repeat center center / cover',
+        background: 'linear-gradient(180deg, rgba(11, 15, 25, 0.82) 0%, rgba(11, 15, 25, 0.98) 100%), url("/images/industrial_hero.png") no-repeat center center / cover',
         position: 'relative',
         overflow: 'hidden'
       }}>
-        {/* Glow Effects */}
         <div style={topGlowStyle}></div>
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ maxWidth: '800px' }}>
-            <span className="section-tag" style={{ color: 'var(--primary-copper-hover)' }}>{t.nav.industries} // Industrial Division</span>
+          <div style={{ maxWidth: '820px' }}>
+            <span className="section-tag" style={{ color: 'var(--primary-copper-hover)', fontWeight: 700 }}>
+              {t.nav.industries} // {language === 'ru' ? 'Промышленный Дивизион' : language === 'uz' ? 'Sanoat Departamenti' : 'Industrial Division'}
+            </span>
             <h1 style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.4rem, 5.5vw, 4.2rem)',
+              fontSize: 'clamp(2.4rem, 5.5vw, 4.4rem)',
               lineHeight: 1.15,
               fontWeight: 800,
               color: '#ffffff',
               marginBottom: '24px',
-              letterSpacing: '-0.01em'
+              letterSpacing: '-0.02em'
             }}>
               {t.industrial.heroTitle}
             </h1>
@@ -113,80 +202,56 @@ export default function IndustrialDivisionPage() {
             </p>
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
               <a href="#products" className="btn btn-primary">
-                View Catalog
+                {language === 'ru' ? 'Смотреть Каталог' : language === 'uz' ? 'Katalogni Ko‘rish' : 'View Catalog'}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="7 13 12 18 17 13"></polyline>
                   <line x1="12" y1="6" x2="12" y2="18"></line>
                 </svg>
               </a>
               <Link href="/contact" className="btn btn-secondary">
-                Request Specifications
+                {language === 'ru' ? 'Запросить параметры' : language === 'uz' ? 'Texnik shartlarni so‘rash' : 'Request Specifications'}
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. ABOUT INDUSTRIAL DIVISION */}
+      {/* 2. ABOUT METALLURGY */}
       <section className="section" id="about" style={{ borderTop: '1px solid rgba(255,255,255,0.02)' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '60px', alignItems: 'center' }}>
           <div>
-            <span className="section-tag">{t.aboutPage.title}</span>
+            <span className="section-tag">{language === 'ru' ? 'Наши Технологии' : language === 'uz' ? 'Texnologiyalarimiz' : 'Modern Industrial Copper Exporter'}</span>
             <h2 className="section-title" style={{ textAlign: 'left', color: '#ffffff', marginBottom: '24px' }}>
-              High-Specification <span>Infrastructure</span> Metallurgy
+              High-Specification <span>Industrial Copper</span> Export
             </h2>
             <p style={{ color: '#9ca3af', fontSize: '1.08rem', lineHeight: 1.75, marginBottom: '24px' }}>
               {t.industrial.aboutDesc}
             </p>
             <p style={{ color: '#6b7280', fontSize: '0.95rem', lineHeight: 1.6 }}>
               {language === 'ru'
-                ? 'Все наши изделия проходят 100% неразрушающий вихретоковый контроль, гидростатические испытания стенок под давлением и детальную проверку геометрических отклонений. Наша тяжелая упаковка гарантирует сохранность при мультимодальной транспортировке.'
+                ? 'Мы экспортируем медный прокат исключительно высокой прочности. Каждая партия сопровождается подробным протоколом EN 10204 3.1, гарантирующим химическую чистоту сплава и точные геометрические размеры, что критически важно для теплообменников и систем высокого давления.'
                 : language === 'uz'
-                ? 'Barcha mahsulotlarimiz 100% induksion tok (вихреток) sinovi, gidravlik bosim ostida devor qattiqligini tekshirish va geometrik toleranslarni tahlil qilishdan o‘tadi. Bizning og‘ir mustahkam qadog‘imiz yukning to‘liq butun yetib borishini kafolatlaydi.'
-                : 'Every single stainless and carbon steel component complies with exhaustive international benchmarks. Zarvadiy ensures complete traceability of raw metallurgy melts, strict dimensional parameters verification, and robust logistics clearance support for Europe and Middle East destinations.'}
+                ? 'Biz faqat yuqori sifatli va chidamli mis mahsulotlarini eksport qilamiz. Har bir partiya EN 10204 3.1 protokoli bilan ta’minlanadi, bu esa qotishmaning kimyoviy tozaligi va o‘lchamlarini kafolatlaydi, bu esa yuqori bosimli tizimlar uchun juda muhimdir.'
+                : 'Zarvadiy coordinates high-purity metallurgical supply chains directly from premium regional refineries in Central Asia. We offer standard and custom dimensional wall profiles designed to resist continuous operating fatigue, carrying absolute traceability certifications.'}
             </p>
           </div>
 
-          {/* Graphic capabilities cards */}
+          {/* Capabilities Panel */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div className="glass-card" style={{ display: 'flex', gap: '20px', padding: '24px' }}>
-              <div style={stepNumStyle}>01</div>
-              <div>
-                <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600, marginBottom: '6px' }}>
-                  {t.industrial.capabilities.item1.title}
-                </h4>
-                <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>
-                  {t.industrial.capabilities.item1.desc}
-                </p>
+            {capabilities.map((cap) => (
+              <div key={cap.num} className="glass-card" style={{ display: 'flex', gap: '20px', padding: '24px' }}>
+                <div style={stepNumStyle}>{cap.num}</div>
+                <div>
+                  <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600, marginBottom: '6px' }}>{cap.title}</h4>
+                  <p style={{ color: '#6b7280', fontSize: '0.9rem', lineHeight: 1.5 }}>{cap.desc}</p>
+                </div>
               </div>
-            </div>
-            <div className="glass-card" style={{ display: 'flex', gap: '20px', padding: '24px' }}>
-              <div style={stepNumStyle}>02</div>
-              <div>
-                <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600, marginBottom: '6px' }}>
-                  {t.industrial.capabilities.item2.title}
-                </h4>
-                <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>
-                  {t.industrial.capabilities.item2.desc}
-                </p>
-              </div>
-            </div>
-            <div className="glass-card" style={{ display: 'flex', gap: '20px', padding: '24px' }}>
-              <div style={stepNumStyle}>03</div>
-              <div>
-                <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600, marginBottom: '6px' }}>
-                  {t.industrial.capabilities.item3.title}
-                </h4>
-                <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>
-                  {t.industrial.capabilities.item3.desc}
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 3. PRODUCT CATALOG GRID */}
+      {/* 3. PRODUCTS PORTFOLIO */}
       <section className="section section-alt" id="products" style={{
         background: 'linear-gradient(180deg, #0b0f19 0%, #060910 100%)',
         borderTop: '1px solid rgba(255,255,255,0.02)'
@@ -194,7 +259,7 @@ export default function IndustrialDivisionPage() {
         <div className="container">
           <div className="section-header">
             <span className="section-tag">{t.industrialProducts.title}</span>
-            <h2 className="section-title" style={{ color: '#ffffff' }}>Engineered <span>B2B Pipeline</span> Portfolio</h2>
+            <h2 className="section-title" style={{ color: '#ffffff' }}>Zarvadiy <span>Copper Produce</span> Portfolio</h2>
             <p className="section-subtitle">{t.industrialProducts.subtitle}</p>
           </div>
 
@@ -258,56 +323,164 @@ export default function IndustrialDivisionPage() {
         </div>
       </section>
 
-      {/* 4. LOGISTICS & CERTIFICATIONS */}
-      <section className="section" id="logistics" style={{ background: '#070b13' }}>
+      {/* 4. PARTNERSHIP & KEY STRENGTHS */}
+      <section className="section" style={{ borderTop: '1px solid rgba(255,255,255,0.02)' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '60px', alignItems: 'center' }}>
           <div>
-            <span className="section-tag">Logistics Desk</span>
+            <span className="section-tag">{language === 'ru' ? 'Наши Обязательства' : language === 'uz' ? 'Bizning Majburiyatimiz' : 'Global Standards'}</span>
             <h2 className="section-title" style={{ textAlign: 'left', color: '#ffffff', marginBottom: '24px' }}>
-              Heavy Export <span>Packaging & Sea</span> Transit
+              Built for Long-Term <span>Global Partnerships</span>
             </h2>
-            <p style={{ color: '#9ca3af', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '24px' }}>
-              {t.industrial.logistics.desc}
+            <p style={{ color: '#9ca3af', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '20px' }}>
+              {language === 'ru'
+                ? 'Работая по строгим протоколам B2B контрактов, мы обеспечиваем полную предсказуемость цен и высочайшие операционные стандарты.'
+                : language === 'uz'
+                ? 'Qat’iy shartnomalar asosida ish olib borib, biz narxlarning barqarorligini va yuqori operatsion standartlarni ta’minlaymiz.'
+                : 'Our commercial desk delivers transparent risk management, strict scheduling adherence, and localized customer support across EU and MENA jurisdictions.'}
             </p>
-            <div className="glass-card" style={{ padding: '24px', border: '1px solid rgba(184,115,51,0.1)' }}>
-              <span className="technical-badge" style={{ marginBottom: '10px', display: 'inline-block' }}>Compliance Standards</span>
-              <p style={{ color: '#ffffff', fontSize: '0.92rem', fontWeight: 600 }}>
-                ASTM A213, EN 10216, ASME B16.9, API 5L, CE Directive 2014/68/EU (PED)
-              </p>
-            </div>
           </div>
 
-          {/* Certifications showcase */}
-          <div className="glass-card" style={{ padding: '40px' }}>
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: '#ffffff', marginBottom: '16px', fontWeight: 700 }}>
-              {t.industrial.certifications.title}
-            </h3>
-            <p style={{ color: '#6b7280', fontSize: '0.95rem', marginBottom: '30px' }}>
-              {t.industrial.certifications.desc}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+            {partnerships.map((p) => (
+              <div key={p.num} className="glass-card" style={{ padding: '24px' }}>
+                <span className="technical-badge" style={{ marginBottom: '12px', display: 'inline-block' }}>{p.num} // {p.title}</span>
+                <p style={{ color: '#cbd5e1', fontSize: '0.88rem', lineHeight: 1.5, marginTop: '8px' }}>{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. VIDEO SHOWCASE SECTION */}
+      <section className="section section-alt" style={{ borderTop: '1px solid rgba(255,255,255,0.02)' }}>
+        <div className="container">
+          <div className="section-header">
+            <span className="section-tag">{language === 'ru' ? 'Видеоотчеты' : language === 'uz' ? 'Videolavhalar' : 'Media Center'}</span>
+            <h2 className="section-title" style={{ color: '#ffffff' }}>Copper Produce <span>Portfolio Showcases</span></h2>
+            <p className="section-subtitle">
+              {language === 'ru' ? 'Посмотрите видео с наших автоматизированных производств и упаковочных линий.' : language === 'uz' ? 'Ishlab chiqarish va qadoqlash jarayonlaridan olingan videolavhalarni ko‘ring.' : 'Take a look inside our metallurgy processing facilities and heavy cargo packaging routines.'}
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-              <div style={certBadgeStyle}>
-                <div style={{ fontWeight: 800, fontSize: '1.2rem', color: 'var(--primary-copper-hover)' }}>ISO 9001</div>
-                <span style={{ fontSize: '0.75rem', color: '#6b7280' }}>Quality Management</span>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '30px' }}>
+            {/* Video Box 1 */}
+            <div className="glass-card" style={{ padding: '0', overflow: 'hidden', minHeight: '320px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(135deg, #111827 0%, #030712 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {/* Visual placeholder matching screenshot */}
+                <div style={{ textAlign: 'center', color: '#ffffff', padding: '24px' }}>
+                  <div style={{ width: '48px', height: '48px', background: 'rgba(184, 115, 51, 0.2)', border: '2px solid var(--primary-copper)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px auto' }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style={{ color: 'var(--primary-copper-hover)' }}>
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: 700 }}>ZARVADIY INDUSTRIAL</h4>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Copper Production Process</span>
+                </div>
               </div>
-              <div style={certBadgeStyle}>
-                <div style={{ fontWeight: 800, fontSize: '1.2rem', color: 'var(--primary-copper-hover)' }}>CE PED</div>
-                <span style={{ fontSize: '0.75rem', color: '#6b7280' }}>Pressure Equipment</span>
+              <div style={{ padding: '24px', flexGrow: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#0b0f19' }}>
+                <div>
+                  <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600 }}>Copper Production Video</h4>
+                  <p style={{ color: '#6b7280', fontSize: '0.85rem', marginTop: '4px' }}>Refining and dimensional draw controls</p>
+                </div>
+                <button className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem' }}>Watch Process</button>
               </div>
-              <div style={certBadgeStyle}>
-                <div style={{ fontWeight: 800, fontSize: '1.2rem', color: 'var(--primary-copper-hover)' }}>TUV</div>
-                <span style={{ fontSize: '0.75rem', color: '#6b7280' }}>Audit Verification</span>
+            </div>
+
+            {/* Video Box 2 */}
+            <div className="glass-card" style={{ padding: '0', overflow: 'hidden', minHeight: '320px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(135deg, #111827 0%, #030712 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ textAlign: 'center', color: '#ffffff', padding: '24px' }}>
+                  <div style={{ width: '48px', height: '48px', background: 'rgba(184, 115, 51, 0.2)', border: '2px solid var(--primary-copper)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px auto' }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style={{ color: 'var(--primary-copper-hover)' }}>
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: 700 }}>ZARVADIY PACKAGING</h4>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Packaging & Logistics Innovation</span>
+                </div>
               </div>
-              <div style={certBadgeStyle}>
-                <div style={{ fontWeight: 800, fontSize: '1.2rem', color: 'var(--primary-copper-hover)' }}>EN 10204</div>
-                <span style={{ fontSize: '0.75rem', color: '#6b7280' }}>3.1 Material Traceability</span>
+              <div style={{ padding: '24px', flexGrow: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#0b0f19' }}>
+                <div>
+                  <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600 }}>Packaging Innovation Video</h4>
+                  <p style={{ color: '#6b7280', fontSize: '0.85rem', marginTop: '4px' }}>Timber crates and steel coil reels</p>
+                </div>
+                <button className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem' }}>Watch Packing</button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. CTA SECTION */}
+      {/* 6. LOGISTICS SECTION */}
+      <section className="section" id="logistics" style={{ background: '#070b13', borderTop: '1px solid rgba(255,255,255,0.02)' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '60px', alignItems: 'center' }}>
+          <div>
+            <span className="section-tag">Logistics Desk</span>
+            <h2 className="section-title" style={{ textAlign: 'left', color: '#ffffff', marginBottom: '24px' }}>
+              Export Logistics <span>Coordination</span>
+            </h2>
+            <p style={{ color: '#9ca3af', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '24px' }}>
+              {t.industrial.logistics.desc}
+            </p>
+            <div className="glass-card" style={{ padding: '24px', border: '1px solid rgba(184,115,51,0.1)' }}>
+              <span className="technical-badge" style={{ marginBottom: '12px', display: 'inline-block' }}>Incoterms Available</span>
+              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '6px' }}>
+                {['FOB', 'CIF', 'CFR', 'FCA'].map((term) => (
+                  <span key={term} style={{ background: 'rgba(184, 115, 51, 0.12)', color: 'var(--primary-copper-hover)', border: '1px solid rgba(184,115,51,0.3)', padding: '4px 10px', borderRadius: '4px', fontWeight: 700, fontSize: '0.8rem', fontFamily: 'monospace' }}>
+                    {term}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Checklists and documentation */}
+          <div className="glass-card" style={{ padding: '40px' }}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: '#ffffff', marginBottom: '24px', fontWeight: 700 }}>
+              {t.industrial.certifications.title}
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {logisticsDocKeys.map((doc, i) => (
+                <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ color: 'var(--primary-copper-hover)', flexShrink: 0 }}>
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span style={{ color: '#c5cbd3', fontSize: '0.95rem' }}>{doc}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. PROFESSIONAL PACKAGING DETAILS */}
+      <section className="section section-alt" style={{ borderTop: '1px solid rgba(255,255,255,0.02)' }}>
+        <div className="container">
+          <div className="section-header">
+            <span className="section-tag">{language === 'ru' ? 'Стандарты Упаковки' : language === 'uz' ? 'Qadoqlash Standartlari' : 'Export Standard Protection'}</span>
+            <h2 className="section-title" style={{ color: '#ffffff' }}>Professional <span>Export Packaging</span></h2>
+            <p className="section-subtitle">
+              {language === 'ru' ? 'Предотвращение коррозии и физических деформаций во время мультимодального транзита.' : language === 'uz' ? 'Konteynerlarda yuk tashish paytida korroziya va jismoniy deformatsiyalarning oldini olish.' : 'Zero corrosion, zero oxidation, and absolute structural lock parameters during global ocean transit.'}
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '30px',
+            marginTop: '30px'
+          }}>
+            {packagingTypes.map((pkg, idx) => (
+              <div key={idx} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '16px', border: '1px solid rgba(184, 115, 51, 0.12)' }}>
+                <span className="technical-badge" style={{ alignSelf: 'flex-start' }}>{pkg.title}</span>
+                <p style={{ color: '#9ca3af', fontSize: '0.9rem', lineHeight: 1.6 }}>{pkg.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. CTA SECTION */}
       <section className="section" style={{
         background: 'radial-gradient(circle at 50% 10%, rgba(184, 115, 51, 0.08) 0%, rgba(7, 11, 19, 0) 60%), #060910',
         borderTop: '1px solid rgba(184, 115, 51, 0.15)',
@@ -347,19 +520,6 @@ const stepNumStyle: React.CSSProperties = {
   color: 'var(--primary-copper-hover)',
   fontWeight: 800,
   lineHeight: 1
-};
-
-const certBadgeStyle: React.CSSProperties = {
-  border: '1px solid rgba(255,255,255,0.04)',
-  background: 'rgba(255,255,255,0.01)',
-  borderRadius: 'var(--border-radius-sm)',
-  padding: '20px',
-  textAlign: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  gap: '6px'
 };
 
 const topGlowStyle: React.CSSProperties = {

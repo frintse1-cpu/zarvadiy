@@ -1,11 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-type Language = 'en';
-
-const translations = {
-  en: {}
-};
+import { Language, translations } from '../locales/translations';
 
 interface LanguageContextProps {
   language: Language;
@@ -21,7 +17,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   useEffect(() => {
     // Load language preference from local storage if available
     const savedLang = localStorage.getItem('zarvadiy_lang') as Language;
-    if (savedLang === 'en') {
+    if (savedLang === 'en' || savedLang === 'ru' || savedLang === 'uz') {
       setLanguageState(savedLang);
     }
   }, []);

@@ -16,59 +16,69 @@ export default function IndustrialProductDetailPage({ params }: PageProps) {
     ? React.use(params as any) as { id: string }
     : params as { id: string };
   
-  const productId = resolvedParams?.id || 'stainless-tubes';
+  const productId = resolvedParams?.id || 'pancake-coils';
   const productsDB = t.industrialProducts.items;
   
-  // If product doesn't exist, fallback to stainless-tubes
-  const product = productsDB[productId as keyof typeof productsDB] || productsDB['stainless-tubes'];
+  // Fallback in case of missing keys
+  const product = productsDB[productId as keyof typeof productsDB] || productsDB['pancake-coils'];
 
-  // Custom visual outline matching the product
+  // Custom visual outlines for details page (larger scale)
   const visualOutlines = {
-    'stainless-tubes': (
+    'pancake-coils': (
       <svg viewBox="0 0 200 200" fill="none" style={productGraphicStyle}>
-        <rect x="20" y="40" width="160" height="25" rx="6" fill="url(#detail-metallic-copper)" />
-        <rect x="20" y="85" width="160" height="25" rx="6" fill="url(#detail-metallic-copper)" opacity="0.9" />
-        <rect x="20" y="130" width="160" height="25" rx="6" fill="url(#detail-metallic-copper)" opacity="0.8" />
-        <ellipse cx="180" cy="52.5" rx="6" ry="12.5" fill="#4b5563" />
-        <ellipse cx="180" cy="97.5" rx="6" ry="12.5" fill="#4b5563" />
-        <ellipse cx="180" cy="142.5" rx="6" ry="12.5" fill="#4b5563" />
+        <circle cx="100" cy="100" r="80" stroke="url(#detail-metallic-copper)" strokeWidth="12" />
+        <circle cx="100" cy="100" r="60" stroke="url(#detail-metallic-copper)" strokeWidth="10" />
+        <circle cx="100" cy="100" r="40" stroke="url(#detail-metallic-copper)" strokeWidth="8" />
+        <rect x="94" y="10" width="12" height="180" fill="url(#detail-metallic-copper)" transform="rotate(45 100 100)" opacity="0.65" />
+        <rect x="94" y="10" width="12" height="180" fill="url(#detail-metallic-copper)" transform="rotate(-45 100 100)" opacity="0.65" />
       </svg>
     ),
-    'carbon-tubes': (
+    'lwc-coils': (
       <svg viewBox="0 0 200 200" fill="none" style={productGraphicStyle}>
-        <rect x="15" y="65" width="170" height="70" rx="10" fill="url(#detail-metallic-silver)" />
-        <ellipse cx="185" cy="100" rx="8" ry="35" fill="#111827" />
-        <ellipse cx="15" cy="100" rx="8" ry="35" fill="#374151" />
+        <rect x="50" y="30" width="100" height="140" rx="6" fill="#1f2937" stroke="url(#detail-metallic-copper)" strokeWidth="5" />
+        <line x1="60" y1="50" x2="140" y2="50" stroke="url(#detail-metallic-copper)" strokeWidth="8" />
+        <line x1="60" y1="70" x2="140" y2="70" stroke="url(#detail-metallic-copper)" strokeWidth="8" />
+        <line x1="60" y1="90" x2="140" y2="90" stroke="url(#detail-metallic-copper)" strokeWidth="8" />
+        <line x1="60" y1="110" x2="140" y2="110" stroke="url(#detail-metallic-copper)" strokeWidth="8" />
+        <line x1="60" y1="130" x2="140" y2="130" stroke="url(#detail-metallic-copper)" strokeWidth="8" />
+        <line x1="60" y1="150" x2="140" y2="150" stroke="url(#detail-metallic-copper)" strokeWidth="8" />
+        <rect x="36" y="20" width="128" height="12" rx="2" fill="url(#detail-metallic-silver)" />
+        <rect x="36" y="168" width="128" height="12" rx="2" fill="url(#detail-metallic-silver)" />
+      </svg>
+    ),
+    'acr-tubes': (
+      <svg viewBox="0 0 200 200" fill="none" style={productGraphicStyle}>
+        <rect x="15" y="50" width="170" height="20" rx="3" fill="url(#detail-metallic-copper)" />
+        <rect x="15" y="90" width="170" height="20" rx="3" fill="url(#detail-metallic-copper)" />
+        <rect x="15" y="130" width="170" height="20" rx="3" fill="url(#detail-metallic-copper)" />
+        <ellipse cx="185" cy="60" rx="5" ry="10" fill="#4b5563" />
+        <ellipse cx="185" cy="100" rx="5" ry="10" fill="#4b5563" />
+        <ellipse cx="185" cy="140" rx="5" ry="10" fill="#4b5563" />
+      </svg>
+    ),
+    'insulated-tubes': (
+      <svg viewBox="0 0 200 200" fill="none" style={productGraphicStyle}>
+        <rect x="30" y="60" width="140" height="80" rx="40" fill="#1f2937" stroke="url(#detail-metallic-silver)" strokeWidth="6" />
+        <rect x="20" y="88" width="160" height="24" fill="url(#detail-metallic-copper)" />
+        <circle cx="170" cy="100" r="12" fill="#374151" stroke="url(#detail-metallic-copper)" strokeWidth="4" />
+        <circle cx="30" cy="100" r="12" fill="#111827" stroke="url(#detail-metallic-copper)" strokeWidth="4" />
       </svg>
     ),
     'pipe-fittings': (
       <svg viewBox="0 0 200 200" fill="none" style={productGraphicStyle}>
-        <path d="M40,160 L40,90 C40,60 60,40 90,40 L160,40" stroke="url(#detail-metallic-copper)" strokeWidth="32" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="40" cy="160" r="22" fill="#374151" />
+        <path d="M50,150 L50,90 C50,60 70,40 100,40 L160,40" stroke="url(#detail-metallic-copper)" strokeWidth="36" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="50" cy="150" r="22" fill="#374151" />
         <circle cx="160" cy="40" r="22" fill="#374151" />
       </svg>
     ),
-    'valves': (
+    'capillary-tubes': (
       <svg viewBox="0 0 200 200" fill="none" style={productGraphicStyle}>
-        <polygon points="30,50 170,50 100,100 170,150 30,150 100,100" fill="url(#detail-metallic-silver)" stroke="url(#detail-metallic-copper)" strokeWidth="6" />
-        <circle cx="100" cy="100" r="24" fill="#0f172a" stroke="url(#detail-metallic-copper)" strokeWidth="6" />
-        <rect x="90" y="10" width="20" height="50" fill="url(#detail-metallic-copper)" />
-        <rect x="70" y="10" width="60" height="12" rx="4" fill="url(#detail-metallic-silver)" />
-      </svg>
-    ),
-    'flanges': (
-      <svg viewBox="0 0 200 200" fill="none" style={productGraphicStyle}>
-        <circle cx="100" cy="100" r="80" stroke="url(#detail-metallic-copper)" strokeWidth="16" />
-        <circle cx="100" cy="100" r="50" stroke="url(#detail-metallic-silver)" strokeWidth="12" />
-        <circle cx="100" cy="100" r="25" fill="#0f172a" />
-        <circle cx="100" cy="40" r="8" fill="#ffffff" />
-        <circle cx="100" cy="160" r="8" fill="#ffffff" />
-        <circle cx="40" cy="100" r="8" fill="#ffffff" />
-        <circle cx="160" cy="100" r="8" fill="#ffffff" />
-        <circle cx="58" cy="58" r="8" fill="#ffffff" />
-        <circle cx="142" cy="142" r="8" fill="#ffffff" />
-        <circle cx="58" cy="142" r="8" fill="#ffffff" />
-        <circle cx="142" cy="58" r="8" fill="#ffffff" />
+        <circle cx="100" cy="100" r="75" stroke="url(#detail-metallic-copper)" strokeWidth="5" />
+        <circle cx="100" cy="100" r="65" stroke="url(#detail-metallic-copper)" strokeWidth="4.5" />
+        <circle cx="100" cy="100" r="55" stroke="url(#detail-metallic-copper)" strokeWidth="4" />
+        <circle cx="100" cy="100" r="45" stroke="url(#detail-metallic-copper)" strokeWidth="3.5" />
+        <path d="M100" />
+        <path d="M100,25 C104,44 110,56 110,72" stroke="url(#detail-metallic-copper)" strokeWidth="4" strokeLinecap="round" />
       </svg>
     )
   };
@@ -113,9 +123,11 @@ export default function IndustrialProductDetailPage({ params }: PageProps) {
               <line x1="19" y1="12" x2="5" y2="12"></line>
               <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
-            Back to Industrial Division
+            {language === 'ru' ? 'Назад в Промышленный Раздел' : language === 'uz' ? 'Sanoat Bo‘limiga Qaytish' : 'Back to Industrial Division'}
           </Link>
-          <span className="section-tag" style={{ display: 'block', color: 'var(--primary-copper-hover)' }}>Product Specification Sheet</span>
+          <span className="section-tag" style={{ display: 'block', color: 'var(--primary-copper-hover)' }}>
+            {language === 'ru' ? 'Техническая спецификация сырья' : language === 'uz' ? 'Texnik shartlar varaqasi' : 'Product Specification Sheet'}
+          </span>
           <h1 style={{
             fontFamily: 'var(--font-serif)',
             fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)',
@@ -149,7 +161,7 @@ export default function IndustrialProductDetailPage({ params }: PageProps) {
               boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
               marginBottom: '30px'
             }}>
-              {visualOutlines[productId as keyof typeof visualOutlines] || visualOutlines['stainless-tubes']}
+              {visualOutlines[productId as keyof typeof visualOutlines] || visualOutlines['pancake-coils']}
             </div>
             
             {/* Quick specifications summary card */}
