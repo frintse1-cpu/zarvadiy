@@ -61,7 +61,7 @@ export default function AgroDivisionPage() {
 
   return (
     <div className="agro-theme" style={{ minHeight: '100vh', background: 'var(--bg-earthy-beige)' }}>
-      
+
       {/* 1. HERO SECTION */}
       <section className="section" style={{
         minHeight: '85vh',
@@ -132,8 +132,8 @@ export default function AgroDivisionPage() {
               {language === 'ru'
                 ? 'Наш агро-дивизион отслеживает качество на каждом этапе — от инспекции почвы садов до бережной вакуумной упаковки. Мы используем оптическую и лазерную chromatic сортировку, гарантируя 99.9% чистоты изюма, кураги, чернослива и ядер грецких орехов.'
                 : language === 'uz'
-                ? 'Agro departamentimiz tuproq unumdorligini tekshirishdan tortib mevalarni vakuumli qadoqlashgacha bo‘lgan barcha bosqichlarda sifatni nazorat qiladi. Biz mahsulotlarimizni lazer yordamida saralaymiz va 99.9% tozalik darajasini ta’minlaymiz.'
-                : 'Central Asia yields dried fruits of extraordinary richness due to a unique climate with 300+ days of intense solar radiation. We coordinate raw agricultural supply chains under strict global standards, ensuring zero chemical pesticide residue and full biosecurity tracking for European packing chains.'}
+                  ? 'Agro departamentimiz tuproq unumdorligini tekshirishdan tortib mevalarni vakuumli qadoqlashgacha bo‘lgan barcha bosqichlarda sifatni nazorat qiladi. Biz mahsulotlarimizni lazer yordamida saralaymiz va 99.9% tozalik darajasini ta’minlaymiz.'
+                  : 'Central Asia yields dried fruits of extraordinary richness due to a unique climate with 300+ days of intense solar radiation. We coordinate raw agricultural supply chains under strict global standards, ensuring zero chemical pesticide residue and full biosecurity tracking for European packing chains.'}
             </p>
           </div>
 
@@ -377,7 +377,7 @@ export default function AgroDivisionPage() {
           </div>
         </div>
       </section>
-      
+
     </div>
   );
 }
