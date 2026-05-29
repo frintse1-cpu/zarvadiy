@@ -18,13 +18,9 @@ export const Footer: React.FC = () => {
   const brandName = isIndustrial ? 'INDUSTRIAL' : isAgro ? 'AGRICULTURE' : 'HOLDING';
 
   const footerDesc = isIndustrial
-    ? {
-      en: 'Zarvadiy Industrial Division delivers seamless technical steel tubes, carbon piping, valves, and precision flanges conforming to international ASTM, DIN, and EN regulations.',
-    .en
+    ? 'Zarvadiy Industrial Division delivers seamless technical steel tubes, carbon piping, valves, and precision flanges conforming to international ASTM, DIN, and EN regulations.'
     : isAgro
-      ? {
-        en: 'Zarvadiy Agriculture Division supplies premium organic sun-dried apricots, clean chromatic laser-sorted raisins, black prunes, and walnuts compliant with HACCP and ISO 22000.',
-      .en
+      ? 'Zarvadiy Agriculture Division supplies premium organic sun-dried apricots, clean chromatic laser-sorted raisins, black prunes, and walnuts compliant with HACCP and ISO 22000.'
       : t.footer.desc;
 
   // Dynamic styling variables
