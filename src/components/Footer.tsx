@@ -20,15 +20,11 @@ export const Footer: React.FC = () => {
   const footerDesc = isIndustrial
     ? {
       en: 'Zarvadiy Industrial Division delivers seamless technical steel tubes, carbon piping, valves, and precision flanges conforming to international ASTM, DIN, and EN regulations.',
-      ru: 'Промышленный дивизион Zarvadiy осуществляет отгрузку бесшовных труб из нержавеющей и углеродистой стали, задвижек и фланцев в соответствии со стандартами ASTM, DIN и EN.',
-      uz: 'Zarvadiy sanoat departamenti xalqaro ASTM, DIN va EN standartlariga mos choksiz po‘lat va zanglamaydigan quvurlar, gardish va klapanlarni yetkazib beradi.'
     }[language as any]
     : isAgro
       ? {
         en: 'Zarvadiy Agriculture Division supplies premium organic sun-dried apricots, clean chromatic laser-sorted raisins, black prunes, and walnuts compliant with HACCP and ISO 22000.',
-        ru: 'Сельскохозяйственный дивизион Zarvadiy поставляет курагу теневой сушки, калиброванный изюм лазерной сепарации, чернослив и ядра грецкого ореха по стандартам HACCP и ISO 22000.',
-        uz: 'Zarvadiy qishloq xo‘jaligi departamenti HACCP va ISO 22000 standartlarida quritilgan o‘rik (turshak), mayiz, чернослив va yong‘oq mag‘zini yetkazib beradi.'
-      }[language]
+      }[language as any]
       : t.footer.desc;
 
   // Dynamic styling variables
