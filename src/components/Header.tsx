@@ -101,38 +101,154 @@ export const Header: React.FC = () => {
     setMobileMenuOpen(false);
   };
 
-  const navItems = [
-    { name: t.nav.home, path: '/' },
-    { name: t.nav.about, path: '/about' },
-    { name: t.nav.products, path: '/products' },
-    { name: t.nav.operations, path: '/operations' },
-    { name: t.nav.contact, path: '/contact' },
-  ];
+  // Determine active brand theme
+  const isIndustrial = pathname.startsWith('/industrial');
+  const isAgro = pathname.startsWith('/agro');
+
+  // Dynamic Navigation Setup Localized
+  let navItems = [];
+  if (isIndustrial) {
+    const labels = {
+      en: { parent: 'Holding', about: 'About', products: 'Products', specs: 'Specs', logistics: 'Logistics', contact: 'Contact' },
+      ru: { parent: 'Холдинг', about: 'О дивизионе', products: 'Продукция', specs: 'Параметры', logistics: 'Логистика', contact: 'Контакты' },
+      uz: { parent: 'Xolding', about: 'Bo‘lim haqida', products: 'Mahsulotlar', specs: 'Xususiyatlar', logistics: 'Logistika', contact: 'Aloqa' }
+    }[language];
+
+    navItems = [
+      { name: labels.parent, path: '/' },
+      { name: labels.about, path: '/industrial#about' },
+      { name: labels.products, path: '/industrial#products' },
+      { name: labels.specs, path: '/industrial#capabilities' },
+      { name: labels.logistics, path: '/industrial#logistics' },
+      { name: labels.contact, path: '/contact' },
+    ];
+  } else if (isAgro) {
+    const labels = {
+      en: { parent: 'Holding', about: 'About', products: 'Catalog', process: 'Process', certs: 'Safety', contact: 'Contact' },
+      ru: { parent: 'Холдинг', about: 'О дивизионе', products: 'Каталог', process: 'Процесс', certs: 'Безопасность', contact: 'Контакты' },
+      uz: { parent: 'Xolding', about: 'Bo‘lim haqida', products: 'Katalog', process: 'Jarayon', certs: 'Xavfsizlik', contact: 'Aloqa' }
+    }[language];
+
+    navItems = [
+      { name: labels.parent, path: '/' },
+      { name: labels.about, path: '/agro#about' },
+      { name: labels.products, path: '/agro#products' },
+      { name: labels.process, path: '/agro#process' },
+      { name: labels.certs, path: '/agro#certs' },
+      { name: labels.contact, path: '/contact' },
+    ];
+  } else {
+    navItems = [
+      { name: t.nav.home, path: '/' },
+      { name: t.nav.about, path: '/about' },
+      { name: t.nav.industries, path: '/#industries' },
+      { name: t.nav.markets, path: '/#markets' },
+      { name: t.nav.contact, path: '/contact' },
+    ];
+  }
+
+  // Brand Name Visuals
+  const brandName = isIndustrial ? 'INDUSTRIAL' : isAgro ? 'AGRICULTURE' : 'HOLDING';
+  const logoTextClass = isIndustrial ? 'text-copper' : isAgro ? 'text-green' : 'text-gold';
+
+  // Dynamic Header Styles
+  let headerBackground = 'rgba(7, 11, 19, 0.70)';
+  let headerBorderColor = 'rgba(255, 255, 255, 0.05)';
+  let activeIndicatorColor = 'var(--primary-copper)';
+  let textLinkColor = 'var(--text-silver)';
+  let textLogoColor = '#ffffff';
+
+  if (scrolled) {
+    if (isIndustrial) {
+      headerBackground = 'rgba(11, 15, 25, 0.95)';
+      headerBorderColor = 'rgba(184, 115, 51, 0.15)';
+      activeIndicatorColor = 'var(--primary-copper-hover)';
+    } else if (isAgro) {
+      headerBackground = 'rgba(249, 246, 240, 0.95)';
+      headerBorderColor = 'rgba(30, 61, 50, 0.12)';
+      activeIndicatorColor = 'var(--accent-green)';
+      textLinkColor = 'var(--text-earthy-muted)';
+      textLogoColor = 'var(--text-earthy-dark)';
+    } else {
+      headerBackground = 'rgba(7, 11, 19, 0.90)';
+      headerBorderColor = 'rgba(200, 122, 62, 0.15)';
+      activeIndicatorColor = 'var(--primary-copper)';
+    }
+  } else {
+    if (isIndustrial) {
+      headerBackground = 'rgba(11, 15, 25, 0.75)';
+      headerBorderColor = 'rgba(255, 255, 255, 0.03)';
+      activeIndicatorColor = 'var(--primary-copper-hover)';
+    } else if (isAgro) {
+      headerBackground = 'rgba(249, 246, 240, 0.85)';
+      headerBorderColor = 'rgba(30, 61, 50, 0.06)';
+      activeIndicatorColor = 'var(--accent-green)';
+      textLinkColor = 'var(--text-earthy-muted)';
+      textLogoColor = 'var(--text-earthy-dark)';
+    } else {
+      headerBackground = 'rgba(7, 11, 19, 0.60)';
+      headerBorderColor = 'rgba(255, 255, 255, 0.03)';
+      activeIndicatorColor = 'var(--primary-copper)';
+    }
+  }
 
   return (
     <header className="header-wrapper" style={{
-      boxShadow: scrolled ? '0 10px 30px rgba(0, 0, 0, 0.4)' : 'none',
-      background: scrolled ? 'rgba(7, 11, 19, 0.85)' : 'rgba(7, 11, 19, 0.70)'
+      boxShadow: scrolled ? '0 10px 30px rgba(0, 0, 0, 0.3)' : 'none',
+      background: headerBackground,
+      borderBottom: `1px solid ${headerBorderColor}`,
+      transition: 'var(--transition-smooth)'
     }}>
       <div className="container header-container">
         <Link href="/" className="logo" onClick={closeMobileMenu}>
-          <div className="logo-icon">Z</div>
-          <div className="logo-text">
-            ZARVADIY <span>LLC</span>
+          <div className="logo-icon" style={{
+            background: isIndustrial 
+              ? 'linear-gradient(135deg, var(--primary-copper) 0%, #78350f 100%)' 
+              : isAgro 
+              ? 'linear-gradient(135deg, var(--accent-green) 0%, #2a5243 100%)' 
+              : 'linear-gradient(135deg, var(--primary-copper) 0%, var(--accent-gold) 100%)',
+            color: isAgro ? '#ffffff' : 'var(--bg-dark)'
+          }}>Z</div>
+          <div className="logo-text" style={{ color: textLogoColor }}>
+            ZARVADIY <span style={{
+              color: isIndustrial ? 'var(--primary-copper-hover)' : isAgro ? 'var(--accent-green)' : 'var(--primary-copper)',
+              fontSize: '0.8rem',
+              letterSpacing: '0.1em',
+              fontWeight: 800,
+              display: 'inline-block',
+              marginLeft: '4px',
+              borderLeft: `1px solid ${isAgro ? 'rgba(30,61,50,0.2)' : 'rgba(255,255,255,0.15)'}`,
+              paddingLeft: '8px'
+            }}>{brandName}</span>
           </div>
         </Link>
 
-        <nav className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
-          {navItems.map((item) => {
+        <nav className={`nav-links ${mobileMenuOpen ? 'open' : ''}`} style={{
+          background: mobileMenuOpen ? (isAgro ? '#f9f6f0' : '#080c14') : 'transparent',
+          borderLeft: mobileMenuOpen ? `1px solid ${headerBorderColor}` : 'none'
+        }}>
+          {navItems.map((item, idx) => {
             const isActive = pathname === item.path;
             return (
               <Link
-                key={item.path}
+                key={idx}
                 href={item.path}
                 className={`nav-link ${isActive ? 'active' : ''}`}
                 onClick={closeMobileMenu}
+                style={{
+                  color: isAgro ? 'var(--text-earthy-dark)' : textLinkColor,
+                  fontWeight: 600
+                }}
               >
                 {item.name}
+                <style jsx>{`
+                  .nav-link:hover {
+                    color: ${isAgro ? 'var(--accent-green) !important' : '#ffffff !important'};
+                  }
+                  .nav-link::after {
+                    background-color: ${activeIndicatorColor};
+                  }
+                `}</style>
               </Link>
             );
           })}
@@ -145,6 +261,11 @@ export const Header: React.FC = () => {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="lang-dropdown-trigger"
               aria-label="Select language"
+              style={{
+                background: isAgro ? 'rgba(30, 61, 50, 0.05)' : 'rgba(255, 255, 255, 0.05)',
+                borderColor: isAgro ? 'rgba(30, 61, 50, 0.1)' : 'rgba(255, 255, 255, 0.08)',
+                color: isAgro ? 'var(--text-earthy-dark)' : '#ffffff'
+              }}
             >
               {languages[language].flag}
               <span style={{ textTransform: 'uppercase' }}>{languages[language].code}</span>
@@ -160,7 +281,7 @@ export const Header: React.FC = () => {
                 style={{
                   transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                   transition: 'transform 0.2s ease',
-                  color: 'var(--text-muted)'
+                  color: isAgro ? 'var(--text-earthy-muted)' : 'var(--text-muted)'
                 }}
               >
                 <polyline points="6 9 12 15 18 9"></polyline>
@@ -168,7 +289,11 @@ export const Header: React.FC = () => {
             </button>
 
             {dropdownOpen && (
-              <div className="lang-dropdown-menu">
+              <div className="lang-dropdown-menu" style={{
+                background: isAgro ? '#ffffff' : 'rgba(15, 23, 42, 0.95)',
+                borderColor: isAgro ? 'var(--border-earthy)' : 'var(--border-color)',
+                boxShadow: isAgro ? '0 10px 30px rgba(30, 61, 50, 0.1)' : '0 10px 30px rgba(0, 0, 0, 0.5)'
+              }}>
                 {(['en', 'ru', 'uz'] as Language[]).map((lang) => (
                   <button
                     key={lang}
@@ -177,9 +302,22 @@ export const Header: React.FC = () => {
                       setDropdownOpen(false);
                     }}
                     className={`lang-dropdown-item ${language === lang ? 'active' : ''}`}
+                    style={{
+                      color: isAgro ? 'var(--text-earthy-dark)' : 'var(--text-silver)'
+                    }}
                   >
                     {languages[lang].flag}
                     <span>{languages[lang].label}</span>
+                    <style jsx>{`
+                      .lang-dropdown-item:hover {
+                        background: ${isAgro ? 'rgba(30, 61, 50, 0.05)' : 'rgba(255, 255, 255, 0.05)'};
+                        color: ${isAgro ? 'var(--accent-green) !important' : '#ffffff !important'};
+                      }
+                      .lang-dropdown-item.active {
+                        background: ${isAgro ? 'rgba(30, 61, 50, 0.1)' : 'rgba(200, 122, 62, 0.15)'};
+                        color: ${isAgro ? 'var(--accent-green)' : 'var(--primary-copper-hover)'};
+                      }
+                    `}</style>
                   </button>
                 ))}
               </div>
@@ -191,13 +329,14 @@ export const Header: React.FC = () => {
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            <span style={{ backgroundColor: isAgro ? 'var(--text-earthy-dark)' : '#ffffff' }}></span>
+            <span style={{ backgroundColor: isAgro ? 'var(--text-earthy-dark)' : '#ffffff' }}></span>
+            <span style={{ backgroundColor: isAgro ? 'var(--text-earthy-dark)' : '#ffffff' }}></span>
           </button>
         </div>
       </div>
     </header>
   );
 };
+
 export default Header;

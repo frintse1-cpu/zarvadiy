@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useLanguage } from '../../context/LanguageContext';
 
 export default function AboutPage() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   const values = [
     {
@@ -30,42 +30,58 @@ export default function AboutPage() {
     }
   ];
 
+  const timelineItems = [
+    t.aboutPage.timeline.item1,
+    t.aboutPage.timeline.item2,
+    t.aboutPage.timeline.item3,
+    t.aboutPage.timeline.item4
+  ];
+
   return (
     <div style={{ background: 'var(--bg-dark)' }}>
-      {/* HEADER HERO */}
+      {/* 1. HEADER HERO */}
       <section className="section" style={{
-        padding: '120px 0 60px 0',
-        background: 'linear-gradient(180deg, rgba(7,11,19,0.9) 0%, rgba(7,11,19,1) 100%)',
+        padding: '130px 0 70px 0',
+        background: 'linear-gradient(180deg, rgba(7,11,19,0.95) 0%, rgba(7,11,19,1) 100%)',
         textAlign: 'center',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
+        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+        position: 'relative'
       }}>
-        <div className="container">
+        <div style={decorGlowStyle}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <span className="section-tag">{t.nav.about}</span>
-          <h1 className="section-title" style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', color: 'var(--text-white)' }}>
+          <h1 className="section-title" style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)',
+            color: 'var(--text-white)',
+            fontWeight: 800,
+            lineHeight: 1.2
+          }}>
             {t.aboutPage.title}
           </h1>
-          <p className="section-subtitle" style={{ maxWidth: '600px', margin: '16px auto 0 auto' }}>
+          <p className="section-subtitle" style={{ maxWidth: '650px', margin: '20px auto 0 auto', lineHeight: 1.7 }}>
             {t.aboutPage.subtitle}
           </p>
         </div>
       </section>
 
-      {/* CORE DETAILS */}
-      <section className="section">
+      {/* 2. CORPORATE STORY & WHY FOUNDED */}
+      <section className="section" style={{ paddingBottom: '80px' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '60px', alignItems: 'center' }}>
           <div>
             <h2 style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '2rem',
+              fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
               color: 'var(--text-white)',
-              marginBottom: '20px'
+              marginBottom: '24px',
+              fontWeight: 700
             }}>
               {t.aboutPage.storyTitle}
             </h2>
             <p style={{
               color: 'var(--text-silver)',
-              fontSize: '1.05rem',
-              lineHeight: 1.7,
+              fontSize: '1.08rem',
+              lineHeight: 1.75,
               marginBottom: '24px'
             }}>
               {t.aboutPage.storyDesc}
@@ -73,39 +89,64 @@ export default function AboutPage() {
             <p style={{
               color: 'var(--text-muted)',
               fontSize: '1rem',
-              lineHeight: 1.7
+              lineHeight: 1.7,
+              marginBottom: '30px'
             }}>
-              Uzbekistan has a long history of copper metallurgy, driven by the massive deposits in Almalyk and surrounding regions. Zarvadiy LLC bridges the gap between this world-class raw resource processing and global industrial manufacturers, offering end-to-end supply chains with perfect compliance and high specifications.
+              {language === 'ru' 
+                ? 'Узбекистан обладает богатейшей историей металлургии и аграрного дела. Обладая колоссальными запасами ресурсов, мы создали Zarvadiy LLC как единую профессиональную B2B-систему, которая выдерживает строжайшие европейские экологические и технические нормы для предоставления безукоризненного качества.'
+                : language === 'uz'
+                ? 'O‘zbekiston metallurgiya va agrar sohada boy tarixga ega. Ushbu ulkan resurslar bazasiga tayanib, biz Zarvadiy MChJni yevropa standartlari, ekologik va texnik talablariga to‘liq javob beruvchi yagona professional B2B-tizim sifatida tashkil etdik.'
+                : 'Central Asia possesses a legendary depth of metallurgical deposits and rich organic soils. Harnessing these world-class assets, Zarvadiy Holding acts as a professional B2B bridge, coordinating raw extraction, clean chromatic processing, and rigid laboratory compliance to deliver flawless container shipments globally.'}
             </p>
+            <div style={{ display: 'flex', gap: '24px' }}>
+              <div>
+                <strong style={{ display: 'block', fontSize: '1.5rem', color: 'var(--primary-copper-hover)' }}>EU / MENA</strong>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Target B2B Corridors</span>
+              </div>
+              <div style={{ borderLeft: '1px solid rgba(255,255,255,0.1)', paddingLeft: '24px' }}>
+                <strong style={{ display: 'block', fontSize: '1.5rem', color: 'var(--primary-copper-hover)' }}>HACCP & ISO</strong>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Quality Certifications</span>
+              </div>
+            </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-            <div className="glass-card" style={statCardStyle}>
-              <div style={statNumStyle}>99.9%</div>
-              <div style={statLabelStyle}>{t.aboutPage.stats.purity}</div>
-            </div>
-            <div className="glass-card" style={statCardStyle}>
-              <div style={statNumStyle}>12K+ t</div>
-              <div style={statLabelStyle}>{t.aboutPage.stats.capacity}</div>
-            </div>
-            <div className="glass-card" style={statCardStyle}>
-              <div style={statNumStyle}>20+</div>
-              <div style={statLabelStyle}>{t.aboutPage.stats.partners}</div>
-            </div>
-            <div className="glass-card" style={statCardStyle}>
-              <div style={statNumStyle}>ISO</div>
-              <div style={statLabelStyle}>{t.aboutPage.stats.experience}</div>
+          {/* Feature image */}
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            height: '420px',
+            borderRadius: 'var(--border-radius-lg)',
+            overflow: 'hidden',
+            border: '1px solid rgba(200, 122, 62, 0.2)',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
+          }}>
+            <Image
+              src="/images/holding_hero.png"
+              alt="Premium trade logistics"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+            <div style={{
+              position: 'absolute',
+              top: 0, left: 0, width: '100%', height: '100%',
+              background: 'linear-gradient(to bottom, rgba(7, 11, 19, 0) 40%, rgba(7, 11, 19, 0.9) 100%)'
+            }}></div>
+            <div style={{ position: 'absolute', bottom: '30px', left: '30px', right: '30px' }}>
+              <span style={{ color: 'var(--primary-copper)', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Export Philosophy</span>
+              <p style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600, marginTop: '8px', lineHeight: 1.4 }}>
+                {language === 'ru' ? '«Бескомпромиссная надежность в каждой отправленной партии»' : language === 'uz' ? '«Har bir yetkazilgan mahsulotda so‘zsiz ishonch»' : '“Uncompromising reliability in every single dispatched shipment.”'}
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* MISSION & VISION */}
-      <section className="section section-alt">
+      {/* 3. MISSION, VISION & PHILOSOPHY */}
+      <section className="section section-alt" style={{ borderTop: '1px solid rgba(255,255,255,0.02)' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
           <div className="glass-card" style={{ padding: '40px', position: 'relative', overflow: 'hidden' }}>
             <div style={badgeStyle}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="12" y1="16" x2="12" y2="12"></line>
                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -117,24 +158,64 @@ export default function AboutPage() {
 
           <div className="glass-card" style={{ padding: '40px', position: 'relative', overflow: 'hidden' }}>
             <div style={badgeStyle}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </div>
-            <h3 style={missionTitleStyle}>Our Vision</h3>
-            <p style={missionDescStyle}>
-              To become the leading regional copper pipeline export hub, serving global refrigeration and HVAC manufacturers with premium custom-sized products, robust packaging, and efficient multi-modal supply chains.
-            </p>
+            <h3 style={missionTitleStyle}>{t.aboutPage.visionTitle}</h3>
+            <p style={missionDescStyle}>{t.aboutPage.visionDesc}</p>
           </div>
         </div>
       </section>
 
-      {/* VALUES */}
+      {/* 4. HISTORICAL TIMELINE */}
+      <section className="section" style={{ background: '#04070d' }}>
+        <div className="container">
+          <div className="section-header">
+            <span className="section-tag">{t.aboutPage.timeline.title}</span>
+            <h2 className="section-title">Milestones of <span>Strategic Expansion</span></h2>
+            <p className="section-subtitle">A chronological look at how Zarvadiy consolidated its multi-industry export channels.</p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
+            gap: '30px',
+            marginTop: '50px'
+          }}>
+            {timelineItems.map((item, idx) => (
+              <div key={idx} className="glass-card" style={{
+                position: 'relative',
+                padding: '40px 30px',
+                borderLeft: '4px solid var(--primary-copper)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px'
+              }}>
+                <div style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '2.5rem',
+                  fontWeight: 900,
+                  color: 'rgba(200, 122, 62, 0.15)',
+                  lineHeight: 1,
+                  position: 'absolute',
+                  top: '20px',
+                  right: '24px'
+                }}>{item.year}</div>
+                <h4 style={{ color: '#ffffff', fontSize: '1.25rem', fontWeight: 600, marginTop: '20px' }}>{item.title}</h4>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6 }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. VALUES / CORE PRINCIPLES */}
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <span className="section-tag">Values</span>
+            <span className="section-tag">Principles</span>
             <h2 className="section-title">Our Operating Principles</h2>
             <p className="section-subtitle">
               The core values that guide our export operations, customer coordination, and quality criteria.
@@ -178,35 +259,24 @@ export default function AboutPage() {
   );
 }
 
-const statCardStyle: React.CSSProperties = {
-  textAlign: 'center',
-  padding: '30px 20px',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center'
-};
-
-const statNumStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-serif)',
-  fontSize: '2rem',
-  fontWeight: 700,
-  color: 'var(--primary-copper)',
-  marginBottom: '8px'
-};
-
-const statLabelStyle: React.CSSProperties = {
-  fontSize: '0.85rem',
-  color: 'var(--text-muted)',
-  textTransform: 'uppercase',
-  letterSpacing: '0.05em'
+const decorGlowStyle: React.CSSProperties = {
+  position: 'absolute',
+  top: 0,
+  left: '50%',
+  transform: 'translateX(-50%)',
+  width: '500px',
+  height: '250px',
+  background: 'radial-gradient(circle, rgba(184, 115, 51, 0.1) 0%, rgba(0,0,0,0) 70%)',
+  pointerEvents: 'none',
+  filter: 'blur(40px)',
+  zIndex: 1
 };
 
 const badgeStyle: React.CSSProperties = {
-  width: '40px',
-  height: '40px',
+  width: '44px',
+  height: '44px',
   borderRadius: 'var(--border-radius-sm)',
-  background: 'rgba(200, 122, 62, 0.1)',
+  background: 'rgba(200, 122, 62, 0.12)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -216,13 +286,14 @@ const badgeStyle: React.CSSProperties = {
 
 const missionTitleStyle: React.CSSProperties = {
   fontFamily: 'var(--font-serif)',
-  fontSize: '1.5rem',
+  fontSize: '1.65rem',
   color: 'var(--text-white)',
-  marginBottom: '14px'
+  marginBottom: '14px',
+  fontWeight: 700
 };
 
 const missionDescStyle: React.CSSProperties = {
   color: 'var(--text-silver)',
-  fontSize: '0.98rem',
+  fontSize: '1.02rem',
   lineHeight: 1.7
 };

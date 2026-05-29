@@ -9,43 +9,52 @@ export default function ContactPage() {
 
   return (
     <div style={{ background: 'var(--bg-dark)' }}>
-      {/* HEADER HERO */}
+      {/* 1. HEADER HERO */}
       <section className="section" style={{
-        padding: '120px 0 60px 0',
-        background: 'linear-gradient(180deg, rgba(7,11,19,0.9) 0%, rgba(7,11,19,1) 100%)',
+        padding: '130px 0 70px 0',
+        background: 'linear-gradient(180deg, rgba(7,11,19,0.95) 0%, rgba(7,11,19,1) 100%)',
         textAlign: 'center',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
+        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+        position: 'relative'
       }}>
-        <div className="container">
+        <div style={decorGlowStyle}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <span className="section-tag">{t.nav.contact}</span>
-          <h1 className="section-title" style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', color: 'var(--text-white)' }}>
+          <h1 className="section-title" style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)',
+            color: 'var(--text-white)',
+            fontWeight: 800,
+            lineHeight: 1.2
+          }}>
             {t.contactPage.title}
           </h1>
-          <p className="section-subtitle" style={{ maxWidth: '600px', margin: '16px auto 0 auto' }}>
+          <p className="section-subtitle" style={{ maxWidth: '650px', margin: '20px auto 0 auto', lineHeight: 1.7 }}>
             {t.contactPage.subtitle}
           </p>
         </div>
       </section>
 
-      {/* CONTACT INFO AND FORM */}
-      <section className="section">
+      {/* 2. CONTACT INFO AND FORM */}
+      <section className="section" style={{ paddingBottom: '100px' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '60px' }}>
           
-          {/* CONTACT INFO */}
+          {/* CONTACT DETAILS PANEL */}
           <div>
             <h2 style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '1.75rem',
+              fontSize: '1.85rem',
               color: 'var(--text-white)',
-              marginBottom: '30px'
+              marginBottom: '30px',
+              fontWeight: 700
             }}>
               {t.contactPage.infoTitle}
             </h2>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
               <div style={infoItemStyle}>
                 <div style={iconWrapperStyle}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
@@ -58,7 +67,7 @@ export default function ContactPage() {
 
               <div style={infoItemStyle}>
                 <div style={iconWrapperStyle}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
                 </div>
@@ -70,14 +79,16 @@ export default function ContactPage() {
 
               <div style={infoItemStyle}>
                 <div style={iconWrapperStyle}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </div>
                 <div>
                   <h4 style={infoLabelStyle}>{t.contactPage.address}</h4>
-                  <p style={{ ...infoValueStyle, color: 'var(--text-silver)' }}>{t.contactPage.addressValue}</p>
+                  <p style={{ ...infoValueStyle, color: 'var(--text-silver)', fontSize: '1rem', lineHeight: 1.5 }}>
+                    {t.contactPage.addressValue}
+                  </p>
                 </div>
               </div>
             </div>
@@ -85,14 +96,15 @@ export default function ContactPage() {
             {/* Social Grid */}
             <h3 style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '1.25rem',
+              fontSize: '1.35rem',
               color: 'var(--text-white)',
-              marginTop: '40px',
-              marginBottom: '20px'
+              marginTop: '50px',
+              marginBottom: '20px',
+              fontWeight: 600
             }}>
               Follow Us
             </h3>
-            <div style={{ display: 'flex', gap: '16px' }}>
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
               <a href="https://t.me/zarvadiy" target="_blank" rel="noopener noreferrer" style={socialBtnStyle}>
                 Telegram
               </a>
@@ -105,7 +117,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* CONTACT FORM */}
+          {/* DYNAMIC FORM */}
           <div>
             <ContactForm />
           </div>
@@ -113,11 +125,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* MAP PLACEHOLDER */}
-      <section className="section section-alt" style={{ paddingBottom: '100px' }}>
+      {/* 3. MAP PRESENTATION */}
+      <section className="section section-alt" style={{ paddingBottom: '120px', borderTop: '1px solid rgba(255,255,255,0.02)' }}>
         <div className="container">
           <div className="glass-card" style={{
-            height: '400px',
+            height: '420px',
             background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(7, 11, 19, 0.9) 100%)',
             display: 'flex',
             flexDirection: 'column',
@@ -151,13 +163,13 @@ export default function ContactPage() {
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
               </div>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: 'var(--text-white)', marginBottom: '8px' }}>
-                Zarvadiy Export Office
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.65rem', color: 'var(--text-white)', marginBottom: '8px', fontWeight: 700 }}>
+                Zarvadiy Holding Headquarters
               </h3>
-              <p style={{ color: 'var(--text-silver)', fontSize: '1rem', marginBottom: '4px' }}>
-                Tashkent, Uzbekistan
+              <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '6px' }}>
+                41 Bunyodkor Ave, Tashkent, Uzbekistan
               </p>
-              <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+              <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontFamily: 'monospace' }}>
                 Coordinates: 41.2995° N, 69.2401° E
               </span>
             </div>
@@ -176,17 +188,30 @@ export default function ContactPage() {
   );
 }
 
+const decorGlowStyle: React.CSSProperties = {
+  position: 'absolute',
+  top: 0,
+  left: '50%',
+  transform: 'translateX(-50%)',
+  width: '500px',
+  height: '250px',
+  background: 'radial-gradient(circle, rgba(184, 115, 51, 0.1) 0%, rgba(0,0,0,0) 70%)',
+  pointerEvents: 'none',
+  filter: 'blur(40px)',
+  zIndex: 1
+};
+
 const infoItemStyle: React.CSSProperties = {
   display: 'flex',
-  gap: '20px',
+  gap: '24px',
   alignItems: 'flex-start'
 };
 
 const iconWrapperStyle: React.CSSProperties = {
-  width: '44px',
-  height: '44px',
-  background: 'rgba(200, 122, 62, 0.1)',
-  border: '1px solid rgba(200, 122, 62, 0.2)',
+  width: '46px',
+  height: '46px',
+  background: 'rgba(200, 122, 62, 0.12)',
+  border: '1px solid rgba(200, 122, 62, 0.25)',
   borderRadius: 'var(--border-radius-sm)',
   display: 'flex',
   alignItems: 'center',
@@ -199,12 +224,13 @@ const infoLabelStyle: React.CSSProperties = {
   fontSize: '0.85rem',
   color: 'var(--text-muted)',
   textTransform: 'uppercase',
-  letterSpacing: '0.05em',
-  marginBottom: '4px'
+  letterSpacing: '0.08em',
+  marginBottom: '6px',
+  fontWeight: 600
 };
 
 const infoValueStyle: React.CSSProperties = {
-  fontSize: '1.1rem',
+  fontSize: '1.15rem',
   color: 'var(--text-white)',
   fontWeight: 600,
   transition: 'var(--transition-smooth)'
@@ -214,10 +240,10 @@ const socialBtnStyle: React.CSSProperties = {
   background: 'rgba(255, 255, 255, 0.03)',
   border: '1px solid var(--border-color)',
   borderRadius: 'var(--border-radius-sm)',
-  padding: '10px 16px',
+  padding: '12px 20px',
   color: 'var(--text-silver)',
   fontSize: '0.9rem',
-  fontWeight: 500,
+  fontWeight: 600,
   cursor: 'pointer',
   transition: 'var(--transition-smooth)'
 };
