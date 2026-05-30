@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
   }
 
   // Dynamic quick links
-  let footerLinks = [];
+  let footerLinks: { name: string; path: string }[] = [];
   if (isIndustrial) {
     footerLinks = [
       { name: 'Industrial Home', path: '/industrial' },
