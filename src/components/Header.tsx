@@ -120,7 +120,7 @@ export const Header: React.FC = () => {
       { name: labels.products, path: '/industrial#products' },
       { name: labels.specs, path: '/industrial#capabilities' },
       { name: labels.logistics, path: '/industrial#logistics' },
-      { name: labels.contact, path: '/contact' },
+      { name: labels.contact, path: '/industrial#contact' },
     ];
   } else if (isAgro) {
     const labels = {
@@ -135,14 +135,14 @@ export const Header: React.FC = () => {
       { name: labels.products, path: '/agro#products' },
       { name: labels.process, path: '/agro#process' },
       { name: labels.certs, path: '/agro#certs' },
-      { name: labels.contact, path: '/contact' },
+      { name: labels.contact, path: '/agro#contact' },
     ];
   } else {
     navItems = [
       { name: t.nav.home, path: '/' },
       { name: t.nav.about, path: '/about' },
-      { name: t.nav.industries, path: '/#industries' },
-      { name: t.nav.markets, path: '/#markets' },
+      { name: t.nav.industries, path: '/industries' },
+      { name: t.nav.markets, path: '/markets' },
       { name: t.nav.contact, path: '/contact' },
     ];
   }

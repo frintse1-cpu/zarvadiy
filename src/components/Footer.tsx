@@ -69,8 +69,8 @@ export const Footer: React.FC = () => {
     footerLinks = [
       { name: t.nav.home, path: '/' },
       { name: t.nav.about, path: '/about' },
-      { name: t.nav.industries, path: '/#industries' },
-      { name: t.nav.markets, path: '/#markets' },
+      { name: t.nav.industries, path: '/industries' },
+      { name: t.nav.markets, path: '/markets' },
       { name: t.nav.contact, path: '/contact' }
     ];
   }

@@ -8,6 +8,41 @@ import { useLanguage } from '../../context/LanguageContext';
 export default function AgroDivisionPage() {
   const { language, t } = useLanguage();
 
+  const [formData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus('error');
+      return;
+    }
+
+    setStatus('loading');
+
+    setTimeout(() => {
+      setStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        message: ''
+      });
+    }, 1500);
+  };
+
   const productKeys = ['raisins', 'apricots', 'prunes', 'nuts'];
 
   // Custom organic drawings/SVG graphics for agricultural products
@@ -150,9 +185,9 @@ export default function AgroDivisionPage() {
                   <line x1="12" y1="6" x2="12" y2="18"></line>
                 </svg>
               </a>
-              <Link href="/contact" className="agro-btn-secondary">
+              <a href="#contact" className="agro-btn-secondary">
                 {language === 'ru' ? 'Запросить образцы' : language === 'uz' ? 'Namunalar so‘rash' : 'Request Private Label Specs'}
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -375,9 +410,9 @@ export default function AgroDivisionPage() {
                   {language === 'ru' ? 'Жесткие жестяные и композитные круглые банки с металлизированным барьером и инертным газом. Идеально для длительного хранения.' : language === 'uz' ? 'Uzoq muddatli saqlash uchun mo‘ljallangan, metall to‘siqli va inert gazli qattiq jele va kompozit qutilar.' : 'Rigid gas-flushed composite cans featuring vacuum-sealed protective foil grids for long-distance transport.'}
                 </p>
               </div>
-              <Link href="/contact" className="agro-btn-secondary" style={{ alignSelf: 'flex-start', color: '#ffffff', borderColor: '#ffffff', background: 'transparent', marginTop: '20px' }}>
+              <a href="#contact" className="agro-btn-secondary" style={{ alignSelf: 'flex-start', color: '#ffffff', borderColor: '#ffffff', background: 'transparent', marginTop: '20px' }}>
                 {language === 'ru' ? 'БОЛЕЕ' : language === 'uz' ? 'BATAFSIL' : 'Explore'}
-              </Link>
+              </a>
             </div>
 
             {/* Pouch Packaging */}
@@ -398,9 +433,9 @@ export default function AgroDivisionPage() {
                   {language === 'ru' ? 'Премиум дой-паки с прозрачным окном, zip-lock замком и еврослотом. Идеальный выбор для розничных полок супермаркетов.' : language === 'uz' ? 'Shaffof oyna, zip-lock qulfi va yevroslotli premium doy-paklar. Supermarket javonlari uchun eng to‘g‘ri tanlov.' : 'High-barrier flexible Stand-Up pouches with secure zip locks, hang slots, and custom display window slots.'}
                 </p>
               </div>
-              <Link href="/contact" className="agro-btn-secondary" style={{ alignSelf: 'flex-start', marginTop: '20px' }}>
+              <a href="#contact" className="agro-btn-secondary" style={{ alignSelf: 'flex-start', marginTop: '20px' }}>
                 {language === 'ru' ? 'БОЛЕЕ' : language === 'uz' ? 'BATAFSIL' : 'Explore'}
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -483,40 +518,160 @@ export default function AgroDivisionPage() {
         </div>
       </section>
 
-      {/* 9. FORM AND CONTACT IN SOFT BEIGE */}
-      <section className="section" style={{ background: 'var(--bg-earthy-beige)' }}>
-        <div className="container" style={{ maxWidth: '800px' }}>
-          <div className="section-header">
-            <span className="section-tag">Direct Sourcing Form</span>
+      {/* 9. INLINE CONTACT SECTION */}
+      <section className="section" id="contact" style={{ background: 'var(--bg-earthy-beige)' }}>
+        <div className="container" style={{ maxWidth: '650px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <span className="section-tag" style={{ color: 'var(--accent-green)' }}>Direct Sourcing Form</span>
             <h2 className="section-title">Request Your <span>Agro Samples</span></h2>
             <p className="section-subtitle">
-              {language === 'ru' ? 'Укажите ваши требования, и мы организуем быструю доставку образцов.' : language === 'uz' ? 'Sourcing shartlarini kiriting va namunalar yetkazib berishini tashkil qilamiz.' : 'Our trade desk will compile customized price grids and arrange sample delivery within 72h.'}
+              {language === 'ru'
+                ? 'Свяжитесь с нашим агро-отделом продаж'
+                : language === 'uz'
+                ? 'Agro savdo bo‘limimiz bilan bog‘laning'
+                : 'Get in touch with our agro trade desk'}
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px' }}>
-            <div className="glass-card" style={{ background: '#ffffff', border: '1px solid var(--border-earthy)', padding: '40px' }}>
-              <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                <Link href="/contact" className="agro-btn-primary" style={{ width: '100%', padding: '16px' }}>
-                  {language === 'ru' ? 'ОТПРАВИТЬ ЗАПРОС НА ОБРАЗЦЫ' : language === 'uz' ? 'NAMUNALAR SO‘ROVINI YUBORISH' : 'SUBMIT REQUEST FOR SAMPLES'}
-                </Link>
-                <a 
-                  href="https://wa.me/998939722986?text=Hello,%20I%20am%20interested%20in%20your%20Agricultural%20organic%20produce%20samples.%20Please%20let%20me%20know%20how%20to%20arrange%20shipping."
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="agro-btn-secondary"
-                  style={{
-                    borderColor: '#25D366',
-                    color: '#25D366',
-                    background: 'rgba(37, 211, 102, 0.05)',
-                    width: '100%',
-                    marginTop: '20px',
-                    padding: '16px'
-                  }}
-                >
-                  WhatsApp Trade Desk Coordinator
-                </a>
+          <div className="glass-card" style={{ background: '#ffffff', border: '1px solid var(--border-earthy)', padding: '40px', color: 'var(--text-earthy-dark)' }}>
+            {status === 'success' && (
+              <div style={{
+                background: 'rgba(22, 163, 74, 0.1)',
+                border: '1px solid rgba(22, 163, 74, 0.3)',
+                color: '#16a34a',
+                padding: '16px',
+                borderRadius: 'var(--border-radius-sm)',
+                marginBottom: '24px',
+                fontSize: '0.95rem',
+                fontWeight: 500
+              }}>
+                {t.contactPage.formSuccess}
               </div>
+            )}
+
+            {status === 'error' && (
+              <div style={{
+                background: 'rgba(220, 38, 38, 0.1)',
+                border: '1px solid rgba(220, 38, 38, 0.3)',
+                color: '#dc2626',
+                padding: '16px',
+                borderRadius: 'var(--border-radius-sm)',
+                marginBottom: '24px',
+                fontSize: '0.95rem',
+                fontWeight: 500
+              }}>
+                {t.contactPage.formError}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label htmlFor="name" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-earthy-dark)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    {t.contactPage.formName} *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    disabled={status === 'loading'}
+                    style={inputStyle}
+                    required
+                  />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label htmlFor="email" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-earthy-dark)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    {t.contactPage.formEmail} *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    disabled={status === 'loading'}
+                    style={inputStyle}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label htmlFor="company" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-earthy-dark)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  {t.contactPage.formCompany}
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  disabled={status === 'loading'}
+                  style={inputStyle}
+                />
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label htmlFor="message" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-earthy-dark)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  {t.contactPage.formMsg} *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  disabled={status === 'loading'}
+                  style={{ ...inputStyle, resize: 'vertical' }}
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="agro-btn-primary"
+                disabled={status === 'loading'}
+                style={{ width: '100%', marginTop: '10px' }}
+              >
+                {status === 'loading' ? (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ animation: 'spin 1s linear infinite' }}>
+                      <circle cx="12" cy="12" r="10" strokeDasharray="30 30" strokeDashoffset="10"></circle>
+                    </svg>
+                    {language === 'ru' ? 'Отправка...' : language === 'uz' ? 'Yuborilmoqda...' : 'Sending...'}
+                  </span>
+                ) : (
+                  t.contactPage.formSubmit
+                )}
+              </button>
+            </form>
+
+            <div style={{ textAlign: 'center', marginTop: '30px', borderTop: '1px solid var(--border-earthy)', paddingTop: '24px' }}>
+              <a
+                href="https://wa.me/998939722986"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="agro-btn-secondary"
+                style={{
+                  borderColor: '#25D366',
+                  color: '#ffffff',
+                  background: '#25D366',
+                  boxShadow: '0 4px 15px rgba(37, 211, 102, 0.25)',
+                  width: '100%',
+                  padding: '14px 32px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#ffffff' }}>
+                  <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.335 4.978L2 22l5.233-1.372a9.95 9.95 0 0 0 4.777 1.22h.005c5.505 0 9.987-4.479 9.988-9.986.002-2.67-1.037-5.18-2.927-7.071A9.92 9.92 0 0 0 12.012 2zm5.835 14.129c-.318.895-1.576 1.637-2.184 1.706-.576.064-1.328.096-2.128-.158a10.15 10.15 0 0 1-4.214-2.52c-1.543-1.543-2.529-3.328-2.905-4.385-.376-1.056-.051-1.633.272-1.954.269-.268.583-.637.776-.895.195-.258.258-.431.388-.716.13-.285.065-.536-.032-.73-.097-.195-.873-2.103-1.198-2.883-.316-.761-.643-.659-.876-.671-.225-.01-.482-.012-.739-.012-.258 0-.677.097-1.032.484-.355.387-1.355 1.322-1.355 3.22 0 1.897 1.38 3.733 1.574 3.991.193.258 2.715 4.146 6.577 5.813.92.397 1.637.633 2.197.81.928.295 1.774.253 2.443.153.744-.11 1.576-.452 1.8-.871.226-.419.226-.774.158-.871-.068-.097-.258-.161-.548-.29zm0 0"/>
+                </svg>
+                {language === 'ru' ? 'Связаться в WhatsApp' : language === 'uz' ? 'WhatsApp orqali bog‘lanish' : 'WhatsApp Trade Desk Coordinator'}
+              </a>
             </div>
           </div>
         </div>
@@ -525,6 +680,19 @@ export default function AgroDivisionPage() {
     </div>
   );
 }
+
+const inputStyle: React.CSSProperties = {
+  background: '#ffffff',
+  border: '1px solid var(--border-earthy)',
+  borderRadius: 'var(--border-radius-sm)',
+  padding: '12px 16px',
+  color: 'var(--text-earthy-dark)',
+  fontSize: '0.95rem',
+  transition: 'var(--transition-smooth)',
+  outline: 'none',
+  width: '100%',
+  fontFamily: 'inherit'
+};
 
 const fruitGraphicStyle: React.CSSProperties = {
   width: '38px',
