@@ -204,7 +204,7 @@ export default function IndustrialDivisionPage() {
         display: 'flex',
         alignItems: 'center',
         padding: '120px 0 80px 0',
-        background: 'linear-gradient(180deg, rgba(11, 15, 25, 0.82) 0%, rgba(11, 15, 25, 0.98) 100%), url("/images/industrial_hero.png") no-repeat center center / cover',
+        background: 'linear-gradient(180deg, rgba(11, 15, 25, 0.45) 0%, rgba(11, 15, 25, 0.92) 100%), url("/images/industrial_hero.png") no-repeat center center / cover',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -269,6 +269,13 @@ export default function IndustrialDivisionPage() {
                 ? 'Biz faqat yuqori sifatli va chidamli mis mahsulotlarini eksport qilamiz. Har bir partiya EN 10204 3.1 protokoli bilan ta’minlanadi, bu esa qotishmaning kimyoviy tozaligi va o‘lchamlarini kafolatlaydi, bu esa yuqori bosimli tizimlar uchun juda muhimdir.'
                 : 'Zarvadiy coordinates high-purity metallurgical supply chains directly from premium regional refineries in Central Asia. We offer standard and custom dimensional wall profiles designed to resist continuous operating fatigue, carrying absolute traceability certifications.'}
             </p>
+            <div style={{ marginTop: '30px', borderRadius: 'var(--border-radius-lg)', overflow: 'hidden', border: '1px solid rgba(184, 115, 51, 0.25)', boxShadow: '0 10px 30px rgba(0,0,0,0.4)' }}>
+              <img 
+                src="/images/industrial_about.png" 
+                alt="Zarvadiy Sourcing Terminal" 
+                style={{ width: '100%', height: '280px', objectFit: 'cover', display: 'block' }}
+              />
+            </div>
           </div>
 
           {/* Capabilities Panel */}
@@ -400,9 +407,9 @@ export default function IndustrialDivisionPage() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '30px' }}>
             {/* Video Box 1 */}
             <div className="glass-card" style={{ padding: '0', overflow: 'hidden', minHeight: '320px', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(135deg, #111827 0%, #030712 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(180deg, rgba(11, 15, 25, 0.6) 0%, rgba(11, 15, 25, 0.85) 100%), url("/images/industrial_products.png") no-repeat center center / cover', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {/* Visual placeholder matching screenshot */}
-                <div style={{ textAlign: 'center', color: '#ffffff', padding: '24px' }}>
+                <div style={{ textAlign: 'center', color: '#ffffff', padding: '24px', zIndex: 2 }}>
                   <div style={{ width: '48px', height: '48px', background: 'rgba(184, 115, 51, 0.2)', border: '2px solid var(--primary-copper)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px auto' }}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style={{ color: 'var(--primary-copper-hover)' }}>
                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -423,8 +430,8 @@ export default function IndustrialDivisionPage() {
 
             {/* Video Box 2 */}
             <div className="glass-card" style={{ padding: '0', overflow: 'hidden', minHeight: '320px', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(135deg, #111827 0%, #030712 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ textAlign: 'center', color: '#ffffff', padding: '24px' }}>
+              <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(180deg, rgba(11, 15, 25, 0.6) 0%, rgba(11, 15, 25, 0.85) 100%), url("/images/industrial_packaging.png") no-repeat center center / cover', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ textAlign: 'center', color: '#ffffff', padding: '24px', zIndex: 2 }}>
                   <div style={{ width: '48px', height: '48px', background: 'rgba(184, 115, 51, 0.2)', border: '2px solid var(--primary-copper)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px auto' }}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style={{ color: 'var(--primary-copper-hover)' }}>
                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -466,6 +473,13 @@ export default function IndustrialDivisionPage() {
                   </span>
                 ))}
               </div>
+            </div>
+            <div style={{ marginTop: '24px', borderRadius: 'var(--border-radius-lg)', overflow: 'hidden', border: '1px solid rgba(184, 115, 51, 0.15)', boxShadow: '0 8px 24px rgba(0,0,0,0.3)' }}>
+              <img 
+                src="/images/industrial_logistics.png" 
+                alt="Export Logistics Terminal" 
+                style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
+              />
             </div>
           </div>
 

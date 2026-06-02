@@ -171,6 +171,19 @@ export default function IndustrialProductDetailPage({ params }: PageProps) {
                 Every dispatch includes official EN 10204 3.1 chemical analysis certificates and physical wall load/eddy-current testing documentation.
               </p>
             </div>
+
+            {/* Real Copper Specimen Photo */}
+            <div className="glass-card" style={{ padding: '0', overflow: 'hidden', border: '1px solid rgba(184, 115, 51, 0.2)', marginTop: '20px', boxShadow: '0 8px 24px rgba(0,0,0,0.3)' }}>
+              <img 
+                src="/images/product_tubes.png" 
+                alt="Industrial Copper Material" 
+                style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
+              />
+              <div style={{ padding: '16px', background: '#0b0f19' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--primary-copper-hover)', fontWeight: 700, textTransform: 'uppercase' }}>Smelting & drawing</span>
+                <h4 style={{ color: '#ffffff', fontSize: '0.95rem', margin: '4px 0 0 0' }}>Real-life Copper Specimen</h4>
+              </div>
+            </div>
           </div>
 
           {/* SPECIFICATION DETAILED DETAILS (RIGHT) */}
