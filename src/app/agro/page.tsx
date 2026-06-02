@@ -208,8 +208,8 @@ export default function AgroDivisionPage() {
               {language === 'ru'
                 ? 'Наш агро-дивизион отслеживает качество на каждом этапе — от инспекции почвы садов до бережной вакуумной упаковки. Мы используем оптическую и лазерную chromatic сортировку, гарантируя 99.9% чистоты изюма, кураги, чернослива и ядер грецких орехов.'
                 : language === 'uz'
-                ? 'Agro departamentimiz tuproq unumdorligini tekshirishdan tortib mevalarni vakuumli qadoqlashgacha bo‘lgan barcha bosqichlarda sifatni nazorat qiladi. Biz mahsulotlarimizni lazer yordamida saralaymiz va 99.9% tozalik darajasini ta’minlaymiz.'
-                : 'Central Asia yields dried fruits of extraordinary richness due to a unique climate with 300+ days of intense solar radiation. We coordinate raw agricultural supply chains under strict global standards, ensuring zero chemical pesticide residue and full biosecurity tracking for European packing chains.'}
+                  ? 'Agro departamentimiz tuproq unumdorligini tekshirishdan tortib mevalarni vakuumli qadoqlashgacha bo‘lgan barcha bosqichlarda sifatni nazorat qiladi. Biz mahsulotlarimizni lazer yordamida saralaymiz va 99.9% tozalik darajasini ta’minlaymiz.'
+                  : 'Central Asia yields dried fruits of extraordinary richness due to a unique climate with 300+ days of intense solar radiation. We coordinate raw agricultural supply chains under strict global standards, ensuring zero chemical pesticide residue and full biosecurity tracking for European packing chains.'}
             </p>
           </div>
 
@@ -528,8 +528,8 @@ export default function AgroDivisionPage() {
               {language === 'ru'
                 ? 'Свяжитесь с нашим агро-отделом продаж'
                 : language === 'uz'
-                ? 'Agro savdo bo‘limimiz bilan bog‘laning'
-                : 'Get in touch with our agro trade desk'}
+                  ? 'Agro savdo bo‘limimiz bilan bog‘laning'
+                  : 'Get in touch with our agro trade desk'}
             </p>
           </div>
 
@@ -668,7 +668,7 @@ export default function AgroDivisionPage() {
                 }}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#ffffff' }}>
-                  <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.335 4.978L2 22l5.233-1.372a9.95 9.95 0 0 0 4.777 1.22h.005c5.505 0 9.987-4.479 9.988-9.986.002-2.67-1.037-5.18-2.927-7.071A9.92 9.92 0 0 0 12.012 2zm5.835 14.129c-.318.895-1.576 1.637-2.184 1.706-.576.064-1.328.096-2.128-.158a10.15 10.15 0 0 1-4.214-2.52c-1.543-1.543-2.529-3.328-2.905-4.385-.376-1.056-.051-1.633.272-1.954.269-.268.583-.637.776-.895.195-.258.258-.431.388-.716.13-.285.065-.536-.032-.73-.097-.195-.873-2.103-1.198-2.883-.316-.761-.643-.659-.876-.671-.225-.01-.482-.012-.739-.012-.258 0-.677.097-1.032.484-.355.387-1.355 1.322-1.355 3.22 0 1.897 1.38 3.733 1.574 3.991.193.258 2.715 4.146 6.577 5.813.92.397 1.637.633 2.197.81.928.295 1.774.253 2.443.153.744-.11 1.576-.452 1.8-.871.226-.419.226-.774.158-.871-.068-.097-.258-.161-.548-.29zm0 0"/>
+                  <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.335 4.978L2 22l5.233-1.372a9.95 9.95 0 0 0 4.777 1.22h.005c5.505 0 9.987-4.479 9.988-9.986.002-2.67-1.037-5.18-2.927-7.071A9.92 9.92 0 0 0 12.012 2zm5.835 14.129c-.318.895-1.576 1.637-2.184 1.706-.576.064-1.328.096-2.128-.158a10.15 10.15 0 0 1-4.214-2.52c-1.543-1.543-2.529-3.328-2.905-4.385-.376-1.056-.051-1.633.272-1.954.269-.268.583-.637.776-.895.195-.258.258-.431.388-.716.13-.285.065-.536-.032-.73-.097-.195-.873-2.103-1.198-2.883-.316-.761-.643-.659-.876-.671-.225-.01-.482-.012-.739-.012-.258 0-.677.097-1.032.484-.355.387-1.355 1.322-1.355 3.22 0 1.897 1.38 3.733 1.574 3.991.193.258 2.715 4.146 6.577 5.813.92.397 1.637.633 2.197.81.928.295 1.774.253 2.443.153.744-.11 1.576-.452 1.8-.871.226-.419.226-.774.158-.871-.068-.097-.258-.161-.548-.29zm0 0" />
                 </svg>
                 {language === 'ru' ? 'Связаться в WhatsApp' : language === 'uz' ? 'WhatsApp orqali bog‘lanish' : 'WhatsApp Trade Desk Coordinator'}
               </a>
