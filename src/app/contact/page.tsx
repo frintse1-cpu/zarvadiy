@@ -61,7 +61,17 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 style={infoLabelStyle}>{t.contactPage.email}</h4>
-                  <a href="mailto:sales@zarvadiy.com" style={infoValueStyle}>sales@zarvadiy.com</a>
+                  <a 
+                    href="mailto:sales@zarvadiy.com" 
+                    title="Email undergoing system maintenance. Please submit the contact form or message us via WhatsApp."
+                    style={infoValueStyle}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert("Our email server is currently undergoing scheduled maintenance. Please submit your request using the contact form or contact our WhatsApp Trade Desk directly.");
+                    }}
+                  >
+                    sales@zarvadiy.com
+                  </a>
                 </div>
               </div>
 
@@ -167,10 +177,10 @@ export default function ContactPage() {
                 Zarvadiy Holding Headquarters
               </h3>
               <p style={{ color: 'var(--text-silver)', fontSize: '1.05rem', marginBottom: '6px' }}>
-                41 Bunyodkor Ave, Tashkent, Uzbekistan
+                Osh Street 57, Yashnobod District, Tashkent, Uzbekistan
               </p>
               <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontFamily: 'monospace' }}>
-                Coordinates: 41.2995° N, 69.2401° E
+                Coordinates: 41.3033° N, 69.3272° E
               </span>
             </div>
 

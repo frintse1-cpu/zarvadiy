@@ -154,7 +154,7 @@ export default function IndustrialDivisionPage() {
   ];
 
   const logisticsDocKeys = [
-    language === 'ru' ? 'Фитосанитарный и гигиенический контроль' : language === 'uz' ? 'Fitosanitariya va gigiyena sertifikatlari' : 'Phytosanitary and health certificates',
+    language === 'ru' ? 'Сертификат происхождения (Форма А / СТ-1)' : language === 'uz' ? 'Kelib chiqish sertifikati (A shakli / ST-1)' : 'Certificate of Origin (Form A / CT-1)',
     language === 'ru' ? 'Сертификаты соответствия EN 10204 3.1' : language === 'uz' ? 'EN 10204 3.1 sifat sertifikatlari' : 'Compliance certificates EN 10204 3.1',
     language === 'ru' ? 'Таможенное оформление и транзитная декларация' : language === 'uz' ? 'Bojxona rasmiylashtiruvi va tranzit hujjatlari' : 'Customs clearance and transit declarations',
     language === 'ru' ? 'Двуязычные спецификации и пакинг-листы' : language === 'uz' ? 'Ikki tilli texnik shartlar va qadoq varaqalari' : 'Bilingual specifications and packing lists'
@@ -358,20 +358,20 @@ export default function IndustrialDivisionPage() {
         </div>
       </section>
 
-      {/* 4. PARTNERSHIP & KEY STRENGTHS */}
+      {/* 4. MANUFACTURING PARTNER NETWORK */}
       <section className="section" style={{ borderTop: '1px solid rgba(255,255,255,0.02)' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '60px', alignItems: 'center' }}>
           <div>
-            <span className="section-tag">{language === 'ru' ? 'Наши Обязательства' : language === 'uz' ? 'Bizning Majburiyatimiz' : 'Global Standards'}</span>
+            <span className="section-tag">{language === 'ru' ? 'Сеть Заводов-Партнеров' : language === 'uz' ? 'Hamkor Ishlab Chiqaruvchilar Tarmog‘i' : 'Manufacturing Partner Network'}</span>
             <h2 className="section-title" style={{ textAlign: 'left', color: '#ffffff', marginBottom: '24px' }}>
-              Built for Long-Term <span>Global Partnerships</span>
+              Flexible & Scalable <span>Sourcing Model</span>
             </h2>
             <p style={{ color: '#9ca3af', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '20px' }}>
               {language === 'ru'
-                ? 'Работая по строгим протоколам B2B контрактов, мы обеспечиваем полную предсказуемость цен и высочайшие операционные стандарты.'
+                ? 'Zarvadiy работает по модели проверенной сети заводов-партнеров, предлагая международным покупателям максимальную гибкость и масштабируемость поставок. Сотрудничая с несколькими специализированными заводами Центральной Азии, мы обходим ограничения объемов единичного производства, адаптируя поставки под спрос при строгом контроле качества.'
                 : language === 'uz'
-                ? 'Qat’iy shartnomalar asosida ish olib borib, biz narxlarning barqarorligini va yuqori operatsion standartlarni ta’minlaymiz.'
-                : 'Our commercial desk delivers transparent risk management, strict scheduling adherence, and localized customer support across EU and MENA jurisdictions.'}
+                ? 'Zarvadiy tekshirilgan hamkor ishlab chiqaruvchilar tarmog‘i orqali ishlaydi va xalqaro xaridorlarga maksimal darajada moslashuvchan hamda kengayuvchi ta’minot zanjirini taklif etadi. Biz Markaziy Osiyodagi bir nechta ixtisoslashgan zavodlar bilan hamkorlik qilib, alohida zavodlarning ishlab chiqarish hajmi cheklovlaridan chetlab o‘tamiz va sifatni markaziy nazorat ostida saqlaymiz.'
+                : 'Zarvadiy operates a vetted, partner-based sourcing model that offers international buyers maximum supply chain flexibility and scalability. By partnering with multiple specialized refineries across Central Asia, we bypass single-factory volume constraints, dynamically scaling production to match commercial demand while maintaining central quality oversight.'}
             </p>
           </div>
 
@@ -391,9 +391,9 @@ export default function IndustrialDivisionPage() {
         <div className="container">
           <div className="section-header">
             <span className="section-tag">{language === 'ru' ? 'Видеоотчеты' : language === 'uz' ? 'Videolavhalar' : 'Media Center'}</span>
-            <h2 className="section-title" style={{ color: '#ffffff' }}>Copper Produce <span>Portfolio Showcases</span></h2>
+            <h2 className="section-title" style={{ color: '#ffffff' }}>Copper Sourcing <span>Portfolio Showcases</span></h2>
             <p className="section-subtitle">
-              {language === 'ru' ? 'Посмотрите видео с наших автоматизированных производств и упаковочных линий.' : language === 'uz' ? 'Ishlab chiqarish va qadoqlash jarayonlaridan olingan videolavhalarni ko‘ring.' : 'Take a look inside our metallurgy processing facilities and heavy cargo packaging routines.'}
+              {language === 'ru' ? 'Посмотрите видео с заводов-партнеров и упаковочных линий.' : language === 'uz' ? 'Hamkor zavodlar va qadoqlash jarayonlaridan olingan videolavhalarni ko‘ring.' : 'Take a look inside our partner metallurgy processing facilities and cargo packaging routines.'}
             </p>
           </div>
 
@@ -408,16 +408,16 @@ export default function IndustrialDivisionPage() {
                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
                     </svg>
                   </div>
-                  <h4 style={{ fontSize: '1.2rem', fontWeight: 700 }}>ZARVADIY INDUSTRIAL</h4>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Copper Production Process</span>
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: 700 }}>PARTNER REFINERY</h4>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Metallurgical Sourcing Process</span>
                 </div>
               </div>
               <div style={{ padding: '24px', flexGrow: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#0b0f19' }}>
                 <div>
-                  <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600 }}>Copper Production Video</h4>
-                  <p style={{ color: '#6b7280', fontSize: '0.85rem', marginTop: '4px' }}>Refining and dimensional draw controls</p>
+                  <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600 }}>Smelting & Drawing Video</h4>
+                  <p style={{ color: '#6b7280', fontSize: '0.85rem', marginTop: '4px' }}>Partner refinery smelting and drawing controls</p>
                 </div>
-                <button className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem' }}>Watch Process</button>
+                <button className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem' }}>Watch Sourcing</button>
               </div>
             </div>
 
@@ -430,14 +430,14 @@ export default function IndustrialDivisionPage() {
                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
                     </svg>
                   </div>
-                  <h4 style={{ fontSize: '1.2rem', fontWeight: 700 }}>ZARVADIY PACKAGING</h4>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Packaging & Logistics Innovation</span>
+                  <h4 style={{ fontSize: '1.2rem', fontWeight: 700 }}>PARTNER PACKAGING</h4>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Packaging & Logistics Routines</span>
                 </div>
               </div>
               <div style={{ padding: '24px', flexGrow: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#0b0f19' }}>
                 <div>
-                  <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600 }}>Packaging Innovation Video</h4>
-                  <p style={{ color: '#6b7280', fontSize: '0.85rem', marginTop: '4px' }}>Timber crates and steel coil reels</p>
+                  <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600 }}>Export Cargo Packaging Video</h4>
+                  <p style={{ color: '#6b7280', fontSize: '0.85rem', marginTop: '4px' }}>Partner logistics packaging routines</p>
                 </div>
                 <button className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem' }}>Watch Packing</button>
               </div>

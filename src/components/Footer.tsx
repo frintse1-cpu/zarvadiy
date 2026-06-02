@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
   const brandName = isIndustrial ? 'INDUSTRIAL' : isAgro ? 'AGRICULTURE' : 'HOLDING';
 
   const footerDesc = isIndustrial
-    ? 'Zarvadiy Industrial Division delivers seamless technical steel tubes, carbon piping, valves, and precision flanges conforming to international ASTM, DIN, and EN regulations.'
+    ? 'Zarvadiy Industrial Division facilitates the sourcing and export of high-purity copper tubes, pancake coils, level wound coils, and precision fittings conforming to international ASTM, EN, and DIN standards.'
     : isAgro
       ? 'Zarvadiy Agriculture Division supplies premium organic sun-dried apricots, clean chromatic laser-sorted raisins, black prunes, and walnuts compliant with HACCP and ISO 22000.'
       : t.footer.desc;
@@ -169,7 +169,17 @@ export const Footer: React.FC = () => {
               </svg>
               <div>
                 <strong style={{ color: titleColor }}>{t.contactPage.email}:</strong><br />
-                <a href="mailto:sales@zarvadiy.com" style={{ color: isAgro ? '#ffffff' : 'var(--text-white)' }}>sales@zarvadiy.com</a>
+                <a 
+                  href="mailto:sales@zarvadiy.com" 
+                  title="Email undergoing system maintenance. Please submit the contact form or message us via WhatsApp."
+                  style={{ color: isAgro ? '#ffffff' : 'var(--text-white)' }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert("Our email server is currently undergoing scheduled maintenance. Please submit your request using the contact form or contact our WhatsApp Trade Desk directly.");
+                  }}
+                >
+                  sales@zarvadiy.com
+                </a>
               </div>
             </div>
             <div className="footer-contact-item">

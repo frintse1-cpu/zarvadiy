@@ -71,21 +71,21 @@ export const translations = {
       }
     },
     industrial: {
-      heroTitle: 'Reliable Copper Supply Solutions for Global Industries',
-      heroSubtitle: 'Connecting global manufacturers with high-grade copper pipelines, coils, and fittings tailored to rigorous B2B standards.',
-      aboutDesc: 'Zarvadiy Industrial Division is a premier exporter of certified, heavy-specification copper products. Sourcing strictly from verified metallurgical refineries in Central Asia, we deploy advanced processing and strict dimensional controls to deliver products that exceed DIN, ASTM, and EN compliance criteria. Our products serve as vital links in international HVAC, refrigeration, and electrical grids.',
+      heroTitle: 'B2B Sourcing and Export of Certified Industrial Copper Products',
+      heroSubtitle: 'Connecting international manufacturers with high-purity copper tubes, coils, and fittings sourced from vetted regional refineries in Central Asia.',
+      aboutDesc: 'Zarvadiy Industrial Division is an export-oriented sourcing partner specializing in high-specification copper products. Sourcing strictly from vetted metallurgical refineries in Central Asia, we coordinate third-party compliance inspections and verified dimensional controls to deliver products that meet DIN, ASTM, and EN standards. Our products serve as vital links in international HVAC, refrigeration, and electrical grids.',
       capabilities: {
         item1: {
-          title: '100% Non-Destructive Testing',
-          desc: 'Every single copper run undergoes rigorous ultrasonic and eddy-current inspection to ensure absolute wall integrity and prevent pressure leaks.'
+          title: 'Verified Quality Control',
+          desc: 'We facilitate rigorous third-party ultrasonic and eddy-current inspections at our partner facilities to verify wall integrity and ensure zero leaks.'
         },
         item2: {
-          title: 'Advanced Metallurgical Calibrations',
-          desc: 'We coordinate copper melts of extreme purity (99.9% Cu-DHP and Cu-ETP), custom-calibrated for superior thermal and electrical conductivity.'
+          title: 'Certified Metallurgical Purity',
+          desc: 'We source high-purity copper (99.9% Cu-DHP and Cu-ETP), backed by certified mill test reports (MTR) for maximum thermal and electrical conductivity.'
         },
         item3: {
           title: 'Heavy Export Packaging & Logistics',
-          desc: 'Tubes are secured in heavy timber crates or steel-banded reels, loaded onto specialized containers to prevent oxidation and transport strain.'
+          desc: 'We coordinate secure cargo packing in heavy timber crates or steel-banded reels, optimizing container loading to prevent transit oxidation.'
         }
       },
       certifications: {
@@ -316,7 +316,7 @@ export const translations = {
         item3: {
           year: '2024',
           title: 'Agro Division Setup',
-          desc: 'Establishment of certified dried fruit and nut processing plants, acquiring HACCP and ISO 22000 certifications.'
+          desc: 'Partnering with certified processing facilities to establish specialized lines, securing HACCP and ISO 22000 compliant sourcing paths.'
         },
         item4: {
           year: '2025',
@@ -350,7 +350,7 @@ export const translations = {
       email: 'Corporate Email',
       phone: 'Direct Line',
       address: 'Central Headquarters',
-      addressValue: '41 Bunyodkor Ave, Tashkent, 100097, Uzbekistan',
+      addressValue: 'Osh Street 57, Yashnobod District, Tashkent, Uzbekistan',
       formTitle: 'Submit RFQ / Inquiry',
       formSubtitle: 'Submit your specification criteria, and our trade desk will reply with detailed pricing and transit estimations within 24 hours.',
       formSuccess: 'Thank you! Your sourcing inquiry has been successfully sent to our trade desk. A B2B coordinator will contact you shortly.',
@@ -363,7 +363,7 @@ export const translations = {
       formSubmit: 'Submit Sourcing RFQ'
     },
     footer: {
-      desc: 'Zarvadiy LLC is a world-class multi-industry international export company, supplying premium-grade copper metallurgy and calibrated organic agricultural harvests globally.',
+      desc: 'Zarvadiy LLC is an export-oriented trading company supplying premium-grade copper metallurgy and calibrated organic agricultural harvests globally from Central Asia.',
       quickLinks: 'Navigation',
       contactUs: 'Head Office',
       rights: 'All rights reserved.',
@@ -440,21 +440,21 @@ export const translations = {
       }
     },
     industrial: {
-      heroTitle: 'Надежные Медные Решения для Мировой Промышленности',
-      heroSubtitle: 'Поставки медных труб, бухт и фитингов высочайшего качества для систем кондиционирования, отопления и электротехники.',
-      aboutDesc: 'Промышленный дивизион Zarvadiy — ведущий экспортер медного проката тяжелых спецификаций. Работая напрямую с крупнейшими рафинировочными заводами Центральной Азии, мы обеспечиваем строжайший контроль геометрии и чистоты сплавов для соответствия стандартам DIN, ASTM и EN. Наша продукция используется в критических узлах систем кондиционирования и электросетях.',
+      heroTitle: 'Поставки Медного Проката из Узбекистана для Мировой Промышленности',
+      heroSubtitle: 'Поставки медных труб, бухт и фитингов напрямую от ведущих металлургических заводов Центральной Азии.',
+      aboutDesc: 'Промышленный дивизион Zarvadiy — экспортно-ориентированная торговая компания, специализирующаяся на поставках медного проката. Работая напрямую с сертифицированными заводами-партнерами Центральной Азии, мы координируем независимый контроль геометрии и чистоты сплавов для соответствия стандартам DIN, ASTM и EN. Наша продукция используется в критических узлах систем кондиционирования и электросетях.',
       capabilities: {
         item1: {
-          title: '100% Неразрушающий Контроль',
-          desc: 'Каждая партия медных труб проходит ультразвуковое исследование вихревыми токами для выявления мельчайших дефектов стенок.'
+          title: 'Контроль Качества Партнеров',
+          desc: 'Вся продукция наших партнеров проходит ультразвуковое исследование вихревыми токами для выявления мельчайших дефектов стенок.'
         },
         item2: {
-          title: 'Металлургическая Чистота',
-          desc: 'Мы поставляем медь высшей степени очистки (99.9% Cu-DHP и Cu-ETP), гарантирующую идеальную тепло- и электропроводимость.'
+          title: 'Чистота Сплавов',
+          desc: 'Мы поставляем медь высшей степени очистки (99.9% Cu-DHP и Cu-ETP) с предоставлением подробных заводских сертификатов испытаний.'
         },
         item3: {
           title: 'Экспортная Упаковка',
-          desc: 'Продукция фиксируется в прочных деревянных ящиках или на стальных катушках, защищенных от влаги и транспортных деформаций.'
+          desc: 'Продукция упаковывается в прочные деревянные ящики или на стальные катушки с влагопоглотителями для защиты при транспортировке.'
         }
       },
       certifications: {
@@ -685,7 +685,7 @@ export const translations = {
         item3: {
           year: '2024',
           title: 'Развитие Агро сектора',
-          desc: 'Модернизация цехов по очистке сухофруктов, получение HACCP и ISO 22000 для прямых поставок в ЕС.'
+          desc: 'Налаживание поставок через сертифицированные цеха по очистке сухофруктов, получение HACCP и ISO 22000 для экспорта в ЕС.'
         },
         item4: {
           year: '2025',
@@ -719,7 +719,7 @@ export const translations = {
       email: 'Электронная почта',
       phone: 'Телефон отдела продаж',
       address: 'Головной офис',
-      addressValue: 'Узбекистан, г. Ташкент, Чиланзарский р-н, пр. Бунёдкор, 41',
+      addressValue: 'Узбекистан, г. Ташкент, Яшнабадский р-н, ул. Ош, 57',
       formTitle: 'Отправить Запрос / RFQ',
       formSubtitle: 'Заполните параметры вашей спецификации, и наш торговый отдел предоставит расчет цены и сроков доставки в течение 24 часов.',
       formSuccess: 'Спасибо! Ваша спецификация успешно отправлена в отдел продаж. Наш координатор свяжется с вами в ближайшее время.',
@@ -809,21 +809,21 @@ export const translations = {
       }
     },
     industrial: {
-      heroTitle: 'Sanoat Uchun Ishonchli Mis Metallurgiyasi Eksporti',
-      heroSubtitle: 'Konditsionerlash, isitish tizimlari va elektrotexnika uchun yuqori sifatli mis quvurlari va fitinglari.',
-      aboutDesc: 'Zarvadiy Sanoat Departamenti — yuqori toifadagi mis mahsulotlarining yetakchi eksportchisi. Markaziy Osiyoning eng yirik metallurgiya zavodlari bilan hamkorlik qilib, DIN, ASTM va EN standartlariga to‘liq javob beruvchi mis quvurlari va buxtalarini yetkazib beramiz.',
+      heroTitle: 'Sanoat Uchun Mis Metallurgiyasi Eksporti Va Sourcing Xizmati',
+      heroSubtitle: 'Vaqti sinovdan o‘tgan Central Osiyo zavodlaridan yuqori sifatli mis quvurlari, g‘altaklari va fitinglarini xalqaro miqyosda yetkazib berish.',
+      aboutDesc: 'Zarvadiy Sanoat Departamenti — yuqori sifatli mis mahsulotlarini eksport qilishga ixtisoslashgan savdo kompaniyasidir. Markaziy Osiyodagi hamkor metallurgiya zavodlari bilan to‘g‘ridan-to‘g‘ri aloqalar o‘rnatib, biz DIN, ASTM va EN standartlariga muvofiq mahsulot yetkazib berish, mustaqil sifat nazorati va logistika jarayonlarini muvofiqlashtiramiz.',
       capabilities: {
         item1: {
-          title: '100% Gidravlik Va Induksion Testlar',
-          desc: 'Mis quvurlarining har bir partiyasi devor butunligini tekshirish uchun ultratovushli induksion nazoratdan o‘tadi.'
+          title: 'Kafolatlangan Sifat Nazorati',
+          desc: 'Hamkor zavodlarda ishlab chiqarilgan har bir partiya devor butunligini tekshirish uchun ultratovushli va girdobli oqim sinovlaridan o‘tkaziladi.'
         },
         item2: {
           title: 'Metallurgik Soflik',
-          desc: 'Biz eng yuqori tozalik darajasidagi (99.9% Cu-DHP va Cu-ETP) misni taqdim etamiz, bu esa issiqlik o‘tkazuvchanligini kafolatlaydi.'
+          desc: 'Biz eng yuqori tozalik darajasidagi (99.9% Cu-DHP va Cu-ETP) misni taqdim etamiz, bu esa rasmiy laboratoriya sertifikatlari bilan tasdiqlanadi.'
         },
         item3: {
-          title: 'Eksportbop Qadoq',
-          desc: 'Mahsulotlar namlik va deformatsiyalardan himoyalangan mustahkam yog‘och qutilarga yoki po‘lat g‘altaklarga joylanadi.'
+          title: 'Eksportbop Qadoqlash Xizmati',
+          desc: 'Mahsulotlar namlik va deformatsiyalardan himoyalangan mustahkam yog‘och qutilarga yoki po‘lat g‘altaklarga xavfsiz qadoqlanadi.'
         }
       },
       certifications: {
@@ -1054,7 +1054,7 @@ export const translations = {
         item3: {
           year: '2024',
           title: 'Agro tarmoqning kengayishi',
-          desc: 'Quritilgan mevalarni tozalash sexlarini modernizatsiya qilish, Yevropaga eksport uchun HACCP va ISO 22000 sertifikatlarini olish.'
+          desc: 'Sertifikatlangan quritilgan mevalarni tozalash sexlari bilan hamkorlikni yo‘lga qo‘yish, Yevropaga eksport uchun HACCP va ISO 22000 standartlarini joriy etish.'
         },
         item4: {
           year: '2025',
@@ -1088,7 +1088,7 @@ export const translations = {
       email: 'Elektron pochta',
       phone: 'Savdo bo‘limi telefoni',
       address: 'Bosh ofis',
-      addressValue: 'O‘zbekiston, Toshkent sh., Chilonzor tumani, Bunyodkor shoh ko‘chasi, 41',
+      addressValue: 'O‘zbekiston, Toshkent sh., Yashnobod tumani, Osh ko‘chasi, 57',
       formTitle: 'So‘rov / RFQ yuborish',
       formSubtitle: 'Buyurtmangizning texnik parametrlarini kiriting va bizning savdo bo‘limimiz 24 soat ichida narx va logistika hisob-kitobini taqdim etadi.',
       formSuccess: 'Rahmat! Sizning so‘rovingiz savdo bo‘limimizga muvaffaqiyatli yuborildi. Tez orada savdo koordinatori siz bilan bog‘lanadi.',
