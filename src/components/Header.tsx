@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { useLanguage } from '../context/LanguageContext';
 import { Language } from '../locales/translations';
 
@@ -201,14 +201,14 @@ export const Header: React.FC = () => {
     }}>
       <div className="container header-container">
         <Link href="/" className="logo" onClick={closeMobileMenu}>
-          <div className="logo-icon" style={{
-            background: isIndustrial 
-              ? 'linear-gradient(135deg, var(--primary-copper) 0%, #78350f 100%)' 
-              : isAgro 
-              ? 'linear-gradient(135deg, var(--accent-green) 0%, #2a5243 100%)' 
-              : 'linear-gradient(135deg, var(--primary-copper) 0%, var(--accent-gold) 100%)',
-            color: isAgro ? '#ffffff' : 'var(--bg-dark)'
-          }}>Z</div>
+          <Image src="/images/Logo.png" alt="Zarvadiy Logo" width={40} height={40} style={{ objectFit: "contain" }} />
+
+
+
+
+
+
+
           <div className="logo-text" style={{ color: textLogoColor }}>
             ZARVADIY <span style={{
               color: isIndustrial ? 'var(--primary-copper-hover)' : isAgro ? 'var(--accent-green)' : 'var(--primary-copper)',
