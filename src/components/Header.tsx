@@ -201,7 +201,7 @@ export const Header: React.FC = () => {
     }}>
       <div className="container header-container">
         <Link href="/" className="logo" onClick={closeMobileMenu}>
-          <Image src="/images/Logo.png" alt="Zarvadiy Logo" width={40} height={40} style={{ objectFit: "contain" }} />
+          <Image src="/images/Logo.png" alt="Zarvadiy Logo" width={120} height={50} style={{ objectFit: "contain" }} />
 
 
 
@@ -209,18 +209,18 @@ export const Header: React.FC = () => {
 
 
 
-          <div className="logo-text" style={{ color: textLogoColor }}>
-            ZARVADIY <span style={{
-              color: isIndustrial ? 'var(--primary-copper-hover)' : isAgro ? 'var(--accent-green)' : 'var(--primary-copper)',
-              fontSize: '0.8rem',
-              letterSpacing: '0.1em',
-              fontWeight: 800,
-              display: 'inline-block',
-              marginLeft: '4px',
-              borderLeft: `1px solid ${isAgro ? 'rgba(30,61,50,0.2)' : 'rgba(255,255,255,0.15)'}`,
-              paddingLeft: '8px'
-            }}>{brandName}</span>
-          </div>
+
+
+
+
+
+
+
+
+
+
+
+
         </Link>
 
         <nav className={`nav-links ${mobileMenuOpen ? 'open' : ''}`} style={{
