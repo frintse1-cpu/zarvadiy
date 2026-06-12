@@ -4,9 +4,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useLanguage } from '../context/LanguageContext';
+import { usePathname } from 'next/navigation';
 import { Language } from '../locales/translations';
-
-// Language definitions with custom SVG flags
 const languages = {
   en: {
     label: 'English',
