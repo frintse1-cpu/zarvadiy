@@ -522,25 +522,25 @@ export default function IndustrialDivisionPage() {
 
         {/* Video Box 2 */}
         <div className="glass-card" style={{ padding: '0', overflow: 'hidden', minHeight: '320px', display: 'flex', flexDirection: 'column' }}>
-          <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(180deg, rgba(11, 15, 25, 0.6) 0%, rgba(11, 15, 25, 0.85) 100%), url("/images/industrial_packaging.png") no-repeat center center / cover', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{ textAlign: 'center', color: '#ffffff', padding: '24px', zIndex: 2 }}>
-              <div style={{ width: '48px', height: '48px', background: 'rgba(184, 115, 51, 0.2)', border: '2px solid var(--primary-copper)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px auto' }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style={{ color: 'var(--primary-copper-hover)' }}>
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              </div>
-              <h4 style={{ fontSize: '1.2rem', fontWeight: 700 }}>PARTNER PACKAGING</h4>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Packaging & Logistics Routines</span>
-            </div>
+        <div className="glass-card" style={{ padding: "0", overflow: "hidden", minHeight: "320px", display: "flex", flexDirection: "column" }}>
+          <div style={{ position: "relative", width: "100%", paddingTop: "56.25%" }}>
+            <iframe
+              src="https://www.youtube.com/embed/88XE837eWnc"
+              title="Export Cargo Packaging"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+            ></iframe>
           </div>
-          <div style={{ padding: '24px', flexGrow: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#0b0f19' }}>
-            <div>
-              <h4 style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600 }}>Export Cargo Packaging Video</h4>
-              <p style={{ color: '#6b7280', fontSize: '0.85rem', marginTop: '4px' }}>Partner logistics packaging routines</p>
-            </div>
-            <button className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem' }}>Watch Packing</button>
+          <div style={{ padding: "24px", background: "#0b0f19" }}>
+            <h4 style={{ color: "#ffffff", fontSize: "1.1rem", fontWeight: 600 }}>Export Cargo Packaging Video</h4>
+            <p style={{ color: "#6b7280", fontSize: "0.85rem", marginTop: "4px" }}>MaxCopper partner logistics packaging routines</p>
           </div>
         </div>
+
+
+
+
       </div>
     </div>
       </section >
