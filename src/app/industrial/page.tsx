@@ -497,7 +497,7 @@ export default function IndustrialDivisionPage() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', marginTop: '30px' }}>
-        {/* Video Box 1 */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "40px", marginTop: "30px" }}>
         <div className="glass-card" style={{ padding: '0', overflow: 'hidden', minHeight: '320px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(180deg, rgba(11, 15, 25, 0.6) 0%, rgba(11, 15, 25, 0.85) 100%), url("/images/industrial_products.png") no-repeat center center / cover', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             {/* Visual placeholder matching screenshot */}
@@ -519,31 +519,31 @@ export default function IndustrialDivisionPage() {
             <button className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem' }}>Watch Sourcing</button>
           </div>
         </div>
-
-        {/* Video Box 2 */}
-        {/* Video Box 2 - YouTube Embed */}
-
-          <div style={{ position: "relative", width: "100%", paddingTop: "56.25%" }}>
-            <iframe
-              src="https://www.youtube.com/embed/88XE837eWnc"
-              title="Export Cargo Packaging"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-            ></iframe>
+        {/* Video Box 2 - YouTube */}
+        <div className="glass-card" style={{ padding: "0", overflow: "hidden" }}>
+          <div style={{ position: "relative", paddingTop: "56.25%" }}>
+            <iframe src="https://www.youtube.com/embed/88XE837eWnc" title="Packaging Video" allowFullScreen style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}></iframe>
           </div>
           <div style={{ padding: "24px", background: "#0b0f19" }}>
-            <h4 style={{ color: "#ffffff", fontSize: "1.1rem", fontWeight: 600 }}>Export Cargo Packaging Video</h4>
-            <p style={{ color: "#6b7280", fontSize: "0.85rem", marginTop: "4px" }}>MaxCopper partner logistics packaging routines</p>
+            <h4 style={{ color: "#ffffff", fontSize: "1.1rem", fontWeight: 600 }}>Export Cargo Packaging</h4>
+            <p style={{ color: "#6b7280", fontSize: "0.85rem", marginTop: "4px" }}>MaxCopper partner packaging routines</p>
           </div>
         </div>
-
-
-
-
       </div>
     </div>
-      </section>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
 
   {/* 6. LOGISTICS SECTION */ }
   < section className = "section" id = "logistics" style = {{ background: '#070b13', borderTop: '1px solid rgba(255,255,255,0.02)' }}>
