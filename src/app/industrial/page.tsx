@@ -543,7 +543,7 @@ export default function IndustrialDivisionPage() {
 
       </div>
     </div>
-      </section >
+      </section>
 
   {/* 6. LOGISTICS SECTION */ }
   < section className = "section" id = "logistics" style = {{ background: '#070b13', borderTop: '1px solid rgba(255,255,255,0.02)' }}>
