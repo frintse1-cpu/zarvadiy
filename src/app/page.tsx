@@ -112,7 +112,7 @@ export default function Home() {
             <p className="section-subtitle">{t.holding.industriesSubtitle}</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '40px', marginTop: '30px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', marginTop: '30px' }}>
             
             {/* Industrial Card */}
             <div className="glass-card" style={{
