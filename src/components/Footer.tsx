@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useLanguage } from '../context/LanguageContext';
 
 export const Footer: React.FC = () => {
   const { language, t } = useLanguage();
@@ -85,27 +85,27 @@ export const Footer: React.FC = () => {
       <div className="container footer-grid">
         <div className="footer-logo-desc">
           <Link href="/" className="logo">
-            <div className="logo-icon" style={{
-              background: isIndustrial
-                ? 'linear-gradient(135deg, var(--primary-copper) 0%, #78350f 100%)'
-                : isAgro
-                  ? 'linear-gradient(135deg, #ebd068 0%, #a25824 100%)'
-                  : 'linear-gradient(135deg, var(--primary-copper) 0%, var(--accent-gold) 100%)',
-              color: 'var(--bg-dark)'
-            }}>Z</div>
-            <div className="logo-text" style={{ color: titleColor }}>
-              ZARVADIY <span style={{
-                color: accentColor,
-                fontSize: '0.8rem',
-                letterSpacing: '0.1em',
-                fontWeight: 800,
-                display: 'inline-block',
-                marginLeft: '4px',
-                borderLeft: '1px solid rgba(255,255,255,0.15)',
-                paddingLeft: '8px'
-              }}>{brandName}</span>
-            </div>
-          </Link>
+            <Image src="/images/Logo.png" alt="Zarvadiy Logo" width={120} height={50} style={{ objectFit: "contain" }} />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           <p className="footer-desc" style={{ color: textColor }}>
             {footerDesc}
           </p>
