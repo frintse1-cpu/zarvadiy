@@ -521,8 +521,8 @@ export default function IndustrialDivisionPage() {
         </div>
 
         {/* Video Box 2 */}
-        <div className="glass-card" style={{ padding: '0', overflow: 'hidden', minHeight: '320px', display: 'flex', flexDirection: 'column' }}>
-        <div className="glass-card" style={{ padding: "0", overflow: "hidden", minHeight: "320px", display: "flex", flexDirection: "column" }}>
+        {/* Video Box 2 - YouTube Embed */}
+
           <div style={{ position: "relative", width: "100%", paddingTop: "56.25%" }}>
             <iframe
               src="https://www.youtube.com/embed/88XE837eWnc"
