@@ -3,8 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '../context/LanguageContext';
 import { usePathname } from 'next/navigation';
-
 export const Footer: React.FC = () => {
   const { language, t } = useLanguage();
   const pathname = usePathname();
