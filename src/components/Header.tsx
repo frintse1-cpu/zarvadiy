@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useLanguage } from '../context/LanguageContext';
-import { usePathname } from 'next/navigation';
+
 import { Language } from '../locales/translations';
 const languages = {
   en: {
