@@ -86,7 +86,7 @@ export const Footer: React.FC = () => {
         <div className="footer-logo-desc">
           <Link href="/" className="logo">
             <Image src="/images/Logo.png" alt="Zarvadiy Logo" width={120} height={50} style={{ objectFit: "contain" }} />
-
+          </Link>
 
 
 
