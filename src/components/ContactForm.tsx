@@ -44,9 +44,9 @@ export const ContactForm: React.FC = () => {
       setStatus('error');
     }
   };
+  return (
     <div className="glass-card" style={{ maxWidth: '650px', margin: '0 auto' }}>
       <h3 style={{
-        fontFamily: 'var(--font-serif)',
         fontSize: '1.75rem',
         color: 'var(--text-white)',
         marginBottom: '10px'
