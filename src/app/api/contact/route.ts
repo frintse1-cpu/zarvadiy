@@ -1,15 +1,14 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
     try {
+        const resend = new Resend(process.env.RESEND_API_KEY);
         const { name, email, company, phone, message } = await request.json();
 
         await resend.emails.send({
             from: 'Zarvadiy Trade Desk <noreply@zarvadiy.com>',
-            to: '',
+            to: 'info@zarvadiy.com',
             subject: `New RFQ from ${company || name}`,
             html: `
         <h2 style="color:#b87333">New Industrial RFQ — Zarvadiy</h2>
