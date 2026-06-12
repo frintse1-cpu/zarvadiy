@@ -139,26 +139,26 @@ export default function IndustrialDivisionPage() {
 
   const partnerships = [
     {
-      num: '01',
-      title: language === 'ru' ? 'Операционное Превосходство' : language === 'uz' ? 'Operatsion Mukammallik' : 'Operational Excellence',
-      desc: language === 'ru' ? 'Строгие испытания и 100% соответствие мировым стандартам EN/ASTM.' : language === 'uz' ? 'Qat’iy sinovlar va EN/ASTM jahon standartlariga 100% muvofiqlik.' : 'Rigid testing and compliance to international EN/ASTM standards.'
+      num: "01",
+      title: "MaxCopper LLC � Uzbekistan",
+      desc: "EBRD-backed copper tube manufacturer in Tashkent. Certified to ISO 9001, ISO 14001, ISO 45001. Products comply with EN 12735 European standard. Equipment: Bruker, Horiba, ELTRA laboratories."
     },
     {
-      num: '02',
-      title: language === 'ru' ? 'Надежные Поставки' : language === 'uz' ? 'Ishonchli Yetkazib Berish' : 'Reliable Delivery',
-      desc: language === 'ru' ? 'Быстрая отправка контейнеров и точное соблюдение графиков отгрузок.' : language === 'uz' ? 'Konteynerlarni tezkor yuklash va yetkazib berish grafiklariga qat’iy rioya qilish.' : 'Fast container shipping and exact adherence to delivery schedules.'
+      num: "02",
+      title: "Xinglu Group � China",
+      desc: "Established 1995. 200,000+ tonnes annual capacity. Supplier to Mitsubishi, Daikin, LG, Panasonic, Carrier, Haier, Gree. Products: LWC, Pancake, Inner Grooved, Straight, Insulated copper tubes."
     },
     {
-      num: '03',
-      title: language === 'ru' ? 'Обратная Связь' : language === 'uz' ? 'Tezkor Aloqa' : 'Responsive Communication',
-      desc: language === 'ru' ? 'Выделенная многоязычная торговая поддержка на связи 24/7.' : language === 'uz' ? '24/7 rejimida ishlaydigan ko‘p tilli maxsus savdo koordinatorlari.' : 'Dedicated multi-lingual sales support standing by 24/7.'
-    },
-    {
-      num: '04',
-      title: language === 'ru' ? 'Профессиональная Команда' : language === 'uz' ? 'Professional Jamoa' : 'Professional Team',
-      desc: language === 'ru' ? 'Десятилетия инженерного опыта и координации сложных цепочек поставок.' : language === 'uz' ? 'Mis metallurgiyasi va savdo logistikasida ko‘p yillik tajriba.' : 'Decades of combined metallurgical and export logistics expertise.'
+      num: "03",
+      title: "Quality Standards",
+      desc: "EN 12735, ISO 9001 / 14001 / 45001, ASTM B280, EN 10204 3.1. Available Incoterms: FOB, CIF, DAP, EXW. Payment: T/T, Letter of Credit (LC)."
     }
   ];
+
+
+
+
+
 
   const logisticsDocKeys = [
     language === 'ru' ? 'Сертификат происхождения (Форма А / СТ-1)' : language === 'uz' ? 'Kelib chiqish sertifikati (A shakli / ST-1)' : 'Certificate of Origin (Form A / CT-1)',
