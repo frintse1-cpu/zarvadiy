@@ -22,8 +22,8 @@ export default function WorldMap() {
             const map = L.map(mapRef.current!, {
                 center: [48, 45],
                 zoom: 2.5,
-                zoomControl: false,
-                scrollWheelZoom: false,
+                zoomControl: true,
+                scrollWheelZoom: true,
                 attributionControl: false,
             });
 
