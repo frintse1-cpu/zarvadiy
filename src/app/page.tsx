@@ -331,7 +331,7 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '60px', alignItems: 'center', marginTop: '20px' }}>
             
             {/* World Map Presentation */}
-            <div style={{
+            <div className="markets-map-container" style={{
               height: '450px',
               background: 'radial-gradient(circle at 50% 50%, rgba(184, 115, 51, 0.05) 0%, rgba(7, 11, 19, 0) 70%), rgba(15, 23, 42, 0.4)',
               border: '1px solid rgba(200, 122, 62, 0.15)',

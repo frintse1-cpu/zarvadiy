@@ -984,3 +984,9 @@ select {
     height: auto !important;
   }
 }
+
+@media (max-width: 768px) {
+  .markets-map-container {
+    display: none !important;
+  }
+}
