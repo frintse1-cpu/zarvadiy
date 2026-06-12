@@ -568,7 +568,7 @@ export default function IndustrialDivisionPage() {
         </div>
         <div style={{ marginTop: '24px', borderRadius: 'var(--border-radius-lg)', overflow: 'hidden', border: '1px solid rgba(184, 115, 51, 0.15)', boxShadow: '0 8px 24px rgba(0,0,0,0.3)' }}>
           <img
-            src="/images/industrial_logistics.png"
+            src="/images/industrial_logistics.jpg"
             alt="Export Logistics Terminal"
             style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
           />
