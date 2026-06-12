@@ -1,4 +1,4 @@
-'use client';
+ï»¿'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -140,12 +140,12 @@ export default function IndustrialDivisionPage() {
   const partnerships = [
     {
       num: "01",
-      title: "MaxCopper LLC — Uzbekistan",
+      title: "MaxCopper LLC ï¿½ Uzbekistan",
       desc: "EBRD-backed copper tube manufacturer in Tashkent. Certified to ISO 9001, ISO 14001, ISO 45001. Products comply with EN 12735 European standard. Equipment: Bruker, Horiba, ELTRA laboratories."
     },
     {
       num: "02",
-      title: "Xinglu Group — China",
+      title: "Xinglu Group ï¿½ China",
       desc: "Established 1995. 200,000+ tonnes annual capacity. Supplier to Mitsubishi, Daikin, LG, Panasonic, Carrier, Haier, Gree. Products: LWC, Pancake, Inner Grooved, Straight, Insulated copper tubes."
     },
     {
