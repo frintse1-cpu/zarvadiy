@@ -27,23 +27,23 @@ export const ContactForm: React.FC = () => {
       setStatus('error');
       return;
     }
-
     setStatus('loading');
-
-    // Simulate API request to submit form
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: ''
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
       });
-    }, 1500);
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
-
-  return (
     <div className="glass-card" style={{ maxWidth: '650px', margin: '0 auto' }}>
       <h3 style={{
         fontFamily: 'var(--font-serif)',
