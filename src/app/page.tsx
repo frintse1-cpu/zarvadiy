@@ -4,7 +4,9 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '../context/LanguageContext';
-import ContactForm from '../components/ContactForm';
+import ContactForm from '../components/ContactForm'; import dynamic from 'next/dynamic';
+
+const WorldMap = dynamic(() => import('../components/WorldMap'), { ssr: false });
 
 export default function Home() {
   const { language, t } = useLanguage();
@@ -113,7 +115,7 @@ export default function Home() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', marginTop: '30px' }}>
-            
+
             {/* Industrial Card */}
             <div className="glass-card" style={{
               padding: '0',
@@ -329,95 +331,95 @@ export default function Home() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', marginTop: '20px' }}>
-            
+
             {/* World Map Presentation */}
-            <div className="markets-map-container" style={{
-              height: '450px',
-              background: 'radial-gradient(circle at 50% 50%, rgba(184, 115, 51, 0.05) 0%, rgba(7, 11, 19, 0) 70%), rgba(15, 23, 42, 0.4)',
-              border: '1px solid rgba(200, 122, 62, 0.15)',
-              borderRadius: 'var(--border-radius-lg)',
-              position: 'relative',
-              overflow: 'hidden',
-              boxShadow: '0 10px 40px rgba(0,0,0,0.4)'
-            }}>
-              {/* Map grid coordinate overlays */}
-              <div style={{
-                position: 'absolute',
-                top: 0, left: 0, width: '100%', height: '100%',
-                backgroundImage: 'radial-gradient(rgba(200, 122, 62, 0.08) 1.5px, transparent 1.5px)',
-                backgroundSize: '24px 24px',
-                opacity: 0.7
-              }}></div>
+            <div className="markets-map-container">
+              <WorldMap />
 
-              {/* Tashkent Hub (Main pin) */}
-              <div style={{ position: 'absolute', top: '48%', left: '55%' }}>
-                <div className="markets-pulse-dot" style={{ backgroundColor: 'var(--primary-copper)', width: '14px', height: '14px' }}></div>
-                <span style={{
-                  position: 'absolute',
-                  top: '18px', left: '-40px',
-                  color: '#ffffff',
-                  fontSize: '0.75rem',
-                  fontWeight: 800,
-                  backgroundColor: 'rgba(7, 11, 19, 0.85)',
-                  padding: '4px 8px',
-                  borderRadius: '4px',
-                  border: '1px solid var(--primary-copper)',
-                  whiteSpace: 'nowrap',
-                  fontFamily: 'monospace'
-                }}>TASHKENT HUB</span>
-              </div>
 
-              {/* Europe Pin */}
-              <div style={{ position: 'absolute', top: '38%', left: '32%' }}>
-                <div className="markets-pulse-dot" style={{ backgroundColor: '#ffffff' }}></div>
-                <span style={{
-                  position: 'absolute',
-                  top: '-30px', left: '-20px',
-                  color: '#cbd5e1',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  backgroundColor: 'rgba(7, 11, 19, 0.7)',
-                  padding: '2px 6px',
-                  borderRadius: '3px',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  whiteSpace: 'nowrap'
-                }}>EUROPE</span>
-              </div>
 
-              {/* MENA Pin */}
-              <div style={{ position: 'absolute', top: '55%', left: '42%' }}>
-                <div className="markets-pulse-dot" style={{ backgroundColor: '#ffffff' }}></div>
-                <span style={{
-                  position: 'absolute',
-                  top: '18px', left: '-15px',
-                  color: '#cbd5e1',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  backgroundColor: 'rgba(7, 11, 19, 0.7)',
-                  padding: '2px 6px',
-                  borderRadius: '3px',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  whiteSpace: 'nowrap'
-                }}>MENA</span>
-              </div>
 
-              {/* East Asia Pin */}
-              <div style={{ position: 'absolute', top: '52%', left: '72%' }}>
-                <div className="markets-pulse-dot" style={{ backgroundColor: '#ffffff' }}></div>
-                <span style={{
-                  position: 'absolute',
-                  top: '-30px', left: '-15px',
-                  color: '#cbd5e1',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  backgroundColor: 'rgba(7, 11, 19, 0.7)',
-                  padding: '2px 6px',
-                  borderRadius: '3px',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  whiteSpace: 'nowrap'
-                }}>EAST ASIA</span>
-              </div>
-            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             {/* Market Details List */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -481,13 +483,13 @@ export default function Home() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px', maxWidth: '800px', margin: '0 auto' }}>
             <ContactForm />
-            
+
             {/* WhatsApp Link Card */}
             <div style={{ textAlign: 'center', marginTop: '20px' }}>
-              <a 
-                href="https://wa.me/998939722986" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://wa.me/998939722986"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-secondary"
                 style={{
                   borderColor: '#25D366',
@@ -497,7 +499,7 @@ export default function Home() {
                 }}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: '8px', color: '#25D366' }}>
-                  <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.335 4.978L2 22l5.233-1.372a9.95 9.95 0 0 0 4.777 1.22h.005c5.505 0 9.987-4.479 9.988-9.986.002-2.67-1.037-5.18-2.927-7.071A9.92 9.92 0 0 0 12.012 2zm5.835 14.129c-.318.895-1.576 1.637-2.184 1.706-.576.064-1.328.096-2.128-.158a10.15 10.15 0 0 1-4.214-2.52c-1.543-1.543-2.529-3.328-2.905-4.385-.376-1.056-.051-1.633.272-1.954.269-.268.583-.637.776-.895.195-.258.258-.431.388-.716.13-.285.065-.536-.032-.73-.097-.195-.873-2.103-1.198-2.883-.316-.761-.643-.659-.876-.671-.225-.01-.482-.012-.739-.012-.258 0-.677.097-1.032.484-.355.387-1.355 1.322-1.355 3.22 0 1.897 1.38 3.733 1.574 3.991.193.258 2.715 4.146 6.577 5.813.92.397 1.637.633 2.197.81.928.295 1.774.253 2.443.153.744-.11 1.576-.452 1.8-.871.226-.419.226-.774.158-.871-.068-.097-.258-.161-.548-.29zm0 0"/>
+                  <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.335 4.978L2 22l5.233-1.372a9.95 9.95 0 0 0 4.777 1.22h.005c5.505 0 9.987-4.479 9.988-9.986.002-2.67-1.037-5.18-2.927-7.071A9.92 9.92 0 0 0 12.012 2zm5.835 14.129c-.318.895-1.576 1.637-2.184 1.706-.576.064-1.328.096-2.128-.158a10.15 10.15 0 0 1-4.214-2.52c-1.543-1.543-2.529-3.328-2.905-4.385-.376-1.056-.051-1.633.272-1.954.269-.268.583-.637.776-.895.195-.258.258-.431.388-.716.13-.285.065-.536-.032-.73-.097-.195-.873-2.103-1.198-2.883-.316-.761-.643-.659-.876-.671-.225-.01-.482-.012-.739-.012-.258 0-.677.097-1.032.484-.355.387-1.355 1.322-1.355 3.22 0 1.897 1.38 3.733 1.574 3.991.193.258 2.715 4.146 6.577 5.813.92.397 1.637.633 2.197.81.928.295 1.774.253 2.443.153.744-.11 1.576-.452 1.8-.871.226-.419.226-.774.158-.871-.068-.097-.258-.161-.548-.29zm0 0" />
                 </svg>
                 {t.holding.ctaBlock.whatsapp}
               </a>
