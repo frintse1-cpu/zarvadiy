@@ -335,7 +335,7 @@ export default function Home() {
             {/* World Map Presentation */}
             <div className="markets-map-container">
               <WorldMap />
-
+            </div>
 
 
 
