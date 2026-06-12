@@ -260,7 +260,7 @@ export default function IndustrialDivisionPage() {
 
       {/* 2. ABOUT METALLURGY */}
       <section className="section" id="about" style={{ borderTop: '1px solid rgba(255,255,255,0.02)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '60px', alignItems: 'center' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
           <div>
             <span className="section-tag">{language === 'ru' ? 'Наши Технологии' : language === 'uz' ? 'Texnologiyalarimiz' : 'Modern Industrial Copper Exporter'}</span>
             <h2 className="section-title" style={{ textAlign: 'left', color: '#ffffff', marginBottom: '24px' }}>
@@ -390,7 +390,7 @@ export default function IndustrialDivisionPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', maxWidth: '800px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', maxWidth: '800px' }}>
 
             {/* UZ Spec Sheet */}
             <div className="glass-card" style={{ padding: '28px', border: '1px solid rgba(184, 115, 51, 0.2)', display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -459,7 +459,7 @@ export default function IndustrialDivisionPage() {
     {/* 4. MANUFACTURING PARTNER NETWORK */ }
     < section className = "section" style = {{ borderTop: '1px solid rgba(255,255,255,0.02)' }
 }>
-  <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '60px', alignItems: 'center' }}>
+  <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
     <div>
       <span className="section-tag">{language === 'ru' ? 'Сеть Заводов-Партнеров' : language === 'uz' ? 'Hamkor Ishlab Chiqaruvchilar Tarmog‘i' : 'Manufacturing Partner Network'}</span>
       <h2 className="section-title" style={{ textAlign: 'left', color: '#ffffff', marginBottom: '24px' }}>
@@ -474,7 +474,7 @@ export default function IndustrialDivisionPage() {
       </p>
     </div>
 
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
       {partnerships.map((p) => (
         <div key={p.num} className="glass-card" style={{ padding: '24px' }}>
           <span className="technical-badge" style={{ marginBottom: '12px', display: 'inline-block' }}>{p.num} // {p.title}</span>
@@ -496,7 +496,7 @@ export default function IndustrialDivisionPage() {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '30px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', marginTop: '30px' }}>
         {/* Video Box 1 */}
         <div className="glass-card" style={{ padding: '0', overflow: 'hidden', minHeight: '320px', display: 'flex', flexDirection: 'column' }}>
           <div style={{ position: 'relative', width: '100%', height: '220px', background: 'linear-gradient(180deg, rgba(11, 15, 25, 0.6) 0%, rgba(11, 15, 25, 0.85) 100%), url("/images/industrial_products.png") no-repeat center center / cover', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -547,7 +547,7 @@ export default function IndustrialDivisionPage() {
 
   {/* 6. LOGISTICS SECTION */ }
   < section className = "section" id = "logistics" style = {{ background: '#070b13', borderTop: '1px solid rgba(255,255,255,0.02)' }}>
-    <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '60px', alignItems: 'center' }}>
+    <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
       <div>
         <span className="section-tag">Logistics Desk</span>
         <h2 className="section-title" style={{ textAlign: 'left', color: '#ffffff', marginBottom: '24px' }}>
@@ -674,7 +674,7 @@ export default function IndustrialDivisionPage() {
       )}
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <label htmlFor="name" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-white)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {t.contactPage.formName} *
