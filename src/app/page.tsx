@@ -328,7 +328,7 @@ export default function Home() {
             <p className="section-subtitle">{t.holding.markets.subtitle}</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '60px', alignItems: 'center', marginTop: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', marginTop: '20px' }}>
             
             {/* World Map Presentation */}
             <div className="markets-map-container" style={{
