@@ -67,19 +67,39 @@ export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 20) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
+
+      if (window.innerWidth <= 768) {
+        if (mobileMenuOpen) {
+          setVisible(true);
+        } else if (currentScrollY > lastScrollY.current && currentScrollY > 70) {
+          setVisible(false);
+        } else {
+          setVisible(true);
+        }
+      } else {
+        setVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
+
+    lastScrollY.current = window.scrollY;
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mobileMenuOpen]);
 
   // Click outside dropdown to close it
   useEffect(() => {
@@ -193,7 +213,7 @@ export const Header: React.FC = () => {
   }
 
   return (
-    <header className="header-wrapper" style={{
+    <header className={`header-wrapper ${!visible ? 'header-hidden' : ''}`} style={{
       boxShadow: scrolled ? '0 10px 30px rgba(0, 0, 0, 0.3)' : 'none',
       background: headerBackground,
       borderBottom: `1px solid ${headerBorderColor}`,
@@ -209,6 +229,12 @@ export const Header: React.FC = () => {
                 height: 40px !important;
                 max-height: 100% !important;
                 object-fit: contain !important;
+              }
+              .header-wrapper {
+                transition: transform 0.3s ease, background 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+              }
+              .header-wrapper.header-hidden {
+                transform: translateY(-100%);
               }
             }
           `}} />
