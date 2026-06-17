@@ -138,6 +138,7 @@ select {
 .gradient-text {
   background: linear-gradient(135deg, var(--text-white) 30%, var(--primary-copper) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -977,14 +978,14 @@ select {
   }
 
   /* General display: grid elements with multiple columns */
-  .container > div[style*="display: grid"],
-  .container > div[style*="display:grid"] {
+  .container>div[style*="display: grid"],
+  .container>div[style*="display:grid"] {
     grid-template-columns: 1fr !important;
   }
 
   /* General side-by-side flex layouts stack on mobile */
-  .container > div[style*="display: flex"]:not([style*="flex-wrap: wrap"]):not([style*="flexWrap: 'wrap'"]),
-  .container > div[style*="display:flex"]:not([style*="flex-wrap: wrap"]):not([style*="flexWrap: 'wrap'"]) {
+  .container>div[style*="display: flex"]:not([style*="wrap"]),
+  .container>div[style*="display:flex"]:not([style*="wrap"]) {
     flex-direction: column !important;
   }
 
