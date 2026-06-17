@@ -990,3 +990,13 @@ select {
     display: none !important;
   }
 }
+
+@media (max-width: 768px) {
+  .header-wrapper {
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease !important;
+  }
+
+  .header-wrapper.header-hidden {
+    transform: translateY(-100%) !important;
+  }
+}
