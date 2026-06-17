@@ -202,25 +202,16 @@ export const Header: React.FC = () => {
       <div className="container header-container">
         <Link href="/" className="logo" onClick={closeMobileMenu}>
           <Image src="/images/Logo.png" alt="Zarvadiy Logo" width={120} height={50} style={{ objectFit: "contain" }} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          <style dangerouslySetInnerHTML={{__html: `
+            @media (max-width: 768px) {
+              .logo img {
+                width: auto !important;
+                height: 40px !important;
+                max-height: 100% !important;
+                object-fit: contain !important;
+              }
+            }
+          `}} />
         </Link>
 
         <nav className={`nav-links ${mobileMenuOpen ? 'open' : ''}`} style={{
