@@ -965,13 +965,34 @@ select {
     padding: 0 16px;
   }
 
-  /* Grid tuzatish */
-  div[style*="gridTemplateColumns: '1fr 1fr'"],
-  div[style*="gridTemplateColumns: '1.2fr 1fr'"],
-  div[style*="gridTemplateColumns: '1fr 1.2fr'"],
-  div[style*="gridTemplateColumns: '1fr 1.5fr'"],
-  div[style*="gridTemplateColumns: '1.5fr 1fr'"] {
+  /* Grid & Flex layouts correction for React inline styles on mobile */
+  div[style*="grid-template-columns"],
+  div[style*="gridTemplateColumns"],
+  div[style*="1fr 1fr"],
+  div[style*="1.2fr 1fr"],
+  div[style*="1fr 1.2fr"],
+  div[style*="1.5fr 1fr"],
+  div[style*="1fr 1.5fr"] {
     grid-template-columns: 1fr !important;
+  }
+
+  /* General display: grid elements with multiple columns */
+  .container > div[style*="display: grid"],
+  .container > div[style*="display:grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* General side-by-side flex layouts stack on mobile */
+  .container > div[style*="display: flex"]:not([style*="flex-wrap: wrap"]):not([style*="flexWrap: 'wrap'"]),
+  .container > div[style*="display:flex"]:not([style*="flex-wrap: wrap"]):not([style*="flexWrap: 'wrap'"]) {
+    flex-direction: column !important;
+  }
+
+  /* Markets page map container mobile fix */
+  div[style*="rgba(184, 115, 51, 0.05)"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
   }
 
   /* O'ngga chiqib ketishni tuzatish */
