@@ -128,14 +128,6 @@ export default function AgroDivisionPage() {
     { name: 'Partner 5' }
   ];
 
-  const reviews = [
-    { name: 'Виктория', text: language === 'ru' ? 'Курага экстра-класса! Заказываем контейнеры в Германию. Превосходный цвет и влажность.' : 'Excellent pitted apricots! Our packaging plant in Germany receives perfect container loads.' },
-    { name: 'Лиана', text: language === 'ru' ? 'Золотистый изюм лазерной очистки. Чистота 99.9% полностью подтверждена нашей лабораторией.' : 'Laser-sorted golden raisins have zero stems. Absolute 99.9% chromatic purity confirmed.' },
-    { name: 'Dilnoza', text: language === 'ru' ? 'Отличные ядра грецкого ореха половинки. Никакой шелухи или обломков скорлупы.' : 'Calibrated walnut halves arrived fresh under nitrogen vacuum cartons. Outstanding quality.' },
-    { name: 'Галина', text: language === 'ru' ? 'Чернослив идеального качества без брожения. Рекомендую Zarvadiy как надежного экспортера.' : 'Sweet dark pitted prunes stabilized beautifully. Highly recommend Zarvadiy as exporter.' },
-    { name: 'Мадина', text: language === 'ru' ? 'Наши европейские клиенты в восторге от качества розничных дой-паков с изюмом.' : 'Our wholesale buyers across the Baltics are highly satisfied with the calibrated raisins.' },
-    { name: 'Дилрабо', text: language === 'ru' ? 'Все сертификаты HACCP и фитосанитарные допуски были оформлены идеально быстро.' : 'HACCP clearance and phytosanitary certificates were processed rapidly. Great job!' }
-  ];
 
   return (
     <div className="agro-theme" style={{ minHeight: '100vh', background: 'var(--bg-earthy-beige)', fontFamily: 'var(--font-sans)' }}>
@@ -484,36 +476,99 @@ export default function AgroDivisionPage() {
         </div>
       </section>
 
-      {/* 8. CLIENT TESTIMONIALS */}
+      {/* 8. TRUST BADGES */}
       <section className="section" style={{ background: '#ffffff', borderBottom: '1px solid rgba(30, 61, 50, 0.05)' }}>
         <div className="container">
-          <div className="section-header">
-            <span className="section-tag">{language === 'ru' ? 'Отзывы' : language === 'uz' ? 'Fikr-mulohazalar' : 'B2B Client Reviews'}</span>
-            <h2 className="section-title">What <span>B2B Importers</span> Say</h2>
-          </div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '30px',
-            marginTop: '30px'
-          }}>
-            {reviews.map((rev, idx) => (
-              <div key={idx} className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '16px', background: '#f9f6f0', border: 'none' }}>
-                <p style={{ color: 'var(--text-earthy-dark)', fontSize: '0.92rem', lineHeight: 1.6, fontStyle: 'italic' }}>
-                  "{rev.text}"
-                </p>
-                <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginTop: 'auto' }}>
-                  <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: 'rgba(30, 61, 50, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'var(--accent-green)', fontSize: '0.9rem' }}>
-                    {rev.name[0]}
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-earthy-dark)' }}>{rev.name}</h4>
-                    <span style={{ fontSize: '0.75rem', color: 'var(--text-earthy-muted)' }}>Verified B2B Sourcing Client</span>
-                  </div>
-                </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '10px' }}>
+            
+            {/* Card 1 */}
+            <div className="glass-card" style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '24px',
+              padding: '32px',
+              background: '#f9f6f0',
+              border: '1px solid var(--border-earthy)',
+              borderRadius: 'var(--border-radius-md)'
+            }}>
+              <div style={{
+                width: '56px',
+                height: '56px',
+                borderRadius: '50%',
+                background: 'rgba(30, 61, 50, 0.08)',
+                border: '1px solid rgba(30, 61, 50, 0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--accent-green)',
+                flexShrink: 0
+              }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 11 11 13 15 9"></polyline>
+                </svg>
               </div>
-            ))}
+              <div>
+                <h3 style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '1.2rem',
+                  color: 'var(--text-earthy-dark)',
+                  fontWeight: 700,
+                  lineHeight: 1.3
+                }}>
+                  {language === 'ru' 
+                    ? 'Сертифицированная цепь поставок HACCP и ISO 22000' 
+                    : language === 'uz' 
+                      ? 'HACCP va ISO 22000 sertifikatlangan ta’minot zanjiri' 
+                      : 'HACCP & ISO 22000 Certified Supply Chain'}
+                </h3>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="glass-card" style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '24px',
+              padding: '32px',
+              background: '#f9f6f0',
+              border: '1px solid var(--border-earthy)',
+              borderRadius: 'var(--border-radius-md)'
+            }}>
+              <div style={{
+                width: '56px',
+                height: '56px',
+                borderRadius: '50%',
+                background: 'rgba(30, 61, 50, 0.08)',
+                border: '1px solid rgba(30, 61, 50, 0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--accent-green)',
+                flexShrink: 0
+              }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <h3 style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '1.2rem',
+                  color: 'var(--text-earthy-dark)',
+                  fontWeight: 700,
+                  lineHeight: 1.3
+                }}>
+                  {language === 'ru' 
+                    ? 'Гарантированное происхождение из Самарканда и Ферганской долины' 
+                    : language === 'uz' 
+                      ? 'Samarqand va Farg‘ona vodiysi kafolatlangan kelib chiqishi' 
+                      : 'Samarkand & Fergana Valley Origin Guaranteed'}
+                </h3>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
