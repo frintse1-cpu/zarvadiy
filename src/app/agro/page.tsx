@@ -138,7 +138,7 @@ export default function AgroDivisionPage() {
         display: 'flex',
         alignItems: 'center',
         padding: '120px 0 80px 0',
-        background: 'linear-gradient(180deg, rgba(249, 246, 240, 0.85) 0%, rgba(249, 246, 240, 0.98) 100%), url("/images/agro_hero.png") no-repeat center center / cover',
+        background: 'linear-gradient(180deg, rgba(249, 246, 240, 0.85) 0%, rgba(249, 246, 240, 0.98) 100%), url("/images/agro_hero.jpg") no-repeat center center / cover',
         position: 'relative',
         overflow: 'hidden',
         borderBottom: '1px solid rgba(30, 61, 50, 0.08)'
@@ -215,7 +215,7 @@ export default function AgroDivisionPage() {
             border: '1px solid var(--border-earthy)'
           }}>
             <Image
-              src="/images/agro_hero.png"
+              src="/images/agro_hero.jpg"
               alt="Premium sun-dried raisins and apricots"
               fill
               style={{ objectFit: 'cover' }}

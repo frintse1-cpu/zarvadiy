@@ -115,7 +115,7 @@ export default function IndustriesPage() {
             }}>
               <div style={{ position: 'relative', width: '100%', height: '300px', overflow: 'hidden' }}>
                 <Image
-                  src="/images/agro_hero.png"
+                  src="/images/agro_hero.jpg"
                   alt="Agricultural Division"
                   fill
                   style={{ objectFit: 'cover' }}
