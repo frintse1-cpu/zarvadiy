@@ -4,18 +4,23 @@ import { Resend } from 'resend';
 export async function POST(request: Request) {
     try {
         const resend = new Resend(process.env.RESEND_API_KEY);
-        const { name, email, company, phone, message } = await request.json();
+        const { name, email, company, phone, message, division } = await request.json();
+
+        const isAgro = division === 'agro';
+        const title = isAgro ? 'New Agriculture RFQ — Zarvadiy' : 'New Industrial RFQ — Zarvadiy';
+        const titleColor = isAgro ? '#1e3d32' : '#b87333';
+        const subject = isAgro ? `New Agro RFQ from ${company || name}` : `New RFQ from ${company || name}`;
 
         await resend.emails.send({
             from: 'Zarvadiy Trade Desk <noreply@zarvadiy.com>',
             to: 'info@zarvadiy.com',
-            subject: `New RFQ from ${company || name}`,
+            subject: subject,
             html: `
-        <h2 style="color:#b87333">New Industrial RFQ — Zarvadiy</h2>
+        <h2 style="color:${titleColor}">${title}</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Company:</strong> ${company || '—'}</p>
-        <p><strong>Phone:</strong> ${phone || '—'}</p>
+        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
         <p><strong>Message:</strong><br/>${message}</p>
       `
         });
