@@ -249,7 +249,11 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <span className="section-tag">{t.holding.process.title}</span>
-            <h2 className="section-title">Streamlined B2B Trade from <span>Inquiry to Warehouse</span></h2>
+            <h2 className="section-title">
+              {language === 'ru' ? <>Отлаженная B2B-торговля от <span>запроса до склада</span></>
+                : language === 'uz' ? <>So‘rovdan omborgacha — <span>tartibga solingan B2B savdo</span></>
+                  : <>Streamlined B2B Trade from <span>Inquiry to Warehouse</span></>}
+            </h2>
             <p className="section-subtitle">{t.holding.process.subtitle}</p>
           </div>
 
@@ -326,7 +330,11 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <span className="section-tag">{t.holding.markets.title}</span>
-            <h2 className="section-title">Connecting Rich Eurasian Hubs with <span>International Buyers</span></h2>
+            <h2 className="section-title">
+              {language === 'ru' ? <>Связываем ресурсы Евразии с <span>международными покупателями</span></>
+                : language === 'uz' ? <>Yevrosiyo resurslarini <span>xalqaro xaridorlar bilan bog‘laymiz</span></>
+                  : <>Connecting Rich Eurasian Hubs with <span>International Buyers</span></>}
+            </h2>
             <p className="section-subtitle">{t.holding.markets.subtitle}</p>
           </div>
 
@@ -432,7 +440,9 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h4 style={{ color: '#ffffff', fontSize: '1.15rem', fontWeight: 600, marginBottom: '4px' }}>Europe Corridor</h4>
+                  <h4 style={{ color: '#ffffff', fontSize: '1.15rem', fontWeight: 600, marginBottom: '4px' }}>
+                    {language === 'ru' ? 'Европейское направление' : language === 'uz' ? 'Yevropa yo‘nalishi' : 'Europe Corridor'}
+                  </h4>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{t.holding.markets.europe}</p>
                 </div>
               </div>
@@ -444,7 +454,9 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h4 style={{ color: '#ffffff', fontSize: '1.15rem', fontWeight: 600, marginBottom: '4px' }}>MENA Hubs</h4>
+                  <h4 style={{ color: '#ffffff', fontSize: '1.15rem', fontWeight: 600, marginBottom: '4px' }}>
+                    {language === 'ru' ? 'Ближний Восток и Африка' : language === 'uz' ? 'BAA va Yaqin Sharq' : 'MENA Hubs'}
+                  </h4>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{t.holding.markets.mena}</p>
                 </div>
               </div>
@@ -458,7 +470,9 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h4 style={{ color: '#ffffff', fontSize: '1.15rem', fontWeight: 600, marginBottom: '4px' }}>CIS & East Asia Channels</h4>
+                  <h4 style={{ color: '#ffffff', fontSize: '1.15rem', fontWeight: 600, marginBottom: '4px' }}>
+                    {language === 'ru' ? 'СНГ и Восточная Азия' : language === 'uz' ? 'MDH va Sharqiy Osiyo' : 'CIS & East Asia Channels'}
+                  </h4>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{t.holding.markets.cis} / {t.holding.markets.asia}</p>
                 </div>
               </div>

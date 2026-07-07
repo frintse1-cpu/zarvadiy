@@ -169,8 +169,8 @@ export const Footer: React.FC = () => {
               </svg>
               <div>
                 <strong style={{ color: titleColor }}>{t.contactPage.email}:</strong><br />
-                <a 
-                  href="mailto:sales@zarvadiy.com" 
+                <a
+                  href="mailto:sales@zarvadiy.com"
                   title="Email undergoing system maintenance. Please submit the contact form or message us via WhatsApp."
                   style={{ color: isAgro ? '#ffffff' : 'var(--text-white)' }}
                   onClick={(e) => {
@@ -218,10 +218,10 @@ export const Footer: React.FC = () => {
           color: isAgro ? 'rgba(255, 255, 255, 0.50)' : 'var(--text-muted)'
         }}>
           <div>
-            © {currentYear} Zarvadiy LLC. {t.footer.rights}
+            © {currentYear} Zarvadiy {language === 'ru' ? 'ООО' : language === 'uz' ? 'MChJ' : 'LLC'}. {t.footer.rights}
           </div>
           <div>
-            Zarvadiy Multi-Industry International Holding
+            {language === 'ru' ? 'Zarvadiy — многопрофильная торговая компания' : language === 'uz' ? 'Zarvadiy — ko‘p tarmoqli savdo kompaniyasi' : 'Zarvadiy Multi-Industry Trading Company'}
           </div>
         </div>
       </div>

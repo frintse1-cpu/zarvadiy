@@ -43,7 +43,7 @@ export default function IndustriesPage() {
       }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '40px' }}>
-            
+
             {/* Industrial Card */}
             <div className="glass-card" style={{
               padding: '0',
@@ -69,7 +69,9 @@ export default function IndustriesPage() {
                   background: 'linear-gradient(180deg, transparent 40%, #070b13 100%)'
                 }}></div>
                 <div style={{ position: 'absolute', bottom: '24px', left: '32px' }}>
-                  <span className="technical-badge">Steel & Metallurgy</span>
+                  <span className="technical-badge">
+                    {language === 'ru' ? 'СТАЛЬ И МЕТАЛЛУРГИЯ' : language === 'uz' ? 'PO‘LAT VA METALLURGIYA' : 'STEEL & METALLURGY'}
+                  </span>
                 </div>
               </div>
               <div style={{ padding: '40px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -127,7 +129,9 @@ export default function IndustriesPage() {
                   background: 'linear-gradient(180deg, transparent 40%, #070b13 100%)'
                 }}></div>
                 <div style={{ position: 'absolute', bottom: '24px', left: '32px' }}>
-                  <span className="organic-badge" style={{ background: 'rgba(30, 61, 50, 0.8)', color: '#ffffff', borderColor: 'transparent' }}>Organic Certified</span>
+                  <span className="organic-badge" style={{ background: 'rgba(30, 61, 50, 0.8)', color: '#ffffff', borderColor: 'transparent' }}>
+                    {language === 'ru' ? 'ОРГАНИЧЕСКИЙ СЕРТИФИКАТ' : language === 'uz' ? 'ORGANIK SERTIFIKATLANGAN' : 'ORGANIC CERTIFIED'}
+                  </span>
                 </div>
               </div>
               <div style={{ padding: '40px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>

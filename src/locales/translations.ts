@@ -751,7 +751,7 @@ export const translations = {
     },
     hero: {
       tagline: 'Ko‘p Tarmoqli B2B Eksport Xoldingi',
-      title: 'Xalqaro Eksport Va B2B Sourcing Yechimlari',
+      title: 'Xalqaro Eksport Va B2B Ta’minot Yechimlari',
       subtitle: 'Nufuzli xalqaro B2B xaridorlari uchun sanoat mis metallurgiyasi va ekologik toza quritilgan mevalarni ishonchli va kafolatlangan yetkazib berish.',
       cta: 'Bizning bo‘limlar',
       ctaQuote: 'Narxni hisoblashni so‘rash',
@@ -1038,8 +1038,8 @@ export const translations = {
     aboutPage: {
       title: 'Xalqaro Eksport Falsafamiz',
       subtitle: 'Markaziy Osiyoning boy tabiiy va mineral resurslarini jahon bozoridagi talabchan B2B xaridorlari bilan bog‘lovchi ishonchli ko‘prik.',
-      storyTitle: 'Zarvadiy Holding Tarixi',
-      storyDesc: 'Zarvadiy LLC holdingi eksport kanallarini birlashtirish va professional yetkazib berish infratuzilmasini yaratish maqsadida tashkil etilgan. Toshkentdagi logistika markazimizdan biz resurslarni tayyorlash, laboratoriya tahlillari va bojxona rasmiylashtiruvini to‘liq nazorat qilamiz.',
+      storyTitle: 'Zarvadiy Haqida',
+      storyDesc: 'Zarvadiy MChJ eksport kanallarini birlashtirish va professional yetkazib berish infratuzilmasini yaratish maqsadida tashkil etilgan. Toshkentdagi logistika markazimizdan biz resurslarni tayyorlash, laboratoriya tahlillari va bojxona rasmiylashtiruvini to‘liq nazorat qilamiz.',
       missionTitle: 'Bizning Missiyamiz',
       missionDesc: 'Aniq texnik shartlarga qat’iy rioya qilish va uzluksiz logistika orqali xalqaro ishlab chiqaruvchilar va qadoqlash korxonalariga barqaror ta’minot kafolatini berish.',
       visionTitle: 'Kelajakdagi Rejalarimiz',
