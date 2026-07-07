@@ -110,7 +110,7 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <span className="section-tag">{t.holding.industriesTitle}</span>
-            <h2 className="section-title">Two Business Worlds. One <span>Global Standards</span> Ecosystem.</h2>
+            <h2 className="section-title">{t.holding.industriesHeadline}</h2>
             <p className="section-subtitle">{t.holding.industriesSubtitle}</p>
           </div>
 
@@ -141,7 +141,7 @@ export default function Home() {
                   background: 'linear-gradient(180deg, transparent 40%, #070b13 100%)'
                 }}></div>
                 <div style={{ position: 'absolute', bottom: '24px', left: '32px' }}>
-                  <span className="technical-badge">Steel & Metallurgy</span>
+                  <span className="technical-badge">{t.holding.badgeIndustrial}</span>
                 </div>
               </div>
               <div style={{ padding: '40px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -199,7 +199,7 @@ export default function Home() {
                   background: 'linear-gradient(180deg, transparent 40%, #070b13 100%)'
                 }}></div>
                 <div style={{ position: 'absolute', bottom: '24px', left: '32px' }}>
-                  <span className="organic-badge" style={{ background: 'rgba(30, 61, 50, 0.8)', color: '#ffffff', borderColor: 'transparent' }}>Organic Certified</span>
+                  <span className="organic-badge" style={{ background: 'rgba(30, 61, 50, 0.8)', color: '#ffffff', borderColor: 'transparent' }}>{t.holding.badgeAgro}</span>
                 </div>
               </div>
               <div style={{ padding: '40px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>

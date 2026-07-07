@@ -30,11 +30,11 @@ export default function AboutPage() {
     }
   ];
 
-  const timelineItems = [
-    t.aboutPage.timeline.item1,
-    t.aboutPage.timeline.item2,
-    t.aboutPage.timeline.item3,
-    t.aboutPage.timeline.item4
+  const approachItems = [
+    t.aboutPage.approach.item1,
+    t.aboutPage.approach.item2,
+    t.aboutPage.approach.item3,
+    t.aboutPage.approach.item4
   ];
 
   return (
@@ -92,20 +92,24 @@ export default function AboutPage() {
               lineHeight: 1.7,
               marginBottom: '30px'
             }}>
-              {language === 'ru' 
+              {language === 'ru'
                 ? 'Узбекистан обладает богатейшей историей металлургии и аграрного дела. Обладая колоссальными запасами ресурсов, мы создали Zarvadiy LLC как единую профессиональную B2B-систему, которая выдерживает строжайшие европейские экологические и технические нормы для предоставления безукоризненного качества.'
                 : language === 'uz'
-                ? 'O‘zbekiston metallurgiya va agrar sohada boy tarixga ega. Ushbu ulkan resurslar bazasiga tayanib, biz Zarvadiy MChJni yevropa standartlari, ekologik va texnik talablariga to‘liq javob beruvchi yagona professional B2B-tizim sifatida tashkil etdik.'
-                : 'Central Asia possesses a legendary depth of metallurgical deposits and rich organic soils. Harnessing these world-class assets, Zarvadiy Holding acts as a professional B2B bridge, coordinating raw extraction, clean chromatic processing, and rigid laboratory compliance to deliver flawless container shipments globally.'}
+                  ? 'O‘zbekiston metallurgiya va agrar sohada boy tarixga ega. Ushbu ulkan resurslar bazasiga tayanib, biz Zarvadiy MChJni yevropa standartlari, ekologik va texnik talablariga to‘liq javob beruvchi yagona professional B2B-tizim sifatida tashkil etdik.'
+                  : 'Central Asia possesses a legendary depth of metallurgical deposits and rich organic soils. Harnessing these world-class assets, Zarvadiy Holding acts as a professional B2B bridge, coordinating raw extraction, clean chromatic processing, and rigid laboratory compliance to deliver flawless container shipments globally.'}
             </p>
             <div style={{ display: 'flex', gap: '24px' }}>
               <div>
                 <strong style={{ display: 'block', fontSize: '1.5rem', color: 'var(--primary-copper-hover)' }}>EU / MENA</strong>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Target B2B Corridors</span>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                  {language === 'ru' ? 'Целевые рынки' : language === 'uz' ? 'Maqsadli bozorlar' : 'Target B2B Markets'}
+                </span>
               </div>
               <div style={{ borderLeft: '1px solid rgba(255,255,255,0.1)', paddingLeft: '24px' }}>
                 <strong style={{ display: 'block', fontSize: '1.5rem', color: 'var(--primary-copper-hover)' }}>HACCP & ISO</strong>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Quality Certifications</span>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                  {language === 'ru' ? 'Контроль качества' : language === 'uz' ? 'Sifat nazorati' : 'Quality Certifications'}
+                </span>
               </div>
             </div>
           </div>
@@ -132,7 +136,9 @@ export default function AboutPage() {
               background: 'linear-gradient(to bottom, rgba(7, 11, 19, 0) 40%, rgba(7, 11, 19, 0.9) 100%)'
             }}></div>
             <div style={{ position: 'absolute', bottom: '30px', left: '30px', right: '30px' }}>
-              <span style={{ color: 'var(--primary-copper)', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Export Philosophy</span>
+              <span style={{ color: 'var(--primary-copper)', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                {language === 'ru' ? 'Философия работы' : language === 'uz' ? 'Ish falsafamiz' : 'Export Philosophy'}
+              </span>
               <p style={{ color: '#ffffff', fontSize: '1.1rem', fontWeight: 600, marginTop: '8px', lineHeight: 1.4 }}>
                 {language === 'ru' ? '«Бескомпромиссная надежность в каждой отправленной партии»' : language === 'uz' ? '«Har bir yetkazilgan mahsulotda so‘zsiz ishonch»' : '“Uncompromising reliability in every single dispatched shipment.”'}
               </p>
@@ -169,13 +175,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. HISTORICAL TIMELINE */}
+      {/* 4. OUR APPROACH */}
       <section className="section" style={{ background: '#04070d' }}>
         <div className="container">
           <div className="section-header">
-            <span className="section-tag">{t.aboutPage.timeline.title}</span>
-            <h2 className="section-title">Milestones of <span>Strategic Expansion</span></h2>
-            <p className="section-subtitle">A chronological look at how Zarvadiy consolidated its multi-industry export channels.</p>
+            <span className="section-tag">{t.aboutPage.approach.tag}</span>
+            <h2 className="section-title">{t.aboutPage.approach.title}</h2>
+            <p className="section-subtitle">{t.aboutPage.approach.subtitle}</p>
           </div>
 
           <div style={{
@@ -184,7 +190,7 @@ export default function AboutPage() {
             gap: '30px',
             marginTop: '50px'
           }}>
-            {timelineItems.map((item, idx) => (
+            {approachItems.map((item, idx) => (
               <div key={idx} className="glass-card" style={{
                 position: 'relative',
                 padding: '40px 30px',
@@ -202,7 +208,7 @@ export default function AboutPage() {
                   position: 'absolute',
                   top: '20px',
                   right: '24px'
-                }}>{item.year}</div>
+                }}>{String(idx + 1).padStart(2, '0')}</div>
                 <h4 style={{ color: '#ffffff', fontSize: '1.25rem', fontWeight: 600, marginTop: '20px' }}>{item.title}</h4>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6 }}>{item.desc}</p>
               </div>
@@ -215,10 +221,18 @@ export default function AboutPage() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <span className="section-tag">Principles</span>
-            <h2 className="section-title">Our Operating Principles</h2>
+            <span className="section-tag">
+              {language === 'ru' ? 'Принципы' : language === 'uz' ? 'Tamoyillar' : 'Principles'}
+            </span>
+            <h2 className="section-title">
+              {language === 'ru' ? 'Наши рабочие принципы' : language === 'uz' ? 'Bizning tamoyillarimiz' : 'Our Operating Principles'}
+            </h2>
             <p className="section-subtitle">
-              The core values that guide our export operations, customer coordination, and quality criteria.
+              {language === 'ru'
+                ? 'Принципы, которые направляют наш экспорт, координацию с клиентами и контроль качества.'
+                : language === 'uz'
+                  ? "Eksport faoliyatimiz, mijozlar bilan muloqot va sifat nazoratini yo'naltiruvchi tamoyillar."
+                  : 'The core values that guide our export operations, customer coordination, and quality criteria.'}
             </p>
           </div>
 
