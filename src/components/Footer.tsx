@@ -170,7 +170,7 @@ export const Footer: React.FC = () => {
               <div>
                 <strong style={{ color: titleColor }}>{t.contactPage.email}:</strong><br />
                 <a
-                  href="mailto:sales@zarvadiy.com"
+                  href="mailto:info@zarvadiy.com"
                   title="Email undergoing system maintenance. Please submit the contact form or message us via WhatsApp."
                   style={{ color: isAgro ? '#ffffff' : 'var(--text-white)' }}
                   onClick={(e) => {
@@ -178,7 +178,7 @@ export const Footer: React.FC = () => {
                     alert("Our email server is currently undergoing scheduled maintenance. Please submit your request using the contact form or contact our WhatsApp Trade Desk directly.");
                   }}
                 >
-                  sales@zarvadiy.com
+                  info@zarvadiy.com
                 </a>
               </div>
             </div>

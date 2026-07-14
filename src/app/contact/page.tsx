@@ -62,7 +62,7 @@ export default function ContactPage() {
                 <div>
                   <h4 style={infoLabelStyle}>{t.contactPage.email}</h4>
                   <a 
-                    href="mailto:sales@zarvadiy.com" 
+                    href="mailto:info@zarvadiy.com" 
                     title="Email undergoing system maintenance. Please submit the contact form or message us via WhatsApp."
                     style={infoValueStyle}
                     onClick={(e) => {
@@ -70,7 +70,7 @@ export default function ContactPage() {
                       alert("Our email server is currently undergoing scheduled maintenance. Please submit your request using the contact form or contact our WhatsApp Trade Desk directly.");
                     }}
                   >
-                    sales@zarvadiy.com
+                    info@zarvadiy.com
                   </a>
                 </div>
               </div>
