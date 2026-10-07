@@ -165,7 +165,7 @@ export default function AgroDivisionPage() {
             <h1 style={{
               fontSize: 'clamp(2.4rem, 5.5vw, 4.2rem)',
               lineHeight: 1.15,
-              fontWeight: 800,
+              fontWeight: 600,
               color: 'var(--text-earthy-dark)',
               marginBottom: '24px',
               letterSpacing: '-0.02em'
@@ -409,7 +409,7 @@ export default function AgroDivisionPage() {
             }}>
               <div>
                 <span className="organic-badge" style={{ background: 'rgba(255, 255, 255, 0.15)', color: '#ffffff', borderColor: 'transparent' }}>Calibrated Cans</span>
-                <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginTop: '16px', color: '#ffffff' }}>Can Packaging</h3>
+                <h3 style={{ fontSize: '1.8rem', fontWeight: 600, marginTop: '16px', color: '#ffffff' }}>Can Packaging</h3>
                 <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.95rem', lineHeight: 1.6, marginTop: '12px' }}>
                   {language === 'ru' ? 'Жесткие жестяные и композитные круглые банки с металлизированным барьером и инертным газом. Идеально для длительного хранения.' : language === 'uz' ? 'Uzoq muddatli saqlash uchun mo‘ljallangan, metall to‘siqli va inert gazli qattiq jele va kompozit qutilar.' : 'Rigid gas-flushed composite cans featuring vacuum-sealed protective foil grids for long-distance transport.'}
                 </p>
@@ -432,7 +432,7 @@ export default function AgroDivisionPage() {
             }}>
               <div>
                 <span className="organic-badge" style={{ background: 'rgba(30, 61, 50, 0.05)', color: 'var(--accent-green)' }}>Flexible Pouches</span>
-                <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginTop: '16px', color: 'var(--text-earthy-dark)' }}>Pouch Packaging</h3>
+                <h3 style={{ fontSize: '1.8rem', fontWeight: 600, marginTop: '16px', color: 'var(--text-earthy-dark)' }}>Pouch Packaging</h3>
                 <p style={{ color: 'var(--text-earthy-muted)', fontSize: '0.95rem', lineHeight: 1.6, marginTop: '12px' }}>
                   {language === 'ru' ? 'Премиум дой-паки с прозрачным окном, zip-lock замком и еврослотом. Идеальный выбор для розничных полок супермаркетов.' : language === 'uz' ? 'Shaffof oyna, zip-lock qulfi va yevroslotli premium doy-paklar. Supermarket javonlari uchun eng to‘g‘ri tanlov.' : 'High-barrier flexible Stand-Up pouches with secure zip locks, hang slots, and custom display window slots.'}
                 </p>

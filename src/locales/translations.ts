@@ -10,68 +10,78 @@ export const translations = {
       contact: 'Contact'
     },
     hero: {
-      tagline: 'Multi-Industry B2B Holding Platform',
-      title: 'Two Business Worlds. One Global Standards Ecosystem.',
-      subtitle: 'Connecting international B2B buyers with reliable, high-quality industrial copper metallurgy and ecologically pure organic agricultural harvests.',
-      cta: 'Explore Divisions',
-      ctaQuote: 'Request Sourcing Quote',
-      statHolding: 'Industrial & Agro Divisions',
-      statExport: 'Target Export Corridors',
-      statQuality: 'HACCP & ISO Quality Compliant'
+      tagline: 'B2B Market Access & Business Development',
+      title: 'ZARVADIY',
+      subtitle: 'We help Uzbek producers reach international buyers, and support international companies developing business in Uzbekistan.',
+      cta: 'Go Global',
+      ctaQuote: 'Enter Uzbekistan',
+      statHolding: 'Market development',
+      statExport: 'Sourcing',
+      statQuality: 'Business introductions',
+      statCoordination: 'Commercial coordination'
     },
     holding: {
-      industriesTitle: 'Our Divisions',
-      industriesSubtitle: 'Two independent business verticals operating under international quality, compliance, and supply chain standards.',
+      industriesTitle: 'What We Do',
+      industriesSubtitle: 'We work across three areas where Uzbekistan meets the world.',
       industrialCard: {
-        title: 'Industrial Division',
-        desc: 'Copper pipelines, pancake coils, level wound coils, straight tubes, and structural fittings for HVAC, electrical, plumbing, and mechanical OEMs worldwide.',
-        cta: 'View Industrial Division'
+        title: 'Industrial Products & HVAC/R',
+        desc: 'Copper tubes · Components · Industrial supply',
+        cta: 'Explore Industrial →'
       },
       agroCard: {
-        title: 'Agricultural Division',
-        desc: 'Organic sun-dried apricots, chromatically sorted seedless raisins, dark prunes, and walnuts processed under strict HACCP guidelines for European packing chains.',
-        cta: 'View Agro Division'
+        title: 'Uzbek Dried Fruits & Gift Collections',
+        desc: 'Dried fruits · Nuts · Gift collections',
+        cta: 'Explore Food & Gift →'
+      },
+      techCard: {
+        title: 'Telecom & Connectivity',
+        desc: 'Coming soon',
+        cta: 'Contact us →'
       },
       process: {
-        title: 'Export Process',
-        subtitle: 'Our structured international trade workflow guarantees total transparency, rigorous laboratory controls, and secure logistics handling from initial inquiry to final delivery.',
+        title: 'How We Work',
+        subtitle: 'A clear, five-step process from first conversation to commercial outcome.',
         step1: {
-          title: '01 / Sourcing RFQ',
-          desc: 'Submit technical drawings, calibration specifications, volume metrics, and destination Incoterms directly to our commercial trading desk.'
+          title: '01 Understand',
+          desc: 'We define the product, market and commercial requirement.'
         },
         step2: {
-          title: '02 / Sourcing & Production',
-          desc: 'Metallurgical raw materials are processed or organic harvests are prepared at our certified processing hubs under ISO controls.'
+          title: '02 Identify',
+          desc: 'We identify suitable suppliers, buyers or business partners.'
         },
         step3: {
-          title: '03 / Quality Assurance',
-          desc: 'Third-party inspections, non-destructive testing for copper, and chromatic sorting for dried fruits guarantee perfect product compliance.'
+          title: '03 Connect',
+          desc: 'We make the right commercial introductions.'
         },
         step4: {
-          title: '04 / Export Logistics',
-          desc: 'Custom heavy export wrapping, robust wooden cradles, or vacuum polymer cases are deployed for seamless sea and overland transit.'
+          title: '04 Develop',
+          desc: 'We support specifications, quotations and negotiations.'
         },
         step5: {
-          title: '05 / Secure Destination Delivery',
-          desc: 'Shipments clear import corridors safely, with full traceability certificates, customs clearance support, and port-to-warehouse handovers.'
+          title: '05 Coordinate',
+          desc: 'Where agreed, we stay involved through the transaction and delivery process.'
         }
       },
       markets: {
-        title: 'International Markets',
-        subtitle: 'We connect Central Asia raw material sources directly to distribution hubs across Europe, MENA, and Asia.',
-        europe: 'Regular container shipments to industrial plants and food packaging facilities in Germany, Poland, and Southern Europe.',
-        mena: 'Direct ocean freight to major B2B trading zones in the UAE, Saudi Arabia, and North African markets.',
-        cis: 'Direct container shipments and rail logistics across neighboring Central Asian republics.',
-        asia: 'Reliable supply chains linking manufacturers and wholesale buyers in East and South Asia.'
+        title: 'For Businesses',
+        subtitle: 'Two directions. One purpose — real commercial outcomes.',
+        europe: 'For Uzbek manufacturers and producers seeking international buyers and distributors.',
+        mena: 'Buyer identification · Distributor search · Export opportunity development',
+        cis: 'For international companies seeking local partners, customers and market insight.',
+        asia: 'Market research · Local introductions · Business development',
+        exploreExport: 'Explore Export Markets →',
+        exploreUzbek: 'Explore the Uzbek Market →'
       },
       ctaBlock: {
-        title: 'Get in Touch About Export & Logistics',
-        subtitle: 'Our trade coordinators can provide pricing, compliance documents, and arrange sample shipments for your company.',
-        whatsapp: 'Contact via WhatsApp'
+        title: 'Tell us what you are looking for.',
+        subtitle: 'Describe your requirement and we will come back to you directly.',
+        whatsapp: 'Message us on WhatsApp'
       },
-      badgeIndustrial: 'STEEL & METALLURGY',
-      badgeAgro: 'ORGANIC CERTIFIED',
-      industriesHeadline: 'Two Business Worlds. One Global Standards Ecosystem.'
+      badgeIndustrial: 'INDUSTRIAL',
+      badgeAgro: 'FOOD & GIFT',
+      badgeTech: 'TECHNOLOGY',
+      approach: { label: 'Our Approach' },
+      industriesHeadline: 'Clear. Connected. Commercial.'
     },
     industrial: {
       heroTitle: 'B2B Sourcing and Export of Certified Industrial Copper Products',
@@ -345,28 +355,28 @@ export const translations = {
       }
     },
     contactPage: {
-      title: 'Start a Sourcing Consultation',
-      subtitle: 'Request product samples, technical specifications, or shipping quotes from our trade specialists.',
-      infoTitle: 'Our Trading Offices',
-      email: 'Corporate Email',
-      phone: 'Direct Line',
-      address: 'Head Office',
+      title: 'Request a Quote',
+      subtitle: 'Tell us what you are looking for and we will get back to you.',
+      infoTitle: 'Our Office',
+      email: 'Email',
+      phone: 'Phone / WhatsApp',
+      address: 'Address',
       addressValue: 'Osh Street 57, Yashnobod District, Tashkent, Uzbekistan',
-      formTitle: 'Send an Inquiry (RFQ)',
-      formSubtitle: 'Describe your requirements and our trade desk will reply with pricing and delivery terms within 24 hours.',
-      formSuccess: 'Thank you! Your inquiry has been sent to our trade desk. A coordinator will contact you shortly.',
-      formError: 'Error! Please fill out all required fields marked with an asterisk (*).',
-      formName: 'Full Name',
-      formEmail: 'Business Email',
-      formPhone: 'Contact Number',
-      formCompany: 'Company Name',
-      formMsg: 'Sourcing Requirements',
-      formSubmit: 'Submit Request'
+      formTitle: 'Send a Request',
+      formSubtitle: 'Describe your requirement and we will come back to you directly.',
+      formSuccess: 'Thank you — we have received your request and will be in touch shortly.',
+      formError: 'Please fill out all required fields marked with an asterisk (*).',
+      formName: 'Name',
+      formEmail: 'Email',
+      formPhone: 'Phone / WhatsApp',
+      formCompany: 'Company',
+      formMsg: 'Product or service · Quantity (optional) · Destination country · Message',
+      formSubmit: 'Send Request'
     },
     footer: {
-      desc: 'Zarvadiy LLC is an export-oriented trading company supplying high-quality copper metallurgy and calibrated organic agricultural harvests globally from Central Asia.',
+      desc: 'ZARVADIY MChJ (LLC) · Tashkent, Uzbekistan · B2B market access and business development.',
       quickLinks: 'Navigation',
-      contactUs: 'Head Office',
+      contactUs: 'Contact',
       rights: 'All rights reserved.',
       credits: 'Built with care.'
     }
@@ -380,68 +390,78 @@ export const translations = {
       contact: 'Контакты'
     },
     hero: {
-      tagline: 'Многопрофильный B2B Экспортный Холдинг',
-      title: 'Два направления бизнеса — единые международные стандарты.',
-      subtitle: 'Надёжные поставки высококачественной медной металлургии для промышленности и экологически чистых сухофруктов и орехов для европейских фасовочных сетей.',
-      cta: 'Наши направления',
-      ctaQuote: 'Отправить запрос',
-      statHolding: 'Промышленное и аграрное направления',
-      statExport: 'Международные рынки',
-      statQuality: 'Стандарты HACCP и ISO 22000'
+      tagline: 'Доступ на рынок и развитие бизнеса B2B',
+      title: 'ZARVADIY',
+      subtitle: 'Мы помогаем узбекским производителям выйти на международных покупателей и поддерживаем международные компании в развитии бизнеса в Узбекистане.',
+      cta: 'Выйти на мировой рынок',
+      ctaQuote: 'Войти на рынок Узбекистана',
+      statHolding: 'Развитие рынков',
+      statExport: 'Поиск поставщиков',
+      statQuality: 'Деловые знакомства',
+      statCoordination: 'Коммерческое координирование'
     },
     holding: {
-      industriesTitle: 'Наши Направления',
-      industriesSubtitle: 'Два независимых направления бизнеса, работающих по международным стандартам качества, безопасности и контроля поставок.',
+      industriesTitle: 'Что мы делаем',
+      industriesSubtitle: 'Мы работаем в трёх направлениях, где Узбекистан встречается с миром.',
       industrialCard: {
-        title: 'Промышленное направление',
-        desc: 'Поставки медных бухт (Pancake), труб LWC для теплообменников, прямых труб ACR и фитингов для HVAC, систем отопления, водоснабжения и электротехники по всему миру.',
-        cta: 'Перейти в промышленный раздел'
+        title: 'Промышленная продукция и HVAC/R',
+        desc: 'Медные трубы · Комплектующие · Промышленные поставки',
+        cta: 'Промышленное направление →'
       },
       agroCard: {
-        title: 'Аграрное направление',
-        desc: 'Натуральная курага теневой сушки, калиброванный изюм лазерной сепарации, чернослив и ядра грецкого ореха. Полное соответствие стандартам HACCP для дистрибьюторов в ЕС.',
-        cta: 'Перейти в аграрный раздел'
+        title: 'Узбекские сухофрукты и подарочные коллекции',
+        desc: 'Сухофрукты · Орехи · Подарочные наборы',
+        cta: 'Продукты питания и подарки →'
+      },
+      techCard: {
+        title: 'Телекоммуникации и связь',
+        desc: 'Скоро',
+        cta: 'Связаться с нами →'
       },
       process: {
-        title: 'Процесс экспорта',
-        subtitle: 'Отлаженный цикл международной торговли обеспечивает полную прозрачность, лабораторный контроль и безопасную доставку груза.',
+        title: 'Как мы работаем',
+        subtitle: 'Чёткий пятишаговый процесс — от первого разговора до коммерческого результата.',
         step1: {
-          title: '01 / Запрос и Спецификация',
-          desc: 'Отправьте нам технические чертежи, калибровки, объемы и желаемые Инкотермс на рассмотрение нашего торгового отдела.'
+          title: '01 Понять',
+          desc: 'Мы определяем продукт, рынок и коммерческое требование.'
         },
         step2: {
-          title: '02 / Производство и Подготовка',
-          desc: 'Металл проходит вытяжку, а аграрная продукция сортируется на наших сертифицированных хабах под строгим контролем ISO.'
+          title: '02 Найти',
+          desc: 'Мы находим подходящих поставщиков, покупателей или деловых партнёров.'
         },
         step3: {
-          title: '03 / Контроль Качества',
-          desc: 'Обязательные вихретоковые тесты для медных труб и лазерная сепарация для сухофруктов гарантируют 99.9% чистоты продукта.'
+          title: '03 Познакомить',
+          desc: 'Мы организуем нужные коммерческие знакомства.'
         },
         step4: {
-          title: '04 / Упаковка и Погрузка',
-          desc: 'Надежные деревянные ложементы, стальные катушки или вакуумные полимерные пакеты предотвращают любые повреждения при транспортировке.'
+          title: '04 Развить',
+          desc: 'Мы помогаем со спецификациями, коммерческими предложениями и переговорами.'
         },
         step5: {
-          title: '05 / Доставка Покупателю',
-          desc: 'Груз благополучно проходит таможню с полным пакетом документов (EN 10204 3.1, фитосанитарный контроль) до склада заказчика.'
+          title: '05 Координировать',
+          desc: 'При необходимости мы сопровождаем сделку и процесс доставки.'
         }
       },
       markets: {
-        title: 'Международные рынки',
-        subtitle: 'Мы связываем сырьевую базу Центральной Азии с производственными и дистрибьюторскими центрами Европы, Ближнего Востока и Азии.',
-        europe: 'Регулярные контейнерные поставки на промышленные заводы и фасовочные предприятия Германии, Польши и Южной Европы.',
-        mena: 'Прямые морские фрахты в ключевые торговые зоны ОАЭ, Саудовской Аравии и стран Северной Африки.',
-        cis: 'Железнодорожные и автомобильные маршруты в соседние страны СНГ.',
-        asia: 'Надёжные цепочки поставок для промышленных предприятий и оптовых импортёров Восточной и Южной Азии.'
+        title: 'Для бизнеса',
+        subtitle: 'Два направления. Одна цель — реальный коммерческий результат.',
+        europe: 'Для узбекских производителей, ищущих международных покупателей и дистрибьюторов.',
+        mena: 'Поиск покупателей · Поиск дистрибьюторов · Развитие экспортных возможностей',
+        cis: 'Для международных компаний, ищущих местных партнёров, клиентов и понимание рынка.',
+        asia: 'Исследование рынка · Местные знакомства · Развитие бизнеса',
+        exploreExport: 'Экспортные рынки →',
+        exploreUzbek: 'Рынок Узбекистана →'
       },
       ctaBlock: {
-        title: 'Обсудите поставку и логистику с нашей командой',
-        subtitle: 'Наши специалисты предоставят прайс-листы, спецификации и организуют отправку образцов для вашей лаборатории.',
+        title: 'Расскажите, что вы ищете.',
+        subtitle: 'Опишите ваш запрос — мы ответим напрямую.',
         whatsapp: 'Написать в WhatsApp'
       },
-      badgeIndustrial: 'СТАЛЬ И МЕТАЛЛУРГИЯ',
-      badgeAgro: 'ОРГАНИЧЕСКИЙ СЕРТИФИКАТ',
-      industriesHeadline: 'Два направления бизнеса — единые международные стандарты.'
+      badgeIndustrial: 'ПРОМЫШЛЕННОСТЬ',
+      badgeAgro: 'ПРОДУКТЫ И ПОДАРКИ',
+      badgeTech: 'ТЕХНОЛОГИИ',
+      approach: { label: 'Наш подход' },
+      industriesHeadline: 'Чётко. Связано. Коммерчески.'
     },
     industrial: {
       heroTitle: 'Поставки Медного Проката из Узбекистана для Мировой Промышленности',
@@ -715,28 +735,28 @@ export const translations = {
       }
     },
     contactPage: {
-      title: 'Начать консультацию по поставке',
-      subtitle: 'Запросите образцы продукции, технические спецификации или расчёт логистики у наших специалистов.',
-      infoTitle: 'Наши торговые офисы',
-      email: 'Корпоративная электронная почта',
-      phone: 'Номер телефона',
-      address: 'Головной офис',
+      title: 'Оставить заявку',
+      subtitle: 'Опишите ваш запрос — мы ответим напрямую.',
+      infoTitle: 'Наш офис',
+      email: 'Электронная почта',
+      phone: 'Телефон / WhatsApp',
+      address: 'Адрес',
       addressValue: 'Узбекистан, г. Ташкент, Яшнабадский р-н, ул. Ош, 57',
-      formTitle: 'Отправить запрос (RFQ)',
-      formSubtitle: 'Опишите ваши требования, и наш отдел ответит с расчётом цены и условий доставки в течение 24 часов.',
-      formSuccess: 'Спасибо! Ваш запрос успешно отправлен. Наш координатор свяжется с вами в ближайшее время.',
-      formError: 'Ошибка! Пожалуйста, заполните все обязательные поля, отмеченные звёздочкой (*).',
-      formName: 'Полное имя',
-      formEmail: 'Корпоративная электронная почта',
-      formPhone: 'Номер телефона',
-      formCompany: 'Название компании',
-      formMsg: 'Требования к заказу',
-      formSubmit: 'Отправить запрос'
+      formTitle: 'Отправить заявку',
+      formSubtitle: 'Опишите ваш запрос — мы ответим напрямую.',
+      formSuccess: 'Спасибо — мы получили вашу заявку и скоро свяжемся с вами.',
+      formError: 'Пожалуйста, заполните все обязательные поля, отмеченные звёздочкой (*).',
+      formName: 'Имя',
+      formEmail: 'Электронная почта',
+      formPhone: 'Телефон / WhatsApp',
+      formCompany: 'Компания',
+      formMsg: 'Товар или услуга · Количество (необязательно) · Страна назначения · Сообщение',
+      formSubmit: 'Отправить заявку'
     },
     footer: {
-      desc: 'ООО Zarvadiy — экспортно-ориентированная торговая компания, осуществляющая поставки высококачественного медного проката и калиброванной агропродукции по всему миру.',
+      desc: 'ZARVADIY MChJ (ООО) · Ташкент, Узбекистан · Доступ на рынок и развитие бизнеса B2B.',
       quickLinks: 'Разделы сайта',
-      contactUs: 'Головной офис',
+      contactUs: 'Контакты',
       rights: 'Все права защищены.',
       credits: 'Разработано с вниманием к качеству.'
     }
@@ -750,68 +770,78 @@ export const translations = {
       contact: 'Aloqa'
     },
     hero: {
-      tagline: 'Ko‘p Tarmoqli B2B Eksport Xoldingi',
-      title: 'Xalqaro Eksport Va B2B Ta’minot Yechimlari',
-      subtitle: 'Nufuzli xalqaro B2B xaridorlari uchun sanoat mis metallurgiyasi va ekologik toza quritilgan mevalarni ishonchli va kafolatlangan yetkazib berish.',
-      cta: 'Bizning bo‘limlar',
-      ctaQuote: 'Narxni hisoblashni so‘rash',
-      statHolding: 'Sanoat va Agro Departamenti',
-      statExport: 'Eksport koridorlari',
-      statQuality: 'HACCP va ISO 22000 standartlari'
+      tagline: 'B2B Bozor Kirishi va Biznes Rivojlantirish',
+      title: 'ZARVADIY',
+      subtitle: "Biz oʻzbek ishlab chiqaruvchilarning xalqaro xaridorlarga chiqishiga yordam beramiz va xalqaro kompaniyalarning Oʻzbekistondagi biznesini qoʻllab-quvvatlaymiz.",
+      cta: "Global bozorga chiqish",
+      ctaQuote: "Oʻzbekistonga kirish",
+      statHolding: 'Bozorni rivojlantirish',
+      statExport: "Taʻminot topish",
+      statQuality: 'Biznes tanishuvlari',
+      statCoordination: 'Tijoriy muvofiqlashtirish'
     },
     holding: {
-      industriesTitle: 'Bizning Yo‘nalishlar',
-      industriesSubtitle: 'Yuqori xalqaro sifat, sanitariya va yetkazib berish nazorati standartlarida faoliyat yurituvchi ikkita mustaqil biznes dunyosi.',
+      industriesTitle: "Nima qilamiz",
+      industriesSubtitle: "Biz Oʻzbekiston dunyo bilan uchrashgan uchta yoʻnalishda ishlaymiz.",
       industrialCard: {
-        title: 'Sanoat Departamenti',
-        desc: 'Butun dunyo bo‘ylab HVAC, issiqlik almashinuvchilari, suv va gaz tizimlari uchun mis quvurlari, LWC buxtalari, ACR to‘g‘ri quvurlari va mis fitinglarini eksport qilish.',
-        cta: 'Sanoat bo‘limiga o‘tish'
+        title: 'Sanoat mahsulotlari va HVAC/R',
+        desc: "Mis quvurlari · Komponentlar · Sanoat taʻminoti",
+        cta: "Sanoat yoʻnalishi →"
       },
       agroCard: {
-        title: 'Qishloq Xo‘jaligi Departamenti',
-        desc: 'HACCP standartlarida tayyorlangan tabiiy soya quritilgan o‘rik (turshak), kalibrlangan lazerli mayiz, olxo‘ri qoqi (chernosliv) va yong‘oq mag‘zi eksporti.',
-        cta: 'Agro bo‘limiga o‘tish'
+        title: "Oʻzbek quritilgan mevalari va sovgʻa toʻplamlari",
+        desc: "Quritilgan mevalar · Yongʻoqlar · Sovgʻa toʻplamlari",
+        cta: "Oziq-ovqat va sovgʻalar →"
+      },
+      techCard: {
+        title: 'Telekommunikatsiya va ulanish',
+        desc: 'Tez orada',
+        cta: "Biz bilan bogʻlaning →"
       },
       process: {
-        title: 'Eksport jarayoni',
-        subtitle: 'Xalqaro savdoning mukammal tizimi to‘liq shaffoflikni, laboratoriya nazoratini va yukning xavfsiz yetkazilishini kafolatlaydi.',
+        title: 'Biz qanday ishlaymiz',
+        subtitle: "Birinchi suhbatdan tijorat natijasigacha — aniq besh bosqich.",
         step1: {
-          title: '01 / So‘rov va Texnik Shartlar',
-          desc: 'Bizga kerakli o‘lchamlar, hajmlar va kerakli Inkoterms shartlarini savdo bo‘limimizga yuboring.'
+          title: '01 Tushunish',
+          desc: 'Biz mahsulot, bozor va tijorat talabini aniqlaymiz.'
         },
         step2: {
-          title: '02 / Ishlab Chiqarish',
-          desc: 'Mis quvurlari tortiladi, qishloq xo‘jaligi mahsulotlari esa sertifikatlangan xablarimizda saralanadi.'
+          title: '02 Topish',
+          desc: "Biz mos taʻminotchilar, xaridorlar yoki biznes hamkorlarni aniqlaymiz."
         },
         step3: {
-          title: '03 / Sifat Nazorati',
-          desc: 'Mis quvurlari uchun magnit-induksion testlar va quritilgan mevalar uchun lazerli chromatic saralash 99.9% tozalikni beradi.'
+          title: '03 Tanishtirish',
+          desc: "Biz toʻgʻri tijorat tanishuvlarini amalga oshiramiz."
         },
         step4: {
-          title: '04 / Eksportbop Qadoqlash',
-          desc: 'Yukning shikastlanishini oldini olish uchun mustahkam yog‘och qutilar va vakuum qadoqlar qo‘llaniladi.'
+          title: '04 Rivojlantirish',
+          desc: "Biz texnik shartlar, narx takliflari va muzokaralarni qoʻllab-quvvatlaymiz."
         },
         step5: {
-          title: '05 / Xaridorga Yetkazish',
-          desc: 'Yuk barcha sertifikatlar (EN 10204 3.1, fitosanitariya) bilan birga mijoz omborigacha xavfsiz yetkaziladi.'
+          title: '05 Muvofiqlashtirish',
+          desc: 'Kelishilgan hollarda biz bitim va yetkazib berish jarayonida ishtirok etamiz.'
         }
       },
       markets: {
-        title: 'Xalqaro bozorlar',
-        subtitle: 'Markaziy Osiyoning boy xomashyo bazalarini Yevropa, Yaqin Sharq va Osiyoning yirik savdo va sanoat tarmoqlari bilan bog‘laymiz.',
-        europe: 'Germaniya, Polsha va Janubiy Yevropadagi sanoat zavodlari hamda qadoqlash korxonalariga doimiy eksport.',
-        mena: 'BAA, Saudiya Arabistoni va Shimoliy Afrika portlariga to‘g‘ridan-to‘g‘ri dengiz konteyner yetkazmalari.',
-        cis: 'Qo‘shni MDH mamlakatlariga tezkor temir yo‘l va avtotransport koridorlari.',
-        asia: 'Sharqiy va Janubiy Osiyodagi yirik importyorlar va ulgurji savdogarlar uchun ishonchli ta’minot zanjiri.'
+        title: 'Biznes uchun',
+        subtitle: "Ikki yoʻnalish. Bitta maqsad — haqiqiy tijorat natijalari.",
+        europe: "Xalqaro xaridorlar va distribyutorlar izlayotgan oʻzbek ishlab chiqaruvchilari uchun.",
+        mena: "Xaridor topish · Distribyutor qidirish · Eksport imkoniyatlarini rivojlantirish",
+        cis: "Mahalliy hamkorlar, mijozlar va bozor tushunchasi izlayotgan xalqaro kompaniyalar uchun.",
+        asia: "Bozorni oʻrganish · Mahalliy tanishuvlar · Biznesni rivojlantirish",
+        exploreExport: "Eksport bozorlarini ko'rish →",
+        exploreUzbek: "O'zbek bozorini ko'rish →"
       },
       ctaBlock: {
-        title: 'Eksport va logistika bo’yicha biz bilan bog’laning',
-        subtitle: 'Mutaxassislarimiz tezkor ravishda narxlar, texnik shartlarni taqdim etadi va laboratoriyangiz uchun namunalar yuborishni tashkil qiladi.',
-        whatsapp: 'WhatsApp orqali bog’lanish'
+        title: 'Nima izlayotganingizni ayting.',
+        subtitle: "Talabingizni yozing — biz toʻgʻri javob beramiz.",
+        whatsapp: 'WhatsApp orqali yozish'
       },
-      badgeIndustrial: 'PO’LAT VA METALLURGIYA',
-      badgeAgro: 'ORGANIK SERTIFIKATLANGAN',
-      industriesHeadline: 'Ikki biznes yo’nalishi — yagona xalqaro standartlar asosida.'
+      badgeIndustrial: 'SANOAT',
+      badgeAgro: "OZIQ-OVQAT VA SOVGʻALAR",
+      badgeTech: 'TEXNOLOGIYA',
+      approach: { label: "Bizning yondashuvimiz" },
+      industriesHeadline: "Aniq. Bogʻliq. Tijorat."
     },
     industrial: {
       heroTitle: 'Sanoat uchun yuqori sifatli mis mahsulotlari eksporti',
@@ -1085,28 +1115,28 @@ export const translations = {
       }
     },
     contactPage: {
-      title: 'Savdo Konsultatsiyalarini Boshlash',
-      subtitle: 'Mahsulot namunalari, texnik chizmalar, narxlar yoki logistika hisob-kitoblarini mutaxassislarimizdan so‘rang.',
-      infoTitle: 'Bizning Savdo Ofislarimiz',
+      title: 'Ariza yuborish',
+      subtitle: "Talabingizni yozing — biz toʻgʻri javob beramiz.",
+      infoTitle: 'Bizning ofisimiz',
       email: 'Elektron pochta',
-      phone: 'Savdo bo‘limi telefoni',
-      address: 'Bosh ofis',
-      addressValue: 'O‘zbekiston, Toshkent sh., Yashnobod tumani, Osh ko‘chasi, 57',
-      formTitle: 'So’rov / Tijorat so’rovi (RFQ) yuborish',
-      formSubtitle: 'Buyurtmangizning texnik parametrlarini kiriting va bizning savdo bo‘limimiz 24 soat ichida narx va logistika hisob-kitobini taqdim etadi.',
-      formSuccess: 'Rahmat! Sizning so‘rovingiz savdo bo‘limimizga muvaffaqiyatli yuborildi. Tez orada savdo koordinatori siz bilan bog‘lanadi.',
-      formError: 'Xato! Iltimos, yulduzcha (*) bilan belgilangan barcha majburiy maydonlarni to‘ldiring.',
-      formName: 'To’liq ism',
-      formEmail: 'Korporativ e-pochta',
-      formPhone: 'Telefon raqami',
-      formCompany: 'Kompaniya nomi',
-      formMsg: 'Buyurtma tafsilotlari / Ta’minot talablari',
-      formSubmit: 'So’rov yuborish'
+      phone: 'Telefon / WhatsApp',
+      address: 'Manzil',
+      addressValue: "Oʻzbekiston, Toshkent sh., Yashnobod tumani, Osh koʻchasi, 57",
+      formTitle: 'Ariza yuborish',
+      formSubtitle: "Talabingizni yozing — biz toʻgʻri javob beramiz.",
+      formSuccess: "Rahmat — arizangizni qabul qildik va tez orada siz bilan bogʻlanamiz.",
+      formError: "Iltimos, yulduzcha (*) bilan belgilangan barcha majburiy maydonlarni toʻldiring.",
+      formName: 'Ism',
+      formEmail: 'Elektron pochta',
+      formPhone: 'Telefon / WhatsApp',
+      formCompany: 'Kompaniya',
+      formMsg: "Mahsulot yoki xizmat · Miqdor (ixtiyoriy) · Manzil davlat · Xabar",
+      formSubmit: 'Ariza yuborish'
     },
     footer: {
-      desc: 'Zarvadiy MChJ — jahon bozorlariga yuqori sifatli mis metallurgiyasi mahsulotlari va kalibrlangan agro mahsulotlarni uzluksiz yetkazib beruvchi xalqaro eksport xoldingidir.',
-      quickLinks: 'Sayt bo‘limlari',
-      contactUs: 'Bosh ofis',
+      desc: "ZARVADIY MChJ · Toshkent, Oʻzbekiston · B2B bozor kirishi va biznes rivojlantirish.",
+      quickLinks: "Sayt boʻlimlari",
+      contactUs: 'Aloqa',
       rights: 'Barcha huquqlar himoyalangan.',
       credits: 'Premium standartlar asosida ishlab chiqilgan.'
     }

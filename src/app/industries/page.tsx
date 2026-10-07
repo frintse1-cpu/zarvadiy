@@ -25,7 +25,7 @@ export default function IndustriesPage() {
             fontFamily: 'var(--font-serif)',
             fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)',
             color: 'var(--text-white)',
-            fontWeight: 800,
+            fontWeight: 600,
             lineHeight: 1.2
           }}>
             {language === 'ru' ? 'Наши Отрасли и Направления' : language === 'uz' ? 'Bizning Sanoat Tarmoqlarimiz' : 'Our Specialized Industries'}

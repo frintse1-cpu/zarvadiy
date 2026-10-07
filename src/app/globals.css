@@ -1,36 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+/* Fonts loaded via next/font/google in layout.tsx — no @import needed */
 
 :root {
-  /* Colors */
+  /* ── Brand colours ── */
+  --navy:    #0A1628;
+  --ivory:   #F8F6F1;
+  --gold:    #C9A24B;
+
+  /* ── Accent colours (small details only) ── */
+  --copper:   #B87333; /* Industrial */
+  --burgundy: #7C2D2D; /* Food & Gift */
+  --blue:     #2563EB; /* Technology */
+
+  /* ── Legacy aliases (kept for sub-page compatibility) ── */
   --bg-dark: #070b13;
   --bg-card: rgba(15, 23, 42, 0.6);
   --bg-card-hover: rgba(30, 41, 59, 0.8);
-
-  --primary-copper: #c87a3e;
-  --primary-copper-rgb: 200, 122, 62;
-  --primary-copper-hover: #e09255;
-  --primary-copper-glow: rgba(200, 122, 62, 0.15);
-
-  --accent-gold: #d4af37;
-  --accent-gold-rgb: 212, 175, 55;
-  --accent-gold-hover: #ebd068;
-
+  --primary-copper: #B87333;
+  --primary-copper-rgb: 184, 115, 51;
+  --primary-copper-hover: #d4924a;
+  --primary-copper-glow: rgba(184, 115, 51, 0.12);
+  --accent-gold: #C9A24B;
+  --accent-gold-rgb: 201, 162, 75;
+  --accent-gold-hover: #deba6a;
   --text-white: #ffffff;
   --text-silver: #cbd5e1;
   --text-muted: #64748b;
-  --border-color: rgba(200, 122, 62, 0.2);
-  --border-color-hover: rgba(200, 122, 62, 0.4);
+  --border-color: rgba(184, 115, 51, 0.18);
+  --border-color-hover: rgba(184, 115, 51, 0.36);
 
-  /* Fonts */
-  --font-sans: 'Outfit', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  /* ── Fonts (set by next/font via html className) ── */
+  --font-heading: var(--font-heading, 'Playfair Display', Georgia, serif);
+  --font-body:    var(--font-body, 'Inter', system-ui, sans-serif);
+  /* Legacy aliases */
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-heading);
 
-  /* Utilities */
+  /* ── Spacing & shape ── */
   --header-height: 80px;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --border-radius-sm: 8px;
-  --border-radius-md: 16px;
-  --border-radius-lg: 24px;
+  --border-radius-sm: 6px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
 }
 
 * {
@@ -47,8 +57,32 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-dark);
   color: var(--text-silver);
-  font-family: var(--font-sans);
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ── Global type scale ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; }
+h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.2; }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0; }
+
+/* Utility label class */
+.label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
 }
 
 /* Custom Scrollbar */
@@ -134,65 +168,63 @@ select {
   margin: 16px auto 0 auto;
 }
 
-/* Gradient text */
+/* Gradient text — kept for compatibility, use sparingly */
 .gradient-text {
-  background: linear-gradient(135deg, var(--text-white) 30%, var(--primary-copper) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-white);
 }
 
-/* Premium Buttons */
+/* ── Buttons ── */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 28px;
+  padding: 12px 28px;
   border-radius: var(--border-radius-sm);
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: var(--transition-smooth);
   gap: 8px;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: none;
 }
 
+/* Primary: gold fill, dark text */
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-copper) 0%, #a25824 100%);
-  color: var(--text-white);
+  background: var(--gold);
+  color: var(--navy);
   border: none;
-  box-shadow: 0 4px 20px rgba(200, 122, 62, 0.3);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(200, 122, 62, 0.5);
-  background: linear-gradient(135deg, var(--primary-copper-hover) 0%, var(--primary-copper) 100%);
+  background: var(--accent-gold-hover);
+  transform: translateY(-1px);
 }
 
+/* Secondary: transparent, thin gold outline */
 .btn-secondary {
-  background: rgba(15, 23, 42, 0.4);
-  color: var(--text-white);
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
 }
 
 .btn-secondary:hover {
-  border-color: var(--primary-copper-hover);
-  background: rgba(200, 122, 62, 0.1);
-  transform: translateY(-2px);
+  background: rgba(201, 162, 75, 0.08);
+  transform: translateY(-1px);
 }
 
 .btn:active {
   transform: translateY(0);
 }
 
-/* Glassmorphism Card */
+/* Card */
 .glass-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   backdrop-filter: blur(16px);
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-sm);
   padding: 32px;
   transition: var(--transition-smooth);
 }
@@ -200,8 +232,7 @@ select {
 .glass-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-color-hover);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--primary-copper-glow);
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
 /* Header styling */
@@ -238,13 +269,13 @@ select {
 .logo-icon {
   width: 32px;
   height: 32px;
-  background: linear-gradient(135deg, var(--primary-copper) 0%, var(--accent-gold) 100%);
+  background: var(--gold);
   border-radius: var(--border-radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-weight: 900;
+  font-weight: 600;
   color: var(--bg-dark);
   font-size: 1.25rem;
 }
@@ -721,8 +752,8 @@ select {
 
 .agro-theme .section-title {
   color: var(--text-earthy-dark);
-  font-family: var(--font-sans);
-  font-weight: 800;
+  font-family: var(--font-heading);
+  font-weight: 600;
 }
 
 .agro-theme .section-title span {

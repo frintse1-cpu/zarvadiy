@@ -223,10 +223,9 @@ export default function IndustrialDivisionPage() {
               {t.nav.industries} // {language === 'ru' ? 'Промышленный Дивизион' : language === 'uz' ? 'Sanoat Departamenti' : 'Industrial Division'}
             </span>
             <h1 style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.4rem, 5.5vw, 4.4rem)',
-              lineHeight: 1.15,
-              fontWeight: 800,
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              lineHeight: 1.1,
+              fontWeight: 600,
               color: '#ffffff',
               marginBottom: '24px',
               letterSpacing: '-0.02em'
@@ -341,11 +340,10 @@ export default function IndustrialDivisionPage() {
                       {productIcons[key as keyof typeof productIcons]}
                     </div>
                     <h3 style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontSize: '1.45rem',
+                      fontSize: '1.25rem',
                       color: '#ffffff',
                       marginBottom: '12px',
-                      fontWeight: 700
+                      fontWeight: 600
                     }}>{item.title}</h3>
                     <p style={{
                       color: '#6b7280',
@@ -577,7 +575,7 @@ export default function IndustrialDivisionPage() {
 
       {/* Checklists and documentation */}
       <div className="glass-card" style={{ padding: '40px' }}>
-        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: '#ffffff', marginBottom: '24px', fontWeight: 700 }}>
+        <h3 style={{ fontSize: '1.25rem', color: '#ffffff', marginBottom: '24px', fontWeight: 600 }}>
           {t.industrial.certifications.title}
         </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -810,7 +808,7 @@ const productIconStyle: React.CSSProperties = {
 const stepNumStyle: React.CSSProperties = {
   fontSize: '2rem',
   color: 'var(--primary-copper-hover)',
-  fontWeight: 800,
+  fontWeight: 600,
   lineHeight: 1
 };
 
