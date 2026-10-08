@@ -1,416 +1,212 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Language } from '../locales/translations';
+import type { Language } from '../locales/translations';
 
-const languages = {
-  en: {
-    label: 'English',
-    code: 'EN',
-    flag: (
-      <svg viewBox="0 0 60 30" width="18" height="12" style={{ borderRadius: '2px', display: 'block' }}>
-        <rect width="60" height="30" fill="#012169" />
-        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
-        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#c8102e" strokeWidth="4" />
-        <path d="M30,0 L30,30 M0,15 L60,15" stroke="#fff" strokeWidth="10" />
-        <path d="M30,0 L30,30 M0,15 L60,15" stroke="#c8102e" strokeWidth="6" />
-      </svg>
-    )
-  },
-  ru: {
-    label: 'Русский',
-    code: 'RU',
-    flag: (
-      <svg viewBox="0 0 9 6" width="18" height="12" style={{ borderRadius: '2px', border: '1px solid rgba(255,255,255,0.15)', display: 'block' }}>
-        <rect width="9" height="6" fill="#fff" />
-        <rect y="2" width="9" height="4" fill="#0039a6" />
-        <rect y="4" width="9" height="2" fill="#d52b1e" />
-      </svg>
-    )
-  },
-  uz: {
-    label: "O\u02bbzbekcha",
-    code: 'UZ',
-    flag: (
-      <svg viewBox="0 0 500 250" width="18" height="12" style={{ borderRadius: '2px', display: 'block' }}>
-        <rect width="500" height="250" fill="#0099B5" />
-        <rect y="83.3" width="500" height="83.3" fill="#FFF" />
-        <rect y="166.6" width="500" height="83.3" fill="#1EB53A" />
-        <rect y="80.3" width="500" height="3" fill="#CE1126" />
-        <rect y="166.6" width="500" height="3" fill="#CE1126" />
-        <path d="M 70,30 A 20,20 0 1,0 70,70 A 17,17 0 1,1 70,30" fill="#FFF" />
-      </svg>
-    )
-  }
-};
+const LANGS: { code: Language; label: string; name: string }[] = [
+  { code: 'en', label: 'EN', name: 'English' },
+  { code: 'ru', label: 'RU', name: 'Русский' },
+  { code: 'uz', label: 'UZ', name: 'Oʻzbekcha' },
+];
 
-// Homepage dropdown nav items
-type DropdownGroup = { label: string; items: { name: string; path: string }[] };
+type GroupKey = 'business' | 'company';
 
-export const Header: React.FC = () => {
+function LangSwitch() {
   const { language, setLanguage, t } = useLanguage();
+  return (
+    <div className="lang-switch" role="group" aria-label={t.nav.language}>
+      {LANGS.map((l, i) => (
+        <span key={l.code} style={{ display: 'inline-flex', alignItems: 'center', gap: 2 }}>
+          {i > 0 && <span className="sep" aria-hidden="true" />}
+          <button
+            type="button"
+            lang={l.code}
+            aria-pressed={language === l.code}
+            aria-label={l.name}
+            onClick={() => setLanguage(l.code)}
+          >
+            {l.label}
+          </button>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+export default function Header() {
+  const { t } = useLanguage();
   const pathname = usePathname();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
-  const [activeGroup, setActiveGroup] = useState<string | null>(null);
-  const langDropdownRef = useRef<HTMLDivElement>(null);
-  const navDropdownRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(true);
-  const lastScrollY = useRef(0);
+  const [open, setOpen] = useState<GroupKey | null>(null);
+  const [mobile, setMobile] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const viaMouse = useRef(false); // true while the pointer is a real mouse hovering the menu
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > 20) setScrolled(true);
-      else setScrolled(false);
-      if (window.innerWidth <= 768) {
-        if (mobileMenuOpen) {
-          setVisible(true);
-        } else if (currentScrollY > lastScrollY.current && currentScrollY > 70) {
-          setVisible(false);
-        } else {
-          setVisible(true);
-        }
-      } else {
-        setVisible(true);
-      }
-      lastScrollY.current = currentScrollY;
-    };
-    lastScrollY.current = window.scrollY;
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [mobileMenuOpen]);
-
-  // Close dropdowns on outside click
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
-        setLangDropdownOpen(false);
-      }
-      if (navDropdownRef.current && !navDropdownRef.current.contains(event.target as Node)) {
-        setActiveGroup(null);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
-    setActiveGroup(null);
-  };
-
-  const isIndustrial = pathname.startsWith('/industrial');
-  const isAgro = pathname.startsWith('/agro');
-  const isHomepage = !isIndustrial && !isAgro;
-
-  // Sub-page flat nav (unchanged)
-  let flatNavItems: { name: string; path: string }[] = [];
-  if (isIndustrial) {
-    const labels = {
-      en: { parent: 'Zarvadiy', about: 'About', products: 'Products', specs: 'Specs', logistics: 'Logistics', contact: 'Contact' },
-      ru: { parent: 'Zarvadiy', about: 'О дивизионе', products: 'Продукция', specs: 'Параметры', logistics: 'Логистика', contact: 'Контакты' },
-      uz: { parent: 'Zarvadiy', about: 'Bo\u02bblim haqida', products: 'Mahsulotlar', specs: 'Xususiyatlar', logistics: 'Logistika', contact: 'Aloqa' }
-    }[language];
-    flatNavItems = [
-      { name: labels.parent, path: '/' },
-      { name: labels.about, path: '/industrial#about' },
-      { name: labels.products, path: '/industrial#products' },
-      { name: labels.specs, path: '/industrial#capabilities' },
-      { name: labels.logistics, path: '/industrial#logistics' },
-      { name: labels.contact, path: '/industrial#contact' },
-    ];
-  } else if (isAgro) {
-    const labels = {
-      en: { parent: 'Zarvadiy', about: 'About', products: 'Catalog', process: 'Process', certs: 'Safety', contact: 'Contact' },
-      ru: { parent: 'Zarvadiy', about: 'О дивизионе', products: 'Каталог', process: 'Процесс', certs: 'Безопасность', contact: 'Контакты' },
-      uz: { parent: 'Zarvadiy', about: 'Bo\u02bblim haqida', products: 'Katalog', process: 'Jarayon', certs: 'Xavfsizlik', contact: 'Aloqa' }
-    }[language];
-    flatNavItems = [
-      { name: labels.parent, path: '/' },
-      { name: labels.about, path: '/agro#about' },
-      { name: labels.products, path: '/agro#products' },
-      { name: labels.process, path: '/agro#process' },
-      { name: labels.certs, path: '/agro#certs' },
-      { name: labels.contact, path: '/agro#contact' },
-    ];
-  }
-
-  // Homepage grouped nav
-  const businessLabel = { en: 'Business', ru: 'Направления', uz: 'Yo\u02bbnalishlar' }[language];
-  const companyLabel = { en: 'Company', ru: 'Компания', uz: 'Kompaniya' }[language];
-  const contactLabel = { en: 'Contact', ru: 'Контакты', uz: 'Aloqa' }[language];
-  const quoteLabel = { en: 'Request a Quote', ru: 'Отправить запрос', uz: 'Ariza yuborish' }[language];
-
-  const homepageGroups: DropdownGroup[] = [
+  const groups: { key: GroupKey; label: string; items: { href: string; label: string }[] }[] = [
     {
-      label: businessLabel,
+      key: 'business',
+      label: t.nav.business,
       items: [
-        { name: { en: 'Industrial', ru: 'Промышленное', uz: 'Sanoat' }[language], path: '/industrial' },
-        { name: { en: 'Food & Gift', ru: 'Продукты и подарки', uz: 'Oziq-ovqat va sovg\u02bbalar' }[language], path: '/agro' },
-        { name: { en: 'Technology', ru: 'Технологии', uz: 'Texnologiya' }[language], path: '#connect' },
-      ]
+        { href: '/industrial', label: t.nav.industrial },
+        { href: '/food-gift', label: t.nav.foodGift },
+        { href: '/technology', label: t.nav.technology },
+      ],
     },
     {
-      label: companyLabel,
+      key: 'company',
+      label: t.nav.company,
       items: [
-        { name: { en: 'About', ru: 'О компании', uz: 'Biz haqimizda' }[language], path: '/about' },
-        { name: { en: 'How We Work', ru: 'Как мы работаем', uz: 'Biz qanday ishlaymiz' }[language], path: '/#process' },
-      ]
-    }
+        { href: '/about', label: t.nav.about },
+        { href: '/how-we-work', label: t.nav.howWeWork },
+      ],
+    },
   ];
 
-  // ── Styles ──
-  let headerBg = 'rgba(10, 22, 40, 0.65)';
-  let headerBorder = 'rgba(255,255,255,0.04)';
-  let textColor = 'var(--text-silver)';
-  let logoTextColor = '#ffffff';
+  useEffect(() => {
+    const onDown = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) setOpen(null);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(null);
+        setMobile(false);
+      }
+    };
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const onMq = () => {
+      if (mq.matches) setMobile(false);
+    };
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    mq.addEventListener('change', onMq);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+      mq.removeEventListener('change', onMq);
+    };
+  }, []);
 
-  if (scrolled) {
-    if (isAgro) {
-      headerBg = 'rgba(249,246,240,0.96)';
-      headerBorder = 'rgba(30,61,50,0.12)';
-      textColor = 'var(--text-earthy-muted, #4a5568)';
-      logoTextColor = 'var(--text-earthy-dark, #1a1a1a)';
-    } else {
-      headerBg = 'rgba(10, 22, 40, 0.97)';
-      headerBorder = 'rgba(212,175,55,0.12)';
-    }
-  } else {
-    if (isAgro) {
-      headerBg = 'rgba(249,246,240,0.88)';
-      headerBorder = 'rgba(30,61,50,0.06)';
-      textColor = 'var(--text-earthy-muted, #4a5568)';
-      logoTextColor = 'var(--text-earthy-dark, #1a1a1a)';
-    }
-  }
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', mobile);
+    return () => document.body.classList.remove('menu-open');
+  }, [mobile]);
+
+  const closeAll = () => {
+    setOpen(null);
+    setMobile(false);
+  };
+  const current = (href: string) => (pathname === href ? 'page' : undefined);
 
   return (
-    <header
-      className={`header-wrapper ${!visible ? 'header-hidden' : ''}`}
-      style={{
-        boxShadow: scrolled ? '0 4px 24px rgba(0,0,0,0.25)' : 'none',
-        background: headerBg,
-        borderBottom: `1px solid ${headerBorder}`,
-        transition: 'var(--transition-smooth)',
-      }}
-    >
-      <div className="container header-container">
-        {/* Logo */}
-        <Link href="/" className="logo" onClick={closeMobileMenu}>
-          <Image
-            src="/images/Logo.png"
-            alt="Zarvadiy Logo"
-            width={120}
-            height={50}
-            style={{ objectFit: 'contain' }}
-          />
-          <style dangerouslySetInnerHTML={{ __html: `
-            @media (max-width: 768px) {
-              .logo img { width: auto !important; height: 40px !important; object-fit: contain !important; }
-              .header-wrapper { transition: transform 0.3s ease, background 0.3s cubic-bezier(0.4,0,0.2,1), border-color 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1) !important; }
-              .header-wrapper.header-hidden { transform: translateY(-100%); }
-              .hp-nav-dropdown { display: none !important; }
-            }
-          ` }} />
-        </Link>
+    <>
+      <a href="#main" className="skip-link">
+        {t.nav.skip}
+      </a>
+      <header className="site-header">
+        <div className="container header-inner">
+          <Link href="/" className="brand" aria-label={t.nav.home} onClick={closeAll}>
+            <Image src="/images/logo-gold.png" alt={t.alt.logo} width={5812} height={722} sizes="200px" className="brand-word" priority />
+          </Link>
 
-        {/* Nav */}
-        <nav
-          className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}
-          style={{
-            background: mobileMenuOpen ? (isAgro ? '#f9f6f0' : '#080c14') : 'transparent',
-            borderLeft: mobileMenuOpen ? `1px solid ${headerBorder}` : 'none',
-          }}
-        >
-          {isHomepage ? (
-            // ── Homepage grouped nav ──
-            <div ref={navDropdownRef} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              {homepageGroups.map((group) => (
-                <div key={group.label} style={{ position: 'relative' }}>
-                  <button
-                    id={`nav-group-${group.label.toLowerCase()}`}
-                    onClick={() => setActiveGroup(activeGroup === group.label ? null : group.label)}
-                    className="nav-link"
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      color: textColor,
-                      fontWeight: 600,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '5px',
-                      padding: '8px 12px',
-                    }}
-                  >
-                    {group.label}
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
-                      style={{ transform: activeGroup === group.label ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </button>
-                  {activeGroup === group.label && (
-                    <div className="hp-nav-dropdown" style={{
-                      position: 'absolute',
-                      top: 'calc(100% + 8px)',
-                      left: 0,
-                      minWidth: '180px',
-                      background: 'rgba(10,22,40,0.98)',
-                      border: '1px solid rgba(212,175,55,0.15)',
-                      borderRadius: '8px',
-                      padding: '8px 0',
-                      boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
-                      zIndex: 100,
-                    }}>
-                      {group.items.map((item) => (
-                        <Link
-                          key={item.path}
-                          href={item.path}
-                          onClick={closeMobileMenu}
-                          style={{
-                            display: 'block',
-                            padding: '10px 20px',
-                            color: 'var(--text-silver)',
-                            fontSize: '0.9rem',
-                            fontWeight: 500,
-                            textDecoration: 'none',
-                            transition: 'color 0.15s',
-                          }}
-                          onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
-                          onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-silver)')}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <Link href="/contact" className="nav-link" onClick={closeMobileMenu}
-                style={{ color: textColor, fontWeight: 600 }}>
-                {contactLabel}
-              </Link>
-            </div>
-          ) : (
-            // ── Sub-page flat nav (unchanged) ──
-            flatNavItems.map((item, idx) => {
-              const isActive = pathname === item.path;
-              return (
-                <Link
-                  key={idx}
-                  href={item.path}
-                  className={`nav-link ${isActive ? 'active' : ''}`}
-                  onClick={closeMobileMenu}
-                  style={{ color: isAgro ? 'var(--text-earthy-dark, #1a1a1a)' : textColor, fontWeight: 600 }}
+          <nav className="nav-desktop" aria-label={t.nav.mainNav} ref={navRef}>
+            {groups.map((g) => (
+              <div
+                key={g.key}
+                className="nav-group"
+                onPointerEnter={(e) => {
+                  if (e.pointerType === 'mouse') {
+                    viaMouse.current = true;
+                    setOpen(g.key);
+                  }
+                }}
+                onPointerLeave={(e) => {
+                  if (e.pointerType === 'mouse') setOpen(null);
+                }}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(null);
+                }}
+              >
+                <button
+                  type="button"
+                  className="nav-trigger"
+                  aria-expanded={open === g.key}
+                  aria-controls={`menu-${g.key}`}
+                  onKeyDown={() => {
+                    viaMouse.current = false;
+                  }}
+                  onClick={() => {
+                    // With a mouse the hover has already opened it: a click must not close it again.
+                    if (viaMouse.current) setOpen(g.key);
+                    else setOpen(open === g.key ? null : g.key);
+                  }}
                 >
-                  {item.name}
-                </Link>
-              );
-            })
-          )}
-        </nav>
+                  {g.label}
+                  <span className="chev" aria-hidden="true" />
+                </button>
+                {open === g.key && (
+                  <div className="nav-menu" id={`menu-${g.key}`}>
+                    {g.items.map((item) => (
+                      <Link key={item.href} href={item.href} aria-current={current(item.href)} onClick={closeAll}>
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            <Link href="/contact" className="nav-link" aria-current={current('/contact')}>
+              {t.nav.contact}
+            </Link>
+          </nav>
 
-        {/* Right-side actions */}
-        <div className="header-actions">
-          {/* Request a Quote button – homepage only */}
-          {isHomepage && (
-            <a
-              href="#connect"
-              id="header-quote-btn"
-              style={{
-                display: 'none',
-                padding: '9px 20px',
-                background: 'transparent',
-                border: '1px solid rgba(212,175,55,0.45)',
-                borderRadius: '6px',
-                color: 'var(--accent-gold)',
-                fontSize: '0.82rem',
-                fontWeight: 600,
-                letterSpacing: '0.04em',
-                textDecoration: 'none',
-                whiteSpace: 'nowrap',
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.background = 'rgba(212,175,55,0.1)';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.background = 'transparent';
-              }}
-            >
-              {quoteLabel}
-            </a>
-          )}
-
-          {/* Language selector */}
-          <div className="lang-dropdown-container" ref={langDropdownRef}>
+          <div className="header-right">
+            <LangSwitch />
+            <Link href="/contact" className="btn btn-primary btn-sm header-cta">
+              {t.nav.quote}
+            </Link>
             <button
-              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className="lang-dropdown-trigger"
-              aria-label="Select language"
-              style={{
-                background: isAgro ? 'rgba(30,61,50,0.05)' : 'rgba(255,255,255,0.05)',
-                borderColor: isAgro ? 'rgba(30,61,50,0.1)' : 'rgba(255,255,255,0.08)',
-                color: isAgro ? 'var(--text-earthy-dark, #1a1a1a)' : '#ffffff',
-              }}
+              type="button"
+              className="menu-toggle"
+              aria-expanded={mobile}
+              aria-controls="mobile-panel"
+              aria-label={mobile ? t.nav.closeMenu : t.nav.openMenu}
+              onClick={() => setMobile((v) => !v)}
             >
-              {languages[language].flag}
-              <span style={{ textTransform: 'uppercase' }}>{languages[language].code}</span>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"
-                style={{ transform: langDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease', color: 'var(--text-muted)' }}>
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
+              <span className="bars" aria-hidden="true" />
             </button>
+          </div>
+        </div>
+      </header>
 
-            {langDropdownOpen && (
-              <div className="lang-dropdown-menu" style={{
-                background: isAgro ? '#ffffff' : 'rgba(15,23,42,0.97)',
-                borderColor: isAgro ? 'var(--border-earthy, #d4c9b0)' : 'var(--border-color)',
-                boxShadow: isAgro ? '0 10px 30px rgba(30,61,50,0.1)' : '0 10px 30px rgba(0,0,0,0.5)',
-              }}>
-                {(['en', 'ru', 'uz'] as Language[]).map((lang) => (
-                  <button
-                    key={lang}
-                    onClick={() => { setLanguage(lang); setLangDropdownOpen(false); }}
-                    className={`lang-dropdown-item ${language === lang ? 'active' : ''}`}
-                    style={{ color: isAgro ? 'var(--text-earthy-dark, #1a1a1a)' : 'var(--text-silver)' }}
-                  >
-                    {languages[lang].flag}
-                    <span>{languages[lang].label}</span>
-                  </button>
+      {mobile && (
+        <div className="mobile-panel" id="mobile-panel">
+          <nav aria-label={t.nav.mainNav}>
+            {groups.map((g) => (
+              <div key={g.key}>
+                <p className="group-label">{g.label}</p>
+                {g.items.map((item) => (
+                  <Link key={item.href} href={item.href} className="m-link" aria-current={current(item.href)} onClick={closeAll}>
+                    {item.label}
+                  </Link>
                 ))}
               </div>
-            )}
+            ))}
+            <p className="group-label">{t.nav.contact}</p>
+            <Link href="/contact" className="m-link" aria-current={current('/contact')} onClick={closeAll}>
+              {t.nav.contact}
+            </Link>
+          </nav>
+          <div className="m-actions">
+            <Link href="/contact" className="btn btn-primary" onClick={closeAll}>
+              {t.nav.quote}
+            </Link>
+            <LangSwitch />
           </div>
-
-          {/* Mobile hamburger */}
-          <button
-            className={`menu-toggle ${mobileMenuOpen ? 'open' : ''}`}
-            onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
-          >
-            <span style={{ backgroundColor: isAgro ? 'var(--text-earthy-dark, #1a1a1a)' : '#ffffff' }} />
-            <span style={{ backgroundColor: isAgro ? 'var(--text-earthy-dark, #1a1a1a)' : '#ffffff' }} />
-            <span style={{ backgroundColor: isAgro ? 'var(--text-earthy-dark, #1a1a1a)' : '#ffffff' }} />
-          </button>
         </div>
-      </div>
-
-      {/* Show Request a Quote button on desktop via CSS */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @media (min-width: 769px) {
-          #header-quote-btn { display: inline-flex !important; align-items: center; }
-        }
-      ` }} />
-    </header>
+      )}
+    </>
   );
-};
-
-export default Header;
+}
