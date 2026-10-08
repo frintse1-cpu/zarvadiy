@@ -1,217 +1,205 @@
 'use client';
 
-import React, { useState } from 'react';
+import Link from 'next/link';
+import { useRef, useState, useEffect, type FormEvent } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useLanguage } from '../context/LanguageContext';
+import { INCOTERMS, TOPIC_KEYS, type TopicKey } from '../lib/site';
+import { ALLOWED_EXT, EMAIL_RE, MAX_FILE_BYTES, cleanSource, fileExt } from '../lib/rfq';
 
-export const ContactForm: React.FC = () => {
-  const { t } = useLanguage();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: ''
-  });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+type Status = 'idle' | 'sending' | 'success' | 'error' | 'rate';
+type Errors = Partial<Record<'name' | 'company' | 'email' | 'phone' | 'product' | 'country' | 'message' | 'file', string>>;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
+export default function ContactForm() {
+  const { t, language } = useLanguage();
+  const f = t.form;
+  const params = useSearchParams();
+  const topicParam = params.get('topic');
+  const initialTopic = (TOPIC_KEYS as string[]).includes(topicParam ?? '') ? (topicParam as TopicKey) : '';
+
+  const source = cleanSource(params.get('source') ?? params.get('utm_source'));
+
+  const specIdx = Number(params.get('spec'));
+  const specTitle = Number.isInteger(specIdx) ? t.industrial.products[specIdx]?.title : undefined;
+  const messageDefault = specTitle ? `${f.specPrefill} ${specTitle}` : '';
+
+  const [status, setStatus] = useState<Status>('idle');
+  const [errors, setErrors] = useState<Errors>({});
+  const [topic, setTopic] = useState<string>(initialTopic);
+  const formRef = useRef<HTMLFormElement>(null);
+  const lockRef = useRef(false); // synchronous guard against double submit
+  const alertRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if ((status === 'error' || status === 'rate' || status === 'success') && alertRef.current) {
+      alertRef.current.focus();
+    }
+  }, [status]);
+
+  function validate(fd: FormData): Errors {
+    const e: Errors = {};
+    const v = (k: string) => String(fd.get(k) ?? '').trim();
+    (['name', 'company', 'phone', 'product', 'country', 'message'] as const).forEach((k) => {
+      if (!v(k)) e[k] = f.errors.required;
     });
-  };
+    if (!v('email')) e.email = f.errors.required;
+    else if (!EMAIL_RE.test(v('email'))) e.email = f.errors.email;
+    const file = fd.get('file');
+    if (file instanceof File && file.size > 0) {
+      if (file.size > MAX_FILE_BYTES) e.file = f.errors.fileSize;
+      else if (!(ALLOWED_EXT as readonly string[]).includes(fileExt(file.name))) e.file = f.errors.fileType;
+    }
+    return e;
+  }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus('error');
+  async function onSubmit(ev: FormEvent<HTMLFormElement>) {
+    ev.preventDefault();
+    if (lockRef.current) return;
+    const fd = new FormData(ev.currentTarget);
+    const e = validate(fd);
+    setErrors(e);
+    if (Object.keys(e).length) {
+      const first = Object.keys(e)[0];
+      formRef.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
       return;
     }
-    setStatus('loading');
+    lockRef.current = true;
+    setStatus('sending');
+    fd.set('lang', language);
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, division: 'industrial' })
-      });
-      if (response.ok) {
+      const res = await fetch('/api/contact', { method: 'POST', body: fd });
+      if (res.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+        formRef.current?.reset();
+        setTopic('');
+      } else if (res.status === 429) {
+        setStatus('rate');
       } else {
         setStatus('error');
       }
     } catch {
       setStatus('error');
+    } finally {
+      lockRef.current = false;
     }
-  };
+  }
+
+  const sending = status === 'sending';
+  const err = (k: keyof Errors) => (errors[k] ? `${k}-err` : undefined);
+  const consentParts = f.consent.split('{link}');
+
+  if (status === 'success') {
+    return (
+      <div className="success-panel" ref={alertRef} tabIndex={-1} role="status">
+        <h2>{f.successTitle}</h2>
+        <p>{f.successText}</p>
+        <button type="button" className="btn btn-dark" onClick={() => setStatus('idle')}>{f.again}</button>
+      </div>
+    );
+  }
+
   return (
-    <div className="glass-card" style={{ maxWidth: '650px', margin: '0 auto' }}>
-      <h3 style={{
-        fontSize: '1.75rem',
-        color: 'var(--text-white)',
-        marginBottom: '10px'
-      }}>
-        {t.contactPage.formTitle}
-      </h3>
-      <p style={{
-        color: 'var(--text-muted)',
-        fontSize: '0.95rem',
-        marginBottom: '30px'
-      }}>
-        {t.contactPage.formSubtitle}
-      </p>
-
-      {status === 'success' && (
-        <div style={{
-          background: 'rgba(16, 185, 129, 0.1)',
-          border: '1px solid rgba(16, 185, 129, 0.3)',
-          color: '#10b981',
-          padding: '16px',
-          borderRadius: 'var(--border-radius-sm)',
-          marginBottom: '24px',
-          fontSize: '0.95rem',
-          fontWeight: 500
-        }}>
-          {t.contactPage.formSuccess}
+    <form ref={formRef} onSubmit={onSubmit} noValidate aria-busy={sending}>
+      {(status === 'error' || status === 'rate') && (
+        <div className="alert alert--error" role="alert" ref={alertRef} tabIndex={-1}>
+          <strong>{f.errorTitle}</strong>
+          {status === 'rate' ? f.rateText : f.errorText}
         </div>
       )}
-
-      {status === 'error' && (
-        <div style={{
-          background: 'rgba(239, 68, 68, 0.1)',
-          border: '1px solid rgba(239, 68, 68, 0.3)',
-          color: '#ef4444',
-          padding: '16px',
-          borderRadius: 'var(--border-radius-sm)',
-          marginBottom: '24px',
-          fontSize: '0.95rem',
-          fontWeight: 500
-        }}>
-          {t.contactPage.formError}
-        </div>
+      {Object.keys(errors).length > 0 && (
+        <div className="alert alert--error" role="alert">{f.errors.summary}</div>
       )}
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <label htmlFor="name" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-white)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {t.contactPage.formName} *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              disabled={status === 'loading'}
-              style={inputStyle}
-              required
-            />
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <label htmlFor="email" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-white)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {t.contactPage.formEmail} *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              disabled={status === 'loading'}
-              style={inputStyle}
-              required
-            />
-          </div>
+      <div className="field-grid">
+        <div className="field">
+          <label htmlFor="name">{f.name} *</label>
+          <input id="name" name="name" autoComplete="name" required maxLength={120} disabled={sending}
+            aria-invalid={!!errors.name} aria-describedby={err('name')} />
+          {errors.name && <span className="field-error" id="name-err">{errors.name}</span>}
         </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <label htmlFor="phone" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-white)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {t.contactPage.formPhone}
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              disabled={status === 'loading'}
-              style={inputStyle}
-            />
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <label htmlFor="company" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-white)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {t.contactPage.formCompany}
-            </label>
-            <input
-              type="text"
-              id="company"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              disabled={status === 'loading'}
-              style={inputStyle}
-            />
-          </div>
+        <div className="field">
+          <label htmlFor="company">{f.company} *</label>
+          <input id="company" name="company" autoComplete="organization" required maxLength={160} disabled={sending}
+            aria-invalid={!!errors.company} aria-describedby={err('company')} />
+          {errors.company && <span className="field-error" id="company-err">{errors.company}</span>}
         </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <label htmlFor="message" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-white)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            {t.contactPage.formMsg} *
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            value={formData.message}
-            onChange={handleChange}
-            disabled={status === 'loading'}
-            style={{ ...inputStyle, resize: 'vertical' }}
-            required
-          ></textarea>
+        <div className="field">
+          <label htmlFor="email">{f.email} *</label>
+          <input id="email" name="email" type="email" inputMode="email" autoComplete="email" required maxLength={160} disabled={sending}
+            aria-invalid={!!errors.email} aria-describedby={err('email')} />
+          {errors.email && <span className="field-error" id="email-err">{errors.email}</span>}
         </div>
+        <div className="field">
+          <label htmlFor="phone">{f.phone} *</label>
+          <input id="phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" required maxLength={40} disabled={sending}
+            aria-invalid={!!errors.phone} aria-describedby={err('phone')} />
+          {errors.phone && <span className="field-error" id="phone-err">{errors.phone}</span>}
+        </div>
+        <div className="field field--full">
+          <label htmlFor="product">{f.product} *</label>
+          <select id="product" name="product" required value={topic} onChange={(e) => setTopic(e.target.value)} disabled={sending}
+            aria-invalid={!!errors.product} aria-describedby={err('product')}>
+            <option value="">{f.productPlaceholder}</option>
+            {TOPIC_KEYS.map((k) => (
+              <option key={k} value={k}>{f.products[k]}</option>
+            ))}
+          </select>
+          {errors.product && <span className="field-error" id="product-err">{errors.product}</span>}
+        </div>
+        <div className="field">
+          <label htmlFor="quantity">{f.quantity} <span className="opt">({f.optional})</span></label>
+          <input id="quantity" name="quantity" placeholder={f.quantityPlaceholder} maxLength={120} disabled={sending} />
+        </div>
+        <div className="field">
+          <label htmlFor="country">{f.country} *</label>
+          <input id="country" name="country" autoComplete="country-name" required maxLength={80} disabled={sending}
+            aria-invalid={!!errors.country} aria-describedby={err('country')} />
+          {errors.country && <span className="field-error" id="country-err">{errors.country}</span>}
+        </div>
+        <div className="field">
+          <label htmlFor="deliveryDate">{f.deliveryDate} <span className="opt">({f.optional})</span></label>
+          <input id="deliveryDate" name="deliveryDate" type="date" disabled={sending} />
+        </div>
+        <div className="field">
+          <label htmlFor="incoterm">{f.incoterm} <span className="opt">({f.optional})</span></label>
+          <select id="incoterm" name="incoterm" defaultValue="" disabled={sending}>
+            <option value="">{f.incotermPlaceholder}</option>
+            {INCOTERMS.map((i) => (
+              <option key={i} value={i}>{i}</option>
+            ))}
+            <option value="unsure">{f.incotermUnsure}</option>
+          </select>
+        </div>
+        <div className="field field--full">
+          <label htmlFor="message">{f.message} *</label>
+          <textarea id="message" name="message" required defaultValue={messageDefault} maxLength={4000} placeholder={f.messagePlaceholder} disabled={sending}
+            aria-invalid={!!errors.message} aria-describedby={err('message')} />
+          {errors.message && <span className="field-error" id="message-err">{errors.message}</span>}
+        </div>
+        <div className="field field--full">
+          <label htmlFor="file">{f.file} <span className="opt">({f.optional})</span></label>
+          <input id="file" name="file" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png" disabled={sending}
+            aria-invalid={!!errors.file} aria-describedby={errors.file ? 'file-err' : 'file-hint'} />
+          {errors.file ? <span className="field-error" id="file-err">{errors.file}</span> : <span className="field-hint" id="file-hint">{f.fileHint}</span>}
+        </div>
+        <input type="hidden" name="source" value={source} />
+        {/* honeypot: hidden from people, tempting for bots */}
+        <div className="hp" aria-hidden="true">
+          <label htmlFor="website">Website</label>
+          <input id="website" name="website" tabIndex={-1} autoComplete="off" />
+        </div>
+      </div>
 
-        <button
-          type="submit"
-          className="btn btn-primary"
-          disabled={status === 'loading'}
-          style={{ width: '100%', marginTop: '10px' }}
-        >
-          {status === 'loading' ? (
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ animation: 'spin 1s linear infinite' }}>
-                <circle cx="12" cy="12" r="10" strokeDasharray="30 30" strokeDashoffset="10"></circle>
-              </svg>
-              Sending...
-            </span>
-          ) : (
-            t.contactPage.formSubmit
-          )}
+      <div className="form-actions">
+        <button type="submit" className="btn btn-primary" disabled={sending}>
+          {sending ? f.sending : f.submit}
         </button>
-      </form>
-
-      <style jsx global>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
-    </div>
+        <p className="consent">
+          {consentParts[0]}
+          <Link href="/privacy">{f.consentLink}</Link>
+          {consentParts[1]}
+        </p>
+      </div>
+    </form>
   );
-};
-
-const inputStyle = {
-  background: 'rgba(7, 11, 19, 0.6)',
-  border: '1px solid rgba(200, 122, 62, 0.25)',
-  borderRadius: 'var(--border-radius-sm)',
-  padding: '12px 16px',
-  color: 'var(--text-white)',
-  fontSize: '0.95rem',
-  transition: 'var(--transition-smooth)',
-  outline: 'none',
-  width: '100%',
-  fontFamily: 'inherit'
-};
-// Handle focus style dynamically in React if needed or rely on plain CSS variables inside the global styles, but let's just make sure it stays tidy.
-export default ContactForm;
+}

@@ -1,39 +1,75 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Language, translations } from '../locales/translations';
+import React, { createContext, useContext, useEffect, useMemo, useSyncExternalStore } from 'react';
+import { Language, Translations, translations } from '../locales/translations';
 
 interface LanguageContextProps {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: typeof translations.en;
+  t: Translations;
 }
+
+const STORAGE_KEY = 'zarvadiy_lang';
+const listeners = new Set<() => void>();
+let memoryLanguage: Language | null = null; // keeps the choice for this session if storage is unavailable
+
+function isLanguage(v: unknown): v is Language {
+  return v === 'en' || v === 'ru' || v === 'uz';
+}
+
+/** Saved choice wins; otherwise fall back to the browser language; otherwise English. */
+function readLanguage(): Language {
+  if (memoryLanguage) return memoryLanguage;
+  try {
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    if (isLanguage(saved)) return saved;
+  } catch {
+    // storage unavailable (private mode etc.) — fall through to browser language
+  }
+  const nav = (navigator.language || 'en').toLowerCase();
+  if (nav.startsWith('ru')) return 'ru';
+  if (nav.startsWith('uz')) return 'uz';
+  return 'en';
+}
+
+function subscribe(onChange: () => void) {
+  listeners.add(onChange);
+  window.addEventListener('storage', onChange);
+  return () => {
+    listeners.delete(onChange);
+    window.removeEventListener('storage', onChange);
+  };
+}
+
+const getServerSnapshot = (): Language => 'en';
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>('en');
+  const language = useSyncExternalStore(subscribe, readLanguage, getServerSnapshot);
 
   useEffect(() => {
-    // Load language preference from local storage if available
-    const savedLang = localStorage.getItem('zarvadiy_lang') as Language;
-    if (savedLang === 'en' || savedLang === 'ru' || savedLang === 'uz') {
-      setLanguageState(savedLang);
-    }
-  }, []);
+    document.documentElement.lang = language;
+  }, [language]);
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem('zarvadiy_lang', lang);
-  };
-
-  const t = translations[language];
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
+  const value = useMemo<LanguageContextProps>(
+    () => ({
+      language,
+      t: translations[language],
+      setLanguage: (lang: Language) => {
+        memoryLanguage = lang;
+        try {
+          window.localStorage.setItem(STORAGE_KEY, lang);
+        } catch {
+          // ignore storage errors; still notify so the UI updates this session
+        }
+        listeners.forEach((l) => l());
+      },
+    }),
+    [language],
   );
+
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 };
 
 export const useLanguage = () => {

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -6,8 +6,8 @@ import { useEffect, Suspense } from 'react';
 
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
   }
 }
 
