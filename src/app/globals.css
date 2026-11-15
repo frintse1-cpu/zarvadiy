@@ -1980,3 +1980,36 @@ a.gift-card {
   padding-top: 0;
   border-top: 0;
 }
+
+/* Gift page: women's and men's gift sets side by side */
+.gift-tier-intro {
+  max-width: 760px;
+}
+.gift-sets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 56px);
+  margin-top: clamp(28px, 4vw, 44px);
+  align-items: start;
+}
+.gift-set-title {
+  margin-bottom: 16px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+.gift-set-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+.gift-set-grid figcaption {
+  font-size: 0.82rem;
+}
+.gift-tier-cta {
+  margin-top: clamp(28px, 4vw, 40px);
+}
+@media (max-width: 899px) {
+  .gift-sets {
+    grid-template-columns: 1fr;
+  }
+}

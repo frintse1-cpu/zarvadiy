@@ -10,12 +10,6 @@ import { GIFT_MEDIA } from '../../lib/giftMedia';
 import { cleanSource } from '../../lib/rfq';
 import { SITE } from '../../lib/site';
 
-const CONCEPT_IMAGES: Record<string, string> = {
-  origin: '/gift/origin-collection.jpg',
-  heritage: '/gift/heritage-collection.jpg',
-  signature: '/gift/signature-collection.jpg',
-};
-
 /* Campaign source (QR code etc.) is read in the browser after hydration, so the page itself
    is fully rendered on the server and visible to search engines and slow connections. */
 const noopSubscribe = () => () => {};
@@ -104,35 +98,40 @@ export default function GiftView() {
               </div>
             </header>
 
-            <div className="split gift-tier-main">
-              <div className="gift-detail-media">
-                <div className="media media--4x3 gift-tier-frame">
-                  <Image src={CONCEPT_IMAGES[c.id]} alt={`${c.name}. ${d.mediaDefaultAlt}`} fill sizes="(max-width: 899px) 92vw, 560px" className="cover-img" />
-                </div>
-                <p className="caption">{t.common.illustrative}</p>
-              </div>
-              <Reveal>
-                <span className="eyebrow">{d.collectionLabel}</span>
-                <p className="section-lead gift-tier-lead">{c.lead}</p>
-                <dl className="gift-facts">
-                  <div><dt>{d.packagingLabel}</dt><dd>{c.packaging}</dd></div>
-                </dl>
-                <Link href={quoteHref} className="btn btn-primary">{d.ctaPrimary}</Link>
-              </Reveal>
+            <div className="gift-tier-intro">
+              <span className="eyebrow">{d.collectionLabel}</span>
+              <p className="section-lead gift-tier-lead">{c.lead}</p>
+              <dl className="gift-facts gift-facts--plain">
+                <div><dt>{d.packagingLabel}</dt><dd>{c.packaging}</dd></div>
+              </dl>
             </div>
 
-            <div className="gift-tiles">
-              <h3 className="gift-detail-sub">{d.includesTitle}</h3>
-              <div className="gift-ind-grid">
-                {c.includes.map((label, n) => (
-                  <figure key={label} className="gift-ind">
-                    <div className="gift-ind-img gift-tier-frame">
-                      <Image src={`/gift/collection/${c.id}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 46vw, 200px" className="cover-img" />
-                    </div>
-                    <figcaption>{label}</figcaption>
-                  </figure>
-                ))}
-              </div>
+            <div className="gift-sets">
+              {([
+                { who: 'women', label: d.forWomen, items: c.women },
+                { who: 'men', label: d.forMen, items: c.men },
+              ] as const).map((set) => (
+                <div key={set.who} className="gift-set">
+                  <h3 className="gift-set-title">{set.label}</h3>
+                  <div className="media media--4x3 gift-tier-frame">
+                    <Image src={`/gift/sets/${c.id}-${set.who}.jpg`} alt={`${c.name} · ${set.label}`} fill sizes="(max-width: 899px) 92vw, 560px" className="cover-img" />
+                  </div>
+                  <p className="caption">{t.common.illustrative}</p>
+                  <div className="gift-set-grid">
+                    {set.items.map((label, n) => (
+                      <figure key={label} className="gift-ind">
+                        <div className="gift-ind-img gift-tier-frame">
+                          <Image src={`/gift/sets/${c.id}-${set.who}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 30vw, 170px" className="cover-img" />
+                        </div>
+                        <figcaption>{label}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="gift-tier-cta">
+              <Link href={quoteHref} className="btn btn-primary">{d.ctaPrimary}</Link>
             </div>
 
             <div className="gift-individual">
@@ -145,7 +144,7 @@ export default function GiftView() {
                 {c.individual.map((label, n) => (
                   <figure key={label} className="gift-ind">
                     <div className="gift-ind-img gift-tier-frame">
-                      <Image src={`/gift/individual/${c.id}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 46vw, 200px" className="cover-img" />
+                      <Image src={`/gift/boxes/${c.id}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 46vw, 200px" className="cover-img" />
                     </div>
                     <figcaption>{label}</figcaption>
                   </figure>
