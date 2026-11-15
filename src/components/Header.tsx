@@ -52,7 +52,7 @@ export default function Header() {
       items: [
         { href: '/industrial', label: t.nav.industrial },
         { href: '/food-gift', label: t.nav.foodGift },
-        { href: '/technology', label: t.nav.technology },
+        { href: '/gift', label: t.nav.gift },
       ],
     },
     {
