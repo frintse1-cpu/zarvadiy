@@ -58,7 +58,7 @@ export default function GiftView() {
           <div className="gift-cards">
             {d.concepts.map((c, i) => (
               <Reveal key={c.name} className="reveal--fill" delay={i * 140}>
-                <a className="gift-card" href={`#${c.id}`}>
+                <a className={`gift-card gift-card--${c.id}`} href={`#${c.id}`}>
                   <span className="gift-card-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                   <h3>{c.name}</h3>
                   <p className="gift-card-text">{c.text}</p>

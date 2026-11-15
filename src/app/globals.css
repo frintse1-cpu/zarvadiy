@@ -2013,3 +2013,88 @@ a.gift-card {
     grid-template-columns: 1fr;
   }
 }
+
+/* Gift cards: on hover / focus / tap each card takes its collection's own colour */
+.gift-card--origin {
+  border-top-color: #e3d2ad;
+}
+.gift-card--heritage {
+  border-top-color: #2a8f89;
+}
+.gift-card--signature {
+  border-top-color: var(--gold);
+}
+.gift-card h3,
+.gift-card-text,
+.gift-card-num,
+.gift-card-foot p,
+.gift-card-more,
+.gift-card .badge {
+  transition: color 0.35s ease, border-color 0.35s ease, opacity 0.35s ease;
+}
+.gift-card--origin:hover,
+.gift-card--origin:focus-visible,
+.gift-card--origin:active {
+  background: linear-gradient(180deg, #f1e6cf 0%, #e9dcc0 100%);
+  border-color: #c9b58a;
+  color: #3d3020;
+}
+.gift-card--origin:hover h3,
+.gift-card--origin:focus-visible h3,
+.gift-card--origin:active h3 {
+  color: #4a3a1e;
+}
+.gift-card--origin:hover .gift-card-text,
+.gift-card--origin:hover .gift-card-foot p,
+.gift-card--origin:focus-visible .gift-card-text,
+.gift-card--origin:focus-visible .gift-card-foot p,
+.gift-card--origin:active .gift-card-text,
+.gift-card--origin:active .gift-card-foot p {
+  color: #3d3020;
+}
+.gift-card--origin:hover .gift-card-num,
+.gift-card--origin:hover .gift-card-more,
+.gift-card--origin:hover .badge,
+.gift-card--origin:focus-visible .gift-card-num,
+.gift-card--origin:focus-visible .gift-card-more,
+.gift-card--origin:focus-visible .badge,
+.gift-card--origin:active .gift-card-num,
+.gift-card--origin:active .gift-card-more,
+.gift-card--origin:active .badge {
+  color: var(--gold-ink);
+  border-color: var(--gold-ink);
+}
+.gift-card--heritage:hover,
+.gift-card--heritage:focus-visible,
+.gift-card--heritage:active {
+  background: linear-gradient(180deg, #1f6f6b 0%, #17585a 100%);
+  border-color: rgba(226, 194, 123, 0.7);
+}
+.gift-card--heritage:hover .gift-card-text,
+.gift-card--heritage:hover .gift-card-foot p,
+.gift-card--heritage:focus-visible .gift-card-text,
+.gift-card--heritage:focus-visible .gift-card-foot p,
+.gift-card--heritage:active .gift-card-text,
+.gift-card--heritage:active .gift-card-foot p {
+  color: rgba(255, 255, 255, 0.9);
+}
+.gift-card--heritage:hover .gift-card-num,
+.gift-card--heritage:hover .gift-card-more,
+.gift-card--heritage:focus-visible .gift-card-num,
+.gift-card--heritage:focus-visible .gift-card-more,
+.gift-card--heritage:active .gift-card-num,
+.gift-card--heritage:active .gift-card-more {
+  color: var(--gold-light);
+}
+.gift-card--signature:hover,
+.gift-card--signature:focus-visible,
+.gift-card--signature:active {
+  background: radial-gradient(120% 90% at 80% 0%, #1b3560 0%, #0a1628 65%);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(201, 162, 75, 0.5), 0 18px 36px rgba(0, 0, 0, 0.35);
+}
+.gift-card--signature:hover h3,
+.gift-card--signature:focus-visible h3,
+.gift-card--signature:active h3 {
+  color: var(--gold-light);
+}
