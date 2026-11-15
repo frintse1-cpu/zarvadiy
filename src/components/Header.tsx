@@ -53,7 +53,6 @@ export default function Header() {
         { href: '/industrial', label: t.nav.industrial },
         { href: '/food-gift', label: t.nav.foodGift },
         { href: '/gift', label: t.nav.gift },
-        { href: '/technology', label: t.nav.technology },
       ],
     },
     {

@@ -28,7 +28,6 @@ export default function Footer() {
               <li><Link href="/industrial">{t.nav.industrial}</Link></li>
               <li><Link href="/food-gift">{t.nav.foodGift}</Link></li>
               <li><Link href="/gift">{t.nav.gift}</Link></li>
-              <li><Link href="/technology">{t.nav.technology}</Link></li>
             </ul>
           </div>
 

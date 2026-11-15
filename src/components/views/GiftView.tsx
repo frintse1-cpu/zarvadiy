@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useSyncExternalStore } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import Reveal from '../Reveal';
 import { MOTION } from '../../lib/motion';
@@ -18,12 +18,20 @@ const CONCEPT_IMAGES: Record<string, string> = {
 
 const CONCEPT_INDIVIDUAL_COUNT: Record<string, number> = { origin: 6, heritage: 6, signature: 5 };
 
+/* Campaign source (QR code etc.) is read in the browser after hydration, so the page itself
+   is fully rendered on the server and visible to search engines and slow connections. */
+const noopSubscribe = () => () => {};
+const readSource = () => {
+  const q = new URLSearchParams(window.location.search);
+  return cleanSource(q.get('source') ?? q.get('utm_source'));
+};
+const readSourceOnServer = () => '';
+
 export default function GiftView() {
   const { t } = useLanguage();
-  const params = useSearchParams();
   const d = t.giftPage;
 
-  const source = cleanSource(params.get('source') ?? params.get('utm_source'));
+  const source = useSyncExternalStore(noopSubscribe, readSource, readSourceOnServer);
   const quoteHref = `/contact?topic=gift${source ? `&source=${source}` : ''}`;
   const hasMedia = GIFT_MEDIA.length > 0;
 
@@ -185,6 +193,10 @@ export default function GiftView() {
           <Link href="/food-gift" className="section-more">{d.bulkLink}</Link>
         </div>
       </section>
+
+      <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="gift-wa">
+        {d.ctaSecondary}
+      </a>
 
       <section className="section cta-band" aria-labelledby="gift-cta-title">
         <div className="container">
