@@ -16,8 +16,6 @@ const CONCEPT_IMAGES: Record<string, string> = {
   signature: '/gift/signature-collection.jpg',
 };
 
-const CONCEPT_INDIVIDUAL_COUNT: Record<string, number> = { origin: 6, heritage: 6, signature: 5 };
-
 /* Campaign source (QR code etc.) is read in the browser after hydration, so the page itself
    is fully rendered on the server and visible to search engines and slow connections. */
 const noopSubscribe = () => () => {};
@@ -116,25 +114,35 @@ export default function GiftView() {
               <Reveal>
                 <span className="eyebrow">{d.collectionLabel}</span>
                 <p className="section-lead gift-tier-lead">{c.lead}</p>
-                <h3 className="gift-detail-sub">{d.includesTitle}</h3>
-                <ul className="check-list" style={{ listStyle: 'none', padding: 0 }}>
-                  {c.includes.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
                 <dl className="gift-facts">
                   <div><dt>{d.packagingLabel}</dt><dd>{c.packaging}</dd></div>
-                  <div><dt>{d.mixLabel}</dt><dd>{c.mix}</dd></div>
                 </dl>
                 <Link href={quoteHref} className="btn btn-primary">{d.ctaPrimary}</Link>
               </Reveal>
             </div>
 
+            <div className="gift-tiles">
+              <h3 className="gift-detail-sub">{d.includesTitle}</h3>
+              <div className="gift-ind-grid">
+                {c.includes.map((label, n) => (
+                  <figure key={label} className="gift-ind">
+                    <div className="gift-ind-img gift-tier-frame">
+                      <Image src={`/gift/collection/${c.id}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 46vw, 200px" className="cover-img" />
+                    </div>
+                    <figcaption>{label}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+
             <div className="gift-individual">
               <span className="eyebrow">{d.individualTitle}</span>
               <p className="gift-individual-note">{d.individualNote}</p>
+              <dl className="gift-facts gift-facts--plain">
+                <div><dt>{d.mixLabel}</dt><dd>{c.mix}</dd></div>
+              </dl>
               <div className="gift-ind-grid">
-                {c.individual.slice(0, CONCEPT_INDIVIDUAL_COUNT[c.id]).map((label, n) => (
+                {c.individual.map((label, n) => (
                   <figure key={label} className="gift-ind">
                     <div className="gift-ind-img gift-tier-frame">
                       <Image src={`/gift/individual/${c.id}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 46vw, 200px" className="cover-img" />

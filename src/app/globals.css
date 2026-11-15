@@ -1967,3 +1967,16 @@ a.gift-card {
     justify-content: center;
   }
 }
+
+/* Gift page: collection contents tiles and plain facts row */
+.gift-tiles {
+  margin-top: clamp(28px, 4vw, 44px);
+}
+.gift-tiles .gift-detail-sub {
+  margin-top: 0;
+}
+.gift-facts--plain {
+  margin: 18px 0 0;
+  padding-top: 0;
+  border-top: 0;
+}
