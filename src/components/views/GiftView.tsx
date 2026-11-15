@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSyncExternalStore } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import Reveal from '../Reveal';
 import { MOTION } from '../../lib/motion';
@@ -26,6 +26,17 @@ export default function GiftView() {
   const source = useSyncExternalStore(noopSubscribe, readSource, readSourceOnServer);
   const quoteHref = `/contact?topic=gift${source ? `&source=${source}` : ''}`;
   const hasMedia = GIFT_MEDIA.length > 0;
+
+  // Tap or click a photo to view it larger; Escape or a second tap closes it.
+  const [zoom, setZoom] = useState<{ src: string; alt: string } | null>(null);
+  useEffect(() => {
+    if (!zoom) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setZoom(null);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [zoom]);
 
   return (
     <>
@@ -113,16 +124,16 @@ export default function GiftView() {
               ] as const).map((set) => (
                 <div key={set.who} className="gift-set">
                   <h3 className="gift-set-title">{set.label}</h3>
-                  <div className="media media--4x3 gift-tier-frame">
+                  <button type="button" className="media media--4x3 gift-tier-frame gift-zoom-btn" onClick={() => setZoom({ src: `/gift/sets/${c.id}-${set.who}.jpg`, alt: `${c.name} · ${set.label}` })}>
                     <Image src={`/gift/sets/${c.id}-${set.who}.jpg`} alt={`${c.name} · ${set.label}`} fill sizes="(max-width: 899px) 92vw, 560px" className="cover-img" />
-                  </div>
+                  </button>
                   <p className="caption">{t.common.illustrative}</p>
                   <div className="gift-set-grid">
                     {set.items.map((label, n) => (
                       <figure key={label} className="gift-ind">
-                        <div className="gift-ind-img gift-tier-frame">
+                        <button type="button" className="gift-ind-img gift-tier-frame gift-zoom-btn" onClick={() => setZoom({ src: `/gift/sets/${c.id}-${set.who}-${n + 1}.jpg`, alt: label })}>
                           <Image src={`/gift/sets/${c.id}-${set.who}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 30vw, 170px" className="cover-img" />
-                        </div>
+                        </button>
                         <figcaption>{label}</figcaption>
                       </figure>
                     ))}
@@ -143,9 +154,9 @@ export default function GiftView() {
               <div className="gift-ind-grid">
                 {c.individual.map((label, n) => (
                   <figure key={label} className="gift-ind">
-                    <div className="gift-ind-img gift-tier-frame">
+                    <button type="button" className="gift-ind-img gift-tier-frame gift-zoom-btn" onClick={() => setZoom({ src: `/gift/boxes/${c.id}-${n + 1}.jpg`, alt: label })}>
                       <Image src={`/gift/boxes/${c.id}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 46vw, 200px" className="cover-img" />
-                    </div>
+                    </button>
                     <figcaption>{label}</figcaption>
                   </figure>
                 ))}
@@ -200,6 +211,18 @@ export default function GiftView() {
           <Link href="/food-gift" className="section-more">{d.bulkLink}</Link>
         </div>
       </section>
+
+      {zoom && (
+        <div className="gift-lightbox" role="dialog" aria-modal="true" aria-label={zoom.alt} onClick={() => setZoom(null)}>
+          <button type="button" className="gift-lightbox-close" aria-label={d.zoomClose} onClick={() => setZoom(null)}>
+            ×
+          </button>
+          <div className="gift-lightbox-frame">
+            <Image src={zoom.src} alt={zoom.alt} fill sizes="100vw" className="gift-lightbox-img" />
+          </div>
+          <p className="gift-lightbox-caption">{zoom.alt}</p>
+        </div>
+      )}
 
       <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="gift-wa">
         {d.ctaSecondary}

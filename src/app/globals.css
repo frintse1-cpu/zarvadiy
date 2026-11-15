@@ -2098,3 +2098,62 @@ a.gift-card {
 .gift-card--signature:active h3 {
   color: var(--gold-light);
 }
+
+/* Gift page: tap a photo to enlarge it */
+.gift-zoom-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: zoom-in;
+}
+.gift-zoom-btn .cover-img {
+  transition: transform 0.5s ease;
+}
+.gift-zoom-btn:hover .cover-img {
+  transform: scale(1.05);
+}
+.gift-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 56px 16px 24px;
+  background: rgba(6, 13, 26, 0.94);
+  cursor: zoom-out;
+}
+.gift-lightbox-frame {
+  position: relative;
+  width: min(1100px, 100%);
+  height: min(78vh, 100%);
+  flex: 1 1 auto;
+  max-height: 78vh;
+}
+.gift-lightbox-img {
+  object-fit: contain;
+}
+.gift-lightbox-caption {
+  color: #e2c27b;
+  font-size: 1rem;
+  text-align: center;
+}
+.gift-lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(226, 194, 123, 0.6);
+  border-radius: 50%;
+  background: rgba(10, 22, 40, 0.8);
+  color: #e2c27b;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
