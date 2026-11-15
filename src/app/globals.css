@@ -1865,3 +1865,78 @@ a.gift-card {
     gap: 12px;
   }
 }
+
+/* ---------- Gift page: one coloured band per collection (matches the printed booklet) ---------- */
+.gift-tier {
+  position: relative;
+  scroll-margin-top: var(--header-h);
+  border-top: 1px solid rgba(201, 162, 75, 0.55);
+}
+.gift-tier--origin {
+  background: linear-gradient(180deg, #f1e6cf 0%, #e9dcc0 100%);
+  color: #3d3020;
+}
+.gift-tier--heritage {
+  background: linear-gradient(180deg, #1f6f6b 0%, #17585a 100%);
+}
+.gift-tier--signature {
+  background: radial-gradient(120% 80% at 80% 0%, #14294a 0%, #0a1628 60%);
+}
+.gift-tier-head {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(16px, 3vw, 32px);
+  margin-bottom: clamp(32px, 5vw, 56px);
+  padding-bottom: clamp(20px, 3vw, 32px);
+  border-bottom: 1px solid rgba(201, 162, 75, 0.45);
+}
+.gift-tier-num {
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(3.2rem, 9vw, 6.5rem);
+  line-height: 0.85;
+  color: var(--gold);
+  opacity: 0.55;
+}
+.gift-tier--origin .gift-tier-num {
+  color: var(--gold-ink);
+}
+.gift-tier-name {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.gift-tier--origin .gift-tier-name {
+  color: #4a3a1e;
+}
+.gift-tier--signature .gift-tier-name {
+  color: var(--gold-light);
+}
+.gift-tier-tag {
+  margin-top: 12px;
+  max-width: 640px;
+  font-size: 1.05rem;
+  opacity: 0.85;
+}
+.gift-tier-lead {
+  margin-top: 14px;
+}
+.gift-tier-frame {
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(201, 162, 75, 0.55), 0 22px 44px rgba(0, 0, 0, 0.22);
+}
+.gift-tier--origin .gift-tier-frame {
+  box-shadow: 0 0 0 1px rgba(138, 106, 31, 0.45), 0 18px 36px rgba(74, 58, 30, 0.2);
+}
+.gift-tier.section--navy .gift-facts {
+  border-top-color: rgba(255, 255, 255, 0.18);
+}
+.gift-tier .gift-individual {
+  margin-top: clamp(40px, 6vw, 72px);
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid rgba(201, 162, 75, 0.35);
+}
+@media (min-width: 900px) {
+  .gift-tier--heritage .gift-detail-media {
+    order: 2;
+  }
+}

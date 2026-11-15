@@ -82,21 +82,32 @@ export default function GiftView() {
         </div>
       </section>
 
-      <section className="section section--ivory gift-details" aria-label={d.collectionsTitle}>
-        <div className="container">
-          {d.concepts.map((c, i) => (
-            <div key={c.id} id={c.id} className="gift-detail">
-             <div className="split">
+      {d.concepts.map((c, i) => (
+        <section
+          key={c.id}
+          id={c.id}
+          className={`section ${c.id === 'origin' ? 'section--ivory' : 'section--navy'} gift-tier gift-tier--${c.id}`}
+          aria-labelledby={`tier-${c.id}`}
+        >
+          <div className="container">
+            <header className="gift-tier-head">
+              <span className="gift-tier-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h2 id={`tier-${c.id}`} className="gift-tier-name">{c.name}</h2>
+                <p className="gift-tier-tag">{c.text}</p>
+              </div>
+            </header>
+
+            <div className="split gift-tier-main">
               <div className="gift-detail-media">
-                <div className="media media--4x3" style={{ borderRadius: 4 }}>
+                <div className="media media--4x3 gift-tier-frame">
                   <Image src={CONCEPT_IMAGES[c.id]} alt={`${c.name}. ${d.mediaDefaultAlt}`} fill sizes="(max-width: 899px) 92vw, 560px" className="cover-img" />
                 </div>
                 <p className="caption">{t.common.illustrative}</p>
               </div>
               <Reveal>
-                <span className="eyebrow">{String(i + 1).padStart(2, '0')} · {d.collectionLabel}</span>
-                <h2 className="section-title">{c.name}</h2>
-                <p className="section-lead">{c.lead}</p>
+                <span className="eyebrow">{d.collectionLabel}</span>
+                <p className="section-lead gift-tier-lead">{c.lead}</p>
                 <h3 className="gift-detail-sub">{d.includesTitle}</h3>
                 <ul className="check-list" style={{ listStyle: 'none', padding: 0 }}>
                   {c.includes.map((item) => (
@@ -109,25 +120,25 @@ export default function GiftView() {
                 </dl>
                 <Link href={quoteHref} className="btn btn-primary">{d.ctaPrimary}</Link>
               </Reveal>
-             </div>
-              <div className="gift-individual">
-                <h3 className="gift-detail-sub">{c.name} · {d.individualTitle}</h3>
-                <p className="gift-individual-note">{d.individualNote}</p>
-                <div className="gift-ind-grid">
-                  {c.individual.slice(0, CONCEPT_INDIVIDUAL_COUNT[c.id]).map((label, n) => (
-                    <figure key={label} className="gift-ind">
-                      <div className="gift-ind-img">
-                        <Image src={`/gift/individual/${c.id}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 46vw, 200px" className="cover-img" />
-                      </div>
-                      <figcaption>{label}</figcaption>
-                    </figure>
-                  ))}
-                </div>
+            </div>
+
+            <div className="gift-individual">
+              <span className="eyebrow">{d.individualTitle}</span>
+              <p className="gift-individual-note">{d.individualNote}</p>
+              <div className="gift-ind-grid">
+                {c.individual.slice(0, CONCEPT_INDIVIDUAL_COUNT[c.id]).map((label, n) => (
+                  <figure key={label} className="gift-ind">
+                    <div className="gift-ind-img gift-tier-frame">
+                      <Image src={`/gift/individual/${c.id}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 46vw, 200px" className="cover-img" />
+                    </div>
+                    <figcaption>{label}</figcaption>
+                  </figure>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      ))}
 
       {hasMedia && (
         <section className="section section--navy-2" aria-labelledby="gallery-title">
