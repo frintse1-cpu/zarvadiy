@@ -16,4 +16,11 @@ export type GiftMediaItem = {
   alt?: string;
 };
 
-export const GIFT_MEDIA: GiftMediaItem[] = [];
+export const GIFT_MEDIA: GiftMediaItem[] = [
+  { type: 'image', src: '/gift/collection-overview.jpg' },
+  { type: 'image', src: '/gift/origin-collection.jpg' },
+  { type: 'image', src: '/gift/heritage-collection.jpg' },
+  { type: 'image', src: '/gift/signature-collection.jpg' },
+  { type: 'image', src: '/gift/wooden-gift-box.jpg' },
+  { type: 'image', src: '/gift/ceramic-platter.jpg' },
+];

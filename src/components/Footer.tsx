@@ -27,6 +27,7 @@ export default function Footer() {
             <ul>
               <li><Link href="/industrial">{t.nav.industrial}</Link></li>
               <li><Link href="/food-gift">{t.nav.foodGift}</Link></li>
+              <li><Link href="/gift">{t.nav.gift}</Link></li>
               <li><Link href="/technology">{t.nav.technology}</Link></li>
             </ul>
           </div>
@@ -44,6 +45,7 @@ export default function Footer() {
           <div className="footer-col">
             <h2>{t.nav.contact}</h2>
             <ul>
+              <li><a href={`tel:${SITE.phoneTel}`}>{SITE.phoneDisplay}</a></li>
               <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
               <li><a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer">{t.contact.whatsapp}</a></li>
               <li><a href={SITE.telegram} target="_blank" rel="noopener noreferrer">{t.contact.telegram}</a></li>
