@@ -2157,3 +2157,85 @@ a.gift-card {
   line-height: 1;
   cursor: pointer;
 }
+
+/* ---------- Food page: export figures and product list ---------- */
+.food-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: clamp(28px, 4vw, 44px) 0 0;
+}
+.food-stat {
+  padding: 22px 22px 24px;
+  border: 1px solid rgba(201, 162, 75, 0.35);
+  border-top: 2px solid var(--gold);
+  border-radius: var(--radius);
+  background: var(--navy-2);
+}
+.food-stat dt {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+.food-stat dd {
+  margin: 12px 0 0;
+}
+.food-stat-value {
+  display: block;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  line-height: 1.05;
+  color: #fff;
+}
+.food-stat-sub {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+.food-rank {
+  max-width: 820px;
+  margin-top: clamp(24px, 3vw, 36px);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.food-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: clamp(28px, 4vw, 44px);
+}
+.food-item {
+  padding: 20px 22px;
+  border: 1px solid rgba(10, 22, 40, 0.14);
+  border-left: 3px solid #9b3b3b;
+  border-radius: var(--radius);
+  background: #fff;
+}
+.food-item h3 {
+  font-size: 1.25rem;
+}
+.food-item p {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.food-work {
+  margin-top: clamp(48px, 7vw, 88px);
+  padding-top: clamp(32px, 5vw, 56px);
+  border-top: 1px solid rgba(10, 22, 40, 0.14);
+}
+.food-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 28px;
+  margin-top: 36px;
+}
+@media (max-width: 899px) {
+  .food-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}

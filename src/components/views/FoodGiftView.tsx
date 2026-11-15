@@ -27,15 +27,38 @@ export default function FoodGiftView() {
         </div>
       </section>
 
-      <section className="section section--ivory" aria-labelledby="bulk-title">
+      <section className="section section--navy" aria-labelledby="market-title">
         <div className="container">
           <Reveal>
-            <span className="eyebrow">{d.bulk.eyebrow}</span>
-            <h2 id="bulk-title" className="section-title">{d.bulk.title}</h2>
-            <p className="section-lead">{d.bulk.text}</p>
+            <span className="eyebrow">{d.market.eyebrow}</span>
+            <h2 id="market-title" className="section-title">{d.market.title}</h2>
+            <p className="section-lead">{d.market.text}</p>
+          </Reveal>
+          <dl className="food-stats">
+            {d.market.stats.map((st) => (
+              <div key={st.label} className="food-stat">
+                <dt>{st.label}</dt>
+                <dd>
+                  <span className="food-stat-value">{st.value}</span>
+                  <span className="food-stat-sub">{st.sub}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p className="food-rank">{d.market.rank}</p>
+          <p className="caption">{d.market.source}</p>
+        </div>
+      </section>
+
+      <section className="section section--ivory" aria-labelledby="products-title">
+        <div className="container">
+          <Reveal>
+            <span className="eyebrow">{d.products.eyebrow}</span>
+            <h2 id="products-title" className="section-title">{d.products.title}</h2>
+            <p className="section-lead">{d.products.text}</p>
           </Reveal>
           <div className="tile-grid" style={{ ...accent, gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))' }}>
-            {d.bulk.items.map((item, i) => (
+            {d.products.items.map((item, i) => (
               <article key={item.title} className="tile">
                 <div className="media media--16x9">
                   <Image src={images[i].src} alt={images[i].alt} fill sizes="(max-width: 700px) 92vw, 560px" className="cover-img" />
@@ -48,47 +71,28 @@ export default function FoodGiftView() {
             ))}
           </div>
           <p className="caption">{t.common.illustrative}</p>
-          <ul className="check-list">
-            {d.bulk.points.map((p) => (
-              <li key={p}>{p}</li>
+          <div className="food-list">
+            {d.products.list.map((item) => (
+              <div key={item.title} className="food-item">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
             ))}
-          </ul>
-          <p className="note">{d.bulk.note}</p>
-          <div style={{ marginTop: 40 }}>
-            <Link href="/contact?topic=food" className="btn btn-dark">{d.bulk.cta}</Link>
           </div>
-        </div>
-      </section>
 
-      <section className="section section--navy" aria-labelledby="gift-title">
-        <div className="container">
-          <div className="split split--top">
-            <div className="sticky-col">
-              <div className="media media--4x3" style={{ borderRadius: 4 }}>
-                <Image src="/images/food-gift.png" alt={t.alt.foodGift} fill sizes="(max-width: 899px) 92vw, 560px" className="cover-img" />
-              </div>
-              <p className="caption">{t.common.illustrative}</p>
+          <div className="food-work">
+            <h2 className="section-title">{d.work.title}</h2>
+            <p className="section-lead">{d.work.text}</p>
+            <ul className="check-list">
+              {d.work.points.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
+            <p className="note">{d.work.note}</p>
+            <div className="food-actions">
+              <Link href="/contact?topic=food" className="btn btn-dark">{d.work.cta}</Link>
+              <Link href="/gift" className="section-more">{d.giftLink}</Link>
             </div>
-            <Reveal>
-              <span className="eyebrow">{d.gift.eyebrow}</span>
-              <h2 id="gift-title" className="section-title">{d.gift.title}</h2>
-              <p className="section-lead">{d.gift.text}</p>
-              <div className="concept-list">
-                {t.giftPage.concepts.map((c) => (
-                  <div key={c.id} className="concept">
-                    <div className="concept-head">
-                      <h3>{c.name}</h3>
-                    </div>
-                    <p>{c.text}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="note">{d.gift.note}</p>
-              <div className="gift-links">
-                <Link href="/contact?topic=gift" className="btn btn-primary">{d.gift.cta}</Link>
-                <Link href="/gift" className="section-more section-more--light">{t.giftPage.teaser.cta}</Link>
-              </div>
-            </Reveal>
           </div>
         </div>
       </section>
