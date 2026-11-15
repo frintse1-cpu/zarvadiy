@@ -10,6 +10,12 @@ import { GIFT_MEDIA } from '../../lib/giftMedia';
 import { cleanSource } from '../../lib/rfq';
 import { SITE } from '../../lib/site';
 
+const CONCEPT_IMAGES: Record<string, string> = {
+  origin: '/gift/origin-collection.jpg',
+  heritage: '/gift/heritage-collection.jpg',
+  signature: '/gift/signature-collection.jpg',
+};
+
 export default function GiftView() {
   const { t } = useLanguage();
   const params = useSearchParams();
@@ -24,7 +30,12 @@ export default function GiftView() {
       <section className="page-hero gift-hero" aria-labelledby="page-title">
         <Image src="/images/food-gift.png" alt={t.alt.foodGift} fill priority sizes="100vw" className={MOTION ? 'cover-img kenburns' : 'cover-img'} />
         <div className="container">
-          {source && <p className="gift-welcome">{d.welcome}</p>}
+          {source && (
+            <div className="gift-welcome" role="status">
+              <span className="gift-welcome-title">{d.welcomeTitle}</span>
+              <span className="gift-welcome-text">{d.welcome}</span>
+            </div>
+          )}
           <span className="eyebrow" style={{ color: '#e2c27b' }}>{d.eyebrow}</span>
           <h1 id="page-title">{d.title}</h1>
           <p className="lead">{d.lead}</p>
@@ -45,15 +56,16 @@ export default function GiftView() {
           <div className="gift-cards">
             {d.concepts.map((c, i) => (
               <Reveal key={c.name} className="reveal--fill" delay={i * 140}>
-                <article className="gift-card">
+                <a className="gift-card" href={`#${c.id}`}>
                   <span className="gift-card-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                   <h3>{c.name}</h3>
                   <p className="gift-card-text">{c.text}</p>
                   <div className="gift-card-foot">
                     <span className="badge">{d.conceptLabel}</span>
                     <p>{d.conceptNote}</p>
+                    <span className="gift-card-more">{d.detailLink} ↓</span>
                   </div>
-                </article>
+                </a>
               </Reveal>
             ))}
           </div>
@@ -65,6 +77,37 @@ export default function GiftView() {
               ))}
             </ul>
           </Reveal>
+        </div>
+      </section>
+
+      <section className="section section--ivory gift-details" aria-label={d.collectionsTitle}>
+        <div className="container">
+          {d.concepts.map((c, i) => (
+            <div key={c.id} id={c.id} className="gift-detail split">
+              <div className="gift-detail-media">
+                <div className="media media--4x3" style={{ borderRadius: 4 }}>
+                  <Image src={CONCEPT_IMAGES[c.id]} alt={`${c.name}. ${d.mediaDefaultAlt}`} fill sizes="(max-width: 899px) 92vw, 560px" className="cover-img" />
+                </div>
+                <p className="caption">{t.common.illustrative}</p>
+              </div>
+              <Reveal>
+                <span className="eyebrow">{String(i + 1).padStart(2, '0')}</span>
+                <h2 className="section-title">{c.name}</h2>
+                <p className="section-lead">{c.lead}</p>
+                <h3 className="gift-detail-sub">{d.includesTitle}</h3>
+                <ul className="check-list" style={{ listStyle: 'none', padding: 0 }}>
+                  {c.includes.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <dl className="gift-facts">
+                  <div><dt>{d.packagingLabel}</dt><dd>{c.packaging}</dd></div>
+                  <div><dt>{d.mixLabel}</dt><dd>{c.mix}</dd></div>
+                </dl>
+                <Link href={quoteHref} className="btn btn-primary">{d.ctaPrimary}</Link>
+              </Reveal>
+            </div>
+          ))}
         </div>
       </section>
 
