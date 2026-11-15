@@ -1823,3 +1823,45 @@ a.gift-card {
     order: 2;
   }
 }
+
+/* Gift page: individual gifts under each collection */
+.gift-individual {
+  margin-top: clamp(32px, 4vw, 48px);
+  padding-top: 8px;
+}
+.gift-individual .gift-detail-sub {
+  margin-top: 0;
+}
+.gift-individual-note {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+.gift-ind-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+.gift-ind {
+  margin: 0;
+}
+.gift-ind-img {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--navy-3);
+}
+.gift-ind figcaption {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+@media (max-width: 639px) {
+  .gift-ind-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}

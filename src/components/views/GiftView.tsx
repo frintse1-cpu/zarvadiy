@@ -16,6 +16,8 @@ const CONCEPT_IMAGES: Record<string, string> = {
   signature: '/gift/signature-collection.jpg',
 };
 
+const CONCEPT_INDIVIDUAL_COUNT: Record<string, number> = { origin: 6, heritage: 6, signature: 5 };
+
 export default function GiftView() {
   const { t } = useLanguage();
   const params = useSearchParams();
@@ -83,7 +85,8 @@ export default function GiftView() {
       <section className="section section--ivory gift-details" aria-label={d.collectionsTitle}>
         <div className="container">
           {d.concepts.map((c, i) => (
-            <div key={c.id} id={c.id} className="gift-detail split">
+            <div key={c.id} id={c.id} className="gift-detail">
+             <div className="split">
               <div className="gift-detail-media">
                 <div className="media media--4x3" style={{ borderRadius: 4 }}>
                   <Image src={CONCEPT_IMAGES[c.id]} alt={`${c.name}. ${d.mediaDefaultAlt}`} fill sizes="(max-width: 899px) 92vw, 560px" className="cover-img" />
@@ -91,7 +94,7 @@ export default function GiftView() {
                 <p className="caption">{t.common.illustrative}</p>
               </div>
               <Reveal>
-                <span className="eyebrow">{String(i + 1).padStart(2, '0')}</span>
+                <span className="eyebrow">{String(i + 1).padStart(2, '0')} · {d.collectionLabel}</span>
                 <h2 className="section-title">{c.name}</h2>
                 <p className="section-lead">{c.lead}</p>
                 <h3 className="gift-detail-sub">{d.includesTitle}</h3>
@@ -106,6 +109,21 @@ export default function GiftView() {
                 </dl>
                 <Link href={quoteHref} className="btn btn-primary">{d.ctaPrimary}</Link>
               </Reveal>
+             </div>
+              <div className="gift-individual">
+                <h3 className="gift-detail-sub">{c.name} · {d.individualTitle}</h3>
+                <p className="gift-individual-note">{d.individualNote}</p>
+                <div className="gift-ind-grid">
+                  {c.individual.slice(0, CONCEPT_INDIVIDUAL_COUNT[c.id]).map((label, n) => (
+                    <figure key={label} className="gift-ind">
+                      <div className="gift-ind-img">
+                        <Image src={`/gift/individual/${c.id}-${n + 1}.jpg`} alt={label} fill sizes="(max-width: 639px) 46vw, 200px" className="cover-img" />
+                      </div>
+                      <figcaption>{label}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>
