@@ -74,11 +74,10 @@ export default function FoodGiftView() {
               <h2 id="gift-title" className="section-title">{d.gift.title}</h2>
               <p className="section-lead">{d.gift.text}</p>
               <div className="concept-list">
-                {d.gift.concepts.map((c) => (
-                  <div key={c.name} className="concept">
+                {t.giftPage.concepts.map((c) => (
+                  <div key={c.id} className="concept">
                     <div className="concept-head">
                       <h3>{c.name}</h3>
-                      <span className="badge">{d.gift.conceptLabel}</span>
                     </div>
                     <p>{c.text}</p>
                   </div>

@@ -40,21 +40,21 @@ const en = {
     eyebrow: 'Business directions',
     industrial: {
       title: 'Industrial',
-      subtitle: 'Industrial Products & HVAC/R',
+      subtitle: 'HVAC/R & Industrial Supply',
       desc: 'Copper tubes · Components · Industrial supply',
       cta: 'Explore Industrial →',
     },
     food: {
-      title: 'Food & Gift',
-      subtitle: 'Uzbek Dried Fruits & Gift Collections',
-      desc: 'Dried fruits · Nuts · Gift collections',
-      cta: 'Explore Food & Gift →',
+      title: 'Food',
+      subtitle: 'Uzbek Dried Fruits & Nuts',
+      desc: 'Dried fruits · Nuts · Bulk supply',
+      cta: 'Explore Food →',
     },
-    technology: {
-      title: 'Technology',
-      subtitle: 'Telecom & Connectivity',
-      desc: 'Coming soon',
-      cta: 'Contact us →',
+    gift: {
+      title: 'Gift',
+      subtitle: 'Uzbekistan Gift Collection',
+      desc: 'Origin · Heritage · Signature',
+      cta: 'Explore the Gift Collection →',
     },
   },
   how: {
@@ -152,13 +152,7 @@ const en = {
       eyebrow: 'Part B',
       title: 'Uzbekistan Gift Collection',
       text: 'Curated and developed by ZARVADIY, with products sourced from selected Uzbek producers.',
-      conceptLabel: 'Concept',
-      concepts: [
-        { name: 'Origin', text: 'Everyday premium selection' },
-        { name: 'Heritage', text: 'Traditional Uzbek selection' },
-        { name: 'Signature', text: 'Corporate and premium gifting' },
-      ],
-      note: 'Collections are at concept stage. Final contents, packaging and pricing are confirmed with producers for each request.',
+      note: 'Final contents, packaging and pricing are confirmed for each order.',
       cta: 'Request a Gift Collection Quote',
     },
   },
@@ -183,7 +177,7 @@ const en = {
     includesTitle: 'What is inside',
     packagingLabel: 'Packaging',
     mixLabel: 'Dried fruit and nut mix',
-    conceptLabel: 'Concept',
+    conceptLabel: 'Collection',
     conceptNote: 'Contents, packaging and pricing are confirmed per request.',
     concepts: [
       {
@@ -233,9 +227,9 @@ const en = {
       { title: 'Proposal', text: 'You receive a proposal with contents, packaging and pricing.' },
       { title: 'Coordination', text: 'We coordinate the order through to delivery arrangements.' },
     ],
-    note: 'Collections are at concept stage. Final contents, packaging and pricing are confirmed with producers for each request.',
+    note: 'Final contents, packaging and pricing are confirmed for each order.',
     closingTitle: 'Discuss your gift programme',
-    closingText: 'Share the occasion, quantity and destination, and we will come back with the next steps.',
+    closingText: 'Share the occasion, quantity and destination, and we will come back with the next steps. We reply within 24 hours, including weekends and public holidays.',
     bulkLink: 'Dried fruits and nuts in bulk →',
     teaser: {
       eyebrow: 'Featured',
@@ -279,7 +273,7 @@ const en = {
   contact: {
     eyebrow: 'Contact',
     title: 'Tell us what you are looking for.',
-    lead: 'Send a request with as much detail as you have. We will come back to you with the next steps.',
+    lead: 'Send a request with as much detail as you have. We reply within 24 hours, including weekends and public holidays.',
     directTitle: 'Direct contact',
     email: 'Email',
     whatsapp: 'WhatsApp',
@@ -427,16 +421,16 @@ const ru: Dict = {
       cta: 'Подробнее о промышленности →',
     },
     food: {
-      title: 'Продукты и подарки',
-      subtitle: 'Узбекские сухофрукты и подарочные наборы',
-      desc: 'Сухофрукты · Орехи · Подарочные наборы',
-      cta: 'Подробнее о продуктах и подарках →',
+      title: 'Продукты питания',
+      subtitle: 'Узбекские сухофрукты и орехи',
+      desc: 'Сухофрукты · Орехи · Оптовые поставки',
+      cta: 'Подробнее о продуктах →',
     },
-    technology: {
-      title: 'Технологии',
-      subtitle: 'Телеком и связь',
-      desc: 'Скоро',
-      cta: 'Связаться с нами →',
+    gift: {
+      title: 'Подарки',
+      subtitle: 'Подарочная коллекция Узбекистана',
+      desc: 'Истоки · Наследие · Эксклюзив',
+      cta: 'Смотреть коллекцию →',
     },
   },
   how: {
@@ -534,13 +528,7 @@ const ru: Dict = {
       eyebrow: 'Часть B',
       title: 'Подарочная коллекция Узбекистана',
       text: 'Разработана и подобрана ZARVADIY, продукция — от отобранных узбекских производителей.',
-      conceptLabel: 'Концепция',
-      concepts: [
-        { name: 'Origin', text: 'Повседневная премиальная подборка' },
-        { name: 'Heritage', text: 'Традиционная узбекская подборка' },
-        { name: 'Signature', text: 'Корпоративные и премиальные подарки' },
-      ],
-      note: 'Коллекции находятся на стадии концепции. Итоговый состав, упаковка и цены согласуются с производителями по каждому запросу.',
+      note: 'Итоговый состав, упаковка и цены согласуются по каждому заказу.',
       cta: 'Запросить предложение по подарочной коллекции',
     },
   },
@@ -565,7 +553,7 @@ const ru: Dict = {
     includesTitle: 'Что входит',
     packagingLabel: 'Упаковка',
     mixLabel: 'Микс сухофруктов и орехов',
-    conceptLabel: 'Концепция',
+    conceptLabel: 'Коллекция',
     conceptNote: 'Состав, упаковка и цены согласуются по каждому запросу.',
     concepts: [
       {
@@ -615,9 +603,9 @@ const ru: Dict = {
       { title: 'Предложение', text: 'Вы получаете предложение с составом, упаковкой и ценами.' },
       { title: 'Координация', text: 'Мы координируем заказ вплоть до организации доставки.' },
     ],
-    note: 'Коллекции находятся на стадии концепции. Итоговый состав, упаковка и цены согласуются с производителями по каждому запросу.',
+    note: 'Итоговый состав, упаковка и цены согласуются по каждому заказу.',
     closingTitle: 'Обсудим вашу подарочную программу',
-    closingText: 'Расскажите о поводе, количестве и направлении поставки, и мы вернёмся с дальнейшими шагами.',
+    closingText: 'Расскажите о поводе, количестве и направлении поставки, и мы вернёмся с дальнейшими шагами. Мы отвечаем в течение 24 часов, включая выходные и праздничные дни.',
     bulkLink: 'Сухофрукты и орехи оптом →',
     teaser: {
       eyebrow: 'Избранное',
@@ -661,7 +649,7 @@ const ru: Dict = {
   contact: {
     eyebrow: 'Контакты',
     title: 'Расскажите, что вы ищете.',
-    lead: 'Отправьте запрос с теми подробностями, которые у вас есть. Мы вернёмся к вам со следующими шагами.',
+    lead: 'Отправьте запрос с теми подробностями, которые у вас есть. Мы отвечаем в течение 24 часов, включая выходные и праздничные дни.',
     directTitle: 'Прямая связь',
     email: 'Эл. почта',
     whatsapp: 'WhatsApp',
@@ -807,16 +795,16 @@ const uz: Dict = {
       cta: 'Sanoat haqida batafsil →',
     },
     food: {
-      title: 'Oziq-ovqat va sovgʻalar',
-      subtitle: 'Oʻzbek quritilgan mevalari va sovgʻa toʻplamlari',
-      desc: 'Quritilgan mevalar · Yongʻoqlar · Sovgʻa toʻplamlari',
-      cta: 'Oziq-ovqat va sovgʻalar haqida →',
+      title: 'Oziq-ovqat',
+      subtitle: 'Oʻzbek quruq mevalari va yongʻoqlari',
+      desc: 'Quruq mevalar · Yongʻoqlar · Ulgurji yetkazib berish',
+      cta: 'Oziq-ovqat haqida batafsil →',
     },
-    technology: {
-      title: 'Texnologiya',
-      subtitle: 'Telekommunikatsiya va ulanish',
-      desc: 'Tez orada',
-      cta: 'Biz bilan bogʻlaning →',
+    gift: {
+      title: 'Sovgʻalar',
+      subtitle: 'Oʻzbekiston sovgʻa toʻplami',
+      desc: 'Asl · Meros · Xos',
+      cta: 'Toʻplamni koʻrish →',
     },
   },
   how: {
@@ -914,13 +902,7 @@ const uz: Dict = {
       eyebrow: 'B qism',
       title: 'Oʻzbekiston sovgʻa toʻplami',
       text: 'ZARVADIY tomonidan tanlangan va ishlab chiqilgan, mahsulotlar tanlangan oʻzbek ishlab chiqaruvchilaridan.',
-      conceptLabel: 'Konsepsiya',
-      concepts: [
-        { name: 'Origin', text: 'Kundalik premium tanlov' },
-        { name: 'Heritage', text: 'Anʼanaviy oʻzbek tanlovi' },
-        { name: 'Signature', text: 'Korporativ va premium sovgʻalar' },
-      ],
-      note: 'Toʻplamlar konsepsiya bosqichida. Yakuniy tarkib, qadoqlash va narxlar har bir soʻrov uchun ishlab chiqaruvchilar bilan kelishiladi.',
+      note: 'Yakuniy tarkib, qadoq va narxlar har bir buyurtma uchun kelishiladi.',
       cta: 'Sovgʻa toʻplami boʻyicha taklif soʻrash',
     },
   },
@@ -945,7 +927,7 @@ const uz: Dict = {
     includesTitle: 'Tarkibida',
     packagingLabel: 'Qadoq',
     mixLabel: 'Quruq meva va yongʻoq aralashmasi',
-    conceptLabel: 'Konsepsiya',
+    conceptLabel: 'Toʻplam',
     conceptNote: 'Tarkib, qadoqlash va narxlar har bir soʻrov uchun kelishiladi.',
     concepts: [
       {
@@ -995,9 +977,9 @@ const uz: Dict = {
       { title: 'Taklif', text: 'Tarkib, qadoqlash va narxlar bilan taklif olasiz.' },
       { title: 'Muvofiqlashtirish', text: 'Buyurtmani yetkazib berishni tashkil etishgacha muvofiqlashtiramiz.' },
     ],
-    note: 'Toʻplamlar konsepsiya bosqichida. Yakuniy tarkib, qadoqlash va narxlar har bir soʻrov uchun ishlab chiqaruvchilar bilan kelishiladi.',
+    note: 'Yakuniy tarkib, qadoq va narxlar har bir buyurtma uchun kelishiladi.',
     closingTitle: 'Sovgʻa dasturingizni muhokama qilaylik',
-    closingText: 'Munosabat, miqdor va yoʻnalishni yozing, keyingi qadamlar bilan qaytamiz.',
+    closingText: 'Munosabat, miqdor va yoʻnalishni yozing, keyingi qadamlar bilan qaytamiz. Uzogʻi bilan 24 soat ichida javob beramiz, dam olish va bayram kunlarida ham.',
     bulkLink: 'Ulgurji quritilgan mevalar va yongʻoqlar →',
     teaser: {
       eyebrow: 'Tanlangan',
@@ -1041,7 +1023,7 @@ const uz: Dict = {
   contact: {
     eyebrow: 'Aloqa',
     title: 'Nima izlayotganingizni bizga ayting.',
-    lead: 'Mavjud maʼlumotlar bilan soʻrov yuboring. Biz keyingi qadamlar bilan sizga javob beramiz.',
+    lead: 'Mavjud maʼlumotlar bilan soʻrov yuboring. Uzogʻi bilan 24 soat ichida javob beramiz, dam olish va bayram kunlarida ham.',
     directTitle: 'Toʻgʻridan-toʻgʻri aloqa',
     email: 'Email',
     whatsapp: 'WhatsApp',
