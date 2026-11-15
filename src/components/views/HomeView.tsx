@@ -15,7 +15,7 @@ export default function HomeView() {
   const cards: { id: string; href: string; img: string; alt: string; style: Accent; c: typeof t.cards.industrial }[] = [
     { id: 'industrial', href: '/industrial', img: '/images/card-industrial.png', alt: t.alt.cardIndustrial, style: { '--accent': '#b87333', '--accent-text': '#e0a06a' }, c: t.cards.industrial },
     { id: 'food-gift', href: '/food-gift', img: '/images/card-food.png', alt: t.alt.cardFood, style: { '--accent': '#9b3b3b', '--accent-text': '#e2c27b' }, c: t.cards.food },
-    { id: 'technology', href: '/contact?topic=technology', img: '/images/card-technology.png', alt: t.alt.cardTechnology, style: { '--accent': '#2563eb', '--accent-text': '#7aa2f7' }, c: t.cards.technology },
+    { id: 'gift', href: '/gift', img: '/gift/collection-overview.jpg', alt: t.giftPage.mediaDefaultAlt, style: { '--accent': '#c9a24b', '--accent-text': '#e2c27b' }, c: t.cards.gift },
   ];
 
   const paths = [

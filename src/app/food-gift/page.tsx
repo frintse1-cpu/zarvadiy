@@ -3,8 +3,8 @@ import FoodGiftView from '../../components/views/FoodGiftView';
 import { buildMetadata } from '../../lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Uzbek Dried Fruits & Gift Collections',
-  description: 'Dried fruits, nuts and gift collections from selected Uzbek producers, available in bulk and private-label formats. Specifications and certificates available upon request.',
+  title: 'Uzbek Dried Fruits & Nuts',
+  description: 'Raisins, prunes, dried apricots and nuts from Uzbekistan for wholesale buyers, with current export figures and sourcing support from ZARVADIY.',
   path: '/food-gift',
 });
 
